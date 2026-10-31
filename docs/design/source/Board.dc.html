@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scrawl game board</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:wght@400;700&display=swap">
+<style>
+body{margin:0}
+a{color:inherit}
+.sc{--bg:#FFD84A;--dot:rgba(20,20,20,.13);--text:#141414;--muted:#3B3B3B;--card:#FFFFFF;--card-text:#141414;--line:#141414;--shadow:#141414;--tile:#FFFFFF;--board:#2F4BFF}
+.sc-dark{--bg:#17142E;--dot:rgba(255,246,214,.07);--text:#FFF6D6;--muted:#C9C3E8;--card:#2A2552;--card-text:#FFF6D6;--line:#0B0A1A;--shadow:#0B0A1A}
+@keyframes sc-wobble{0%,100%{transform:rotate(5deg) scale(1)}50%{transform:rotate(2deg) scale(1.08)}}
+@keyframes sc-shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+@keyframes sc-frame{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes sc-ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.5);opacity:0}}
+@keyframes sc-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+</style>
+</helmet>
+<div class="sc {{themeCls}}" style="position: relative; width: 390px; height: 844px; overflow: hidden; background-color: var(--bg); background-image: radial-gradient(var(--dot) 1.5px, transparent 1.6px); background-size: 18px 18px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; color: var(--text)">
+
+<sc-if value="{{isLast}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; inset: 0; z-index: 6; border: 6px solid #FF5FA2; box-sizing: border-box; pointer-events: none; animation: sc-frame 1s ease-in-out infinite"></div>
+</sc-if>
+
+<sc-if value="{{isValid}}" hint-placeholder-val="{{ false }}">
+<svg width="390" height="470" viewBox="0 0 390 470" style="position: absolute; left: 0; top: 96px; z-index: 4; pointer-events: none" aria-hidden="true">
+<rect x="26" y="48" width="14" height="14" rx="3" fill="#FF5FA2" stroke="#141414" stroke-width="2" transform="rotate(20 33 55)"/>
+<circle cx="354" cy="46" r="8" fill="#2F4BFF" stroke="#141414" stroke-width="2"/>
+<polygon points="338,150 352,176 324,176" fill="#19D3A2" stroke="#141414" stroke-width="2" stroke-linejoin="round"/>
+<rect x="46" y="196" width="12" height="12" rx="3" fill="#FFFFFF" stroke="#141414" stroke-width="2" transform="rotate(-25 52 202)"/>
+<polygon points="96,18 110,44 82,44" fill="#2F4BFF" stroke="#141414" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="22" cy="126" r="7" fill="#19D3A2" stroke="#141414" stroke-width="2"/>
+<rect x="296" y="14" width="13" height="13" rx="3" fill="#FF5FA2" stroke="#141414" stroke-width="2" transform="rotate(35 302 20)"/>
+<circle cx="206" cy="10" r="6" fill="#FFFFFF" stroke="#141414" stroke-width="2"/>
+<rect x="362" y="238" width="12" height="12" rx="3" fill="#FFFFFF" stroke="#141414" stroke-width="2" transform="rotate(18 368 244)"/>
+<polygon points="24,282 38,308 10,308" fill="#FF5FA2" stroke="#141414" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="372" cy="330" r="7" fill="#19D3A2" stroke="#141414" stroke-width="2"/>
+<rect x="16" y="378" width="13" height="13" rx="3" fill="#2F4BFF" stroke="#141414" stroke-width="2" transform="rotate(-15 22 384)"/>
+</svg>
+</sc-if>
+
+<div style="height: 100%; box-sizing: border-box; padding: 56px 12px 34px; display: flex; flex-direction: column; gap: 14px">
+
+<div style="display: flex; align-items: stretch; gap: 10px">
+<div style="flex: 1; min-width: 0; background: var(--card); color: var(--card-text); border: 3px solid var(--line); border-radius: 16px; box-shadow: 4px 5px 0 var(--shadow); padding: 8px 12px; display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: .08em">YOU</span>
+<span style="font-weight: 800; font-size: 34px; line-height: 1.05">{{youScore}}</span>
+<sc-if value="{{hasLead}}" hint-placeholder-val="{{ true }}">
+<span style="display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; padding: 1px 8px 1px 5px; border: 2px solid var(--line); border-radius: 99px; background: #19D3A2; color: #141414; font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700">
+<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1 9 8H1z" fill="#141414"/></svg>
+<span>AHEAD {{lead}}</span>
+</span>
+</sc-if>
+<sc-if value="{{noLead}}" hint-placeholder-val="{{ false }}">
+<span style="font-size: 12px; font-weight: 700">wordfox_</span>
+</sc-if>
+</div>
+
+<div style="align-self: center; flex: none; position: relative; width: {{tSize}}px; height: {{tSize}}px">
+<sc-if value="{{isLast}}" hint-placeholder-val="{{ false }}">
+<span style="position: absolute; inset: 0; border-radius: 50%; border: 4px solid #FF5FA2; animation: sc-ring 1s ease-out infinite"></span>
+</sc-if>
+<div style="position: relative; width: 100%; height: 100%; border-radius: 50%; background: {{tBg}}; color: {{tFg}}; border: 3px solid var(--line); box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-family: 'Space Mono', monospace; font-weight: 700; font-size: {{tFs}}px; box-shadow: 3px 4px 0 var(--shadow)">{{time}}</div>
+</div>
+
+<div style="position: relative; flex: 1; min-width: 0; background: #FF5FA2; color: #141414; border: 3px solid var(--line); border-radius: 16px; box-shadow: 4px 5px 0 var(--shadow); padding: 8px 12px; display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: .08em">{{oppLabel}}</span>
+<span style="font-weight: 800; font-size: 34px; line-height: 1.05">{{oppScore}}</span>
+<span style="font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; padding-top: 2px">{{oppSub}}</span>
+<sc-if value="{{oppPop}}" hint-placeholder-val="{{ false }}">
+<span style="position: absolute; right: 6px; top: -12px; padding: 1px 8px; border: 2px solid var(--line); border-radius: 10px; background: #FFFFFF; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; transform: rotate(5deg)">{{oppPop}}</span>
+</sc-if>
+</div>
+</div>
+
+<div style="display: flex; gap: 4px">
+<sc-for list="{{segs}}" as="s" hint-placeholder-count="10">
+<div style="flex: 1; height: 12px; border: 2px solid var(--text); border-radius: 4px; box-sizing: border-box; background: {{s.bg}}"></div>
+</sc-for>
+</div>
+
+<div style="position: relative; margin: 6px 4px 0">
+
+<sc-if value="{{isPending}}" hint-placeholder-val="{{ true }}">
+<div style="background: var(--card); color: var(--card-text); border: 3px solid var(--line); border-radius: 16px; box-shadow: 4px 5px 0 var(--shadow); height: 64px; box-sizing: border-box; padding: 0 16px; display: flex; align-items: center; gap: 12px">
+<span style="width: 30px; height: 30px; border-radius: 50%; border: 3px dashed var(--line); box-sizing: border-box; flex: none"></span>
+<span style="flex: 1; text-align: center; font-weight: 800; font-size: 42px; line-height: 1; letter-spacing: .08em">{{word}}</span>
+<span style="flex: none; width: 66px; text-align: right; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 11px; letter-spacing: .04em">{{count}}</span>
+</div>
+</sc-if>
+
+<sc-if value="{{isLast}}" hint-placeholder-val="{{ false }}">
+<span style="position: absolute; left: -8px; top: -20px; padding: 2px 10px; border: 3px solid var(--line); border-radius: 12px; background: #FF5FA2; color: #141414; font-weight: 800; font-size: 16px; box-shadow: 3px 3px 0 var(--shadow); transform: rotate(-5deg)">LAST 10!</span>
+</sc-if>
+
+<sc-if value="{{isValid}}" hint-placeholder-val="{{ false }}">
+<div style="background: var(--card); color: var(--card-text); border: 3px solid var(--line); border-radius: 16px; box-shadow: 4px 5px 0 var(--shadow); height: 64px; box-sizing: border-box; padding: 0 16px; display: flex; align-items: center; gap: 12px">
+<span style="width: 30px; height: 30px; border-radius: 50%; border: 3px solid var(--line); background: #19D3A2; box-sizing: border-box; flex: none; display: flex; align-items: center; justify-content: center">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+</span>
+<span style="flex: 1; text-align: center; font-weight: 800; font-size: 42px; line-height: 1; letter-spacing: .08em">STRIDE</span>
+<span style="flex: none; width: 66px"></span>
+</div>
+<div style="position: absolute; left: -16px; top: -42px; width: 88px; height: 88px; transform: rotate(-8deg); animation: sc-wobble 1.6s ease-in-out infinite">
+<svg width="88" height="88" viewBox="0 0 80 80" aria-hidden="true"><polygon points="76,40 66.8,51.1 65.5,65.5 51.1,66.8 40,76 28.9,66.8 14.5,65.5 13.2,51.1 4,40 13.2,28.9 14.5,14.5 28.9,13.2 40,4 51.1,13.2 65.5,14.5 66.8,28.9" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round"/></svg>
+<div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; color: #141414">GREAT!</div>
+</div>
+<span style="position: absolute; right: -8px; top: -18px; padding: 3px 10px; border: 3px solid var(--line); border-radius: 12px; background: #2F4BFF; color: #FFFFFF; font-weight: 800; font-size: 22px; box-shadow: 3px 3px 0 var(--shadow); transform: rotate(5deg); animation: sc-wobble 1.6s ease-in-out infinite">+1,000</span>
+</sc-if>
+
+<sc-if value="{{isDupe}}" hint-placeholder-val="{{ false }}">
+<div style="background: var(--card); color: var(--card-text); border: 3px dashed var(--line); border-radius: 16px; height: 64px; box-sizing: border-box; padding: 0 16px; display: flex; align-items: center; gap: 12px">
+<span style="width: 30px; height: 30px; border-radius: 50%; border: 3px solid var(--line); background: #FFD84A; box-sizing: border-box; flex: none; display: flex; align-items: center; justify-content: center">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+</span>
+<span style="flex: 1; text-align: center; font-weight: 800; font-size: 42px; line-height: 1; letter-spacing: .08em; opacity: .7">STRIDE</span>
+<span style="flex: none; width: 66px"></span>
+</div>
+<span style="position: absolute; right: -8px; top: -16px; padding: 3px 10px; border: 3px solid var(--line); border-radius: 12px; background: #FFD84A; color: #141414; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; box-shadow: 3px 3px 0 var(--shadow); transform: rotate(4deg)">ALREADY FOUND</span>
+</sc-if>
+
+<sc-if value="{{isInvalid}}" hint-placeholder-val="{{ false }}">
+<div style="background: #FF5FA2; color: #141414; border: 3px solid var(--line); border-radius: 16px; box-shadow: 4px 5px 0 var(--shadow); height: 64px; box-sizing: border-box; padding: 0 16px; display: flex; align-items: center; gap: 12px; animation: sc-shake .4s ease-in-out">
+<span style="width: 30px; height: 30px; border-radius: 50%; border: 3px solid #141414; background: #141414; box-sizing: border-box; flex: none; display: flex; align-items: center; justify-content: center">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+</span>
+<span style="flex: 1; text-align: center; font-weight: 800; font-size: 42px; line-height: 1; letter-spacing: .08em">SRT</span>
+<span style="flex: none; width: 66px"></span>
+</div>
+<span style="position: absolute; right: -8px; top: -16px; padding: 3px 10px; border: 3px solid var(--line); border-radius: 12px; background: #FFFFFF; color: #141414; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; box-shadow: 3px 3px 0 var(--shadow); transform: rotate(4deg)">NOT A WORD</span>
+</sc-if>
+
+</div>
+
+<sc-if value="{{showChips}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-wrap: wrap; gap: 7px; justify-content: center">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="10">
+<span style="padding: 3px 9px; border: 2px {{c.bs}} var(--line); border-radius: 10px; background: {{c.bg}}; color: {{c.fg}}; box-shadow: 2px 2px 0 var(--shadow); font-size: 13px; font-weight: {{c.fw}}; transform: {{c.tf}}">{{c.text}}</span>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{isTutorial}}" hint-placeholder-val="{{ false }}">
+<div style="margin: 0 4px; display: flex; gap: 12px; align-items: center; background: var(--card); color: var(--card-text); border: 3px solid var(--line); border-radius: 18px; box-shadow: 4px 5px 0 var(--shadow); padding: 12px 14px">
+<div style="width: 48px; height: 48px; flex: none; border-radius: 50%; border: 3px solid var(--line); background: #FF5FA2; box-sizing: border-box; display: flex; align-items: center; justify-content: center">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><circle cx="9" cy="14" r="1.2"/><circle cx="15" cy="14" r="1.2"/></svg>
+</div>
+<div style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: .06em">PIP · YOUR PRACTICE BOT</span>
+<span style="font-size: 17px; font-weight: 700; line-height: 1.2">Drag across touching letters. Diagonals count! Slide on to the E to finish ONE.</span>
+</div>
+</div>
+</sc-if>
+
+<a href="{{nextHref}}" aria-label="Game board" style="margin-top: auto; align-self: center; display: block; text-decoration: none">
+<div style="width: 366px; box-sizing: border-box; padding: 8px; border: 3px solid var(--line); border-radius: 30px; background: var(--board); box-shadow: 5px 6px 0 var(--shadow)">
+<div style="position: relative; width: 344px; height: 344px">
+<svg width="344" height="344" viewBox="0 0 344 344" style="position: absolute; left: 0; top: 0; z-index: 0" aria-hidden="true">
+<polyline points="{{pts}}" fill="none" stroke="#141414" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="{{pts}}" fill="none" stroke="{{pathColor}}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="{{pathDash}}"/>
+<polyline points="{{hintPts}}" fill="none" stroke="#FFD84A" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 12"/>
+</svg>
+<div style="position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 80px); grid-template-rows: repeat(4, 80px); gap: 8px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px">
+<sc-for list="{{tiles}}" as="t" hint-placeholder-count="16">
+<div style="position: relative; box-sizing: border-box; border: 3px solid #141414; border-radius: 16px; background: {{t.bg}}; box-shadow: {{t.sh}}; transform: {{t.tf}}; outline: {{t.ol}}; outline-offset: 2px; color: #141414; display: flex; align-items: center; justify-content: center">{{t.letter}}<sc-if value="{{t.badge}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #141414; color: #FFD84A; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center">{{t.badge}}</span></sc-if></div>
+</sc-for>
+</div>
+</div>
+</div>
+</a>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mode":{"editor":"enum","options":["trace","valid","dupe","invalid","last10","tutorial"],"default":"trace","section":"State"},"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const mode = this.props.mode || 'trace';
+const L = ['C','H','A','S','L','O','R','T','E','N','I','E','P','S','D','A'];
+const PATHS = { trace: [3,7,6,10,14], valid: [3,7,6,10,14,11], dupe: [3,7,6,10,14,11], invalid: [3,6,7], last10: [14,10,9], tutorial: [5,9] };
+const STATE = { trace: 'sel', valid: 'ok', dupe: 'dupe', invalid: 'bad', last10: 'sel', tutorial: 'sel' };
+const NEXT = { trace: 'Board-Valid.dc.html', valid: 'Board-Dupe.dc.html', dupe: 'Board-Invalid.dc.html', invalid: 'Board-Last10.dc.html', last10: 'Results.dc.html', tutorial: 'Home.dc.html' };
+const D = {
+  trace:    { time: '0:23', secs: 23, you: '3,700', opp: '3,100', lead: '600',   word: 'STRID', count: '5 LETTERS' },
+  valid:    { time: '0:21', secs: 21, you: '4,700', opp: '3,100', lead: '1,600', word: 'STRIDE', count: '6 LETTERS' },
+  dupe:     { time: '0:17', secs: 17, you: '4,700', opp: '3,400', lead: '1,300', word: 'STRIDE', count: '' },
+  invalid:  { time: '0:14', secs: 14, you: '4,700', opp: '3,700', lead: '1,000', word: 'SRT', count: '', oppPop: '+300' },
+  last10:   { time: '0:07', secs: 7,  you: '4,700', opp: '4,000', lead: '700',   word: 'DIN', count: '3 LETTERS' },
+  tutorial: { time: '1:18', secs: 78, you: '0',     opp: '0',     lead: '',      word: 'ON',  count: '2 LETTERS' }
+};
+const d = D[mode] || D.trace;
+const path = PATHS[mode] || PATHS.trace;
+const state = STATE[mode] || 'sel';
+const hint = mode === 'tutorial' ? 8 : -1;
+const xy = (i) => [40 + (i % 4) * 88, 40 + Math.floor(i / 4) * 88];
+const pts = path.map((i) => xy(i).join(',')).join(' ');
+const hintPts = hint >= 0 ? xy(path[path.length - 1]).join(',') + ' ' + xy(hint).join(',') : '';
+const tiles = L.map((letter, i) => {
+  const k = path.indexOf(i);
+  let bg = 'var(--tile)', sh = '0 5px 0 #141414', tf = 'none', ol = 'none';
+  if (k >= 0) {
+    sh = '0 1px 0 #141414';
+    tf = 'translateY(4px)';
+    if (state === 'sel') bg = '#FF5FA2';
+    if (state === 'ok') bg = '#19D3A2';
+    if (state === 'dupe') { bg = '#FFD84A'; ol = '3px dashed #141414'; }
+    if (state === 'bad') bg = 'repeating-linear-gradient(45deg,#FFFFFF 0 6px,#D3D3E0 6px 12px)';
+  }
+  if (i === hint) ol = '3px dashed #FF5FA2';
+  return { letter: letter, bg: bg, sh: sh, tf: tf, ol: ol, badge: k >= 0 ? String(k + 1) : '' };
+});
+const base = ['SPEND','CLONE','CHART','EDIT','HORN','TIDE','ARID','SEND','LENS','ONE'];
+const P = { SPEND: '+600', STRIDE: '+1,000' };
+const words = mode === 'trace' ? base : ['STRIDE'].concat(base);
+const rot = ['-1.5deg','1deg','-1deg','1.5deg'];
+const chips = words.map((w, i) => {
+  let bg = 'var(--card)', fg = 'var(--card-text)', bs = 'solid', fw = 700, text = w;
+  if (i === 0 && (mode === 'trace' || mode === 'valid')) { bg = '#19D3A2'; fg = '#141414'; fw = 800; text = w + ' ' + P[w]; }
+  if (i === 0 && mode === 'dupe') { bg = '#FFD84A'; fg = '#141414'; bs = 'dashed'; fw = 800; }
+  return { text: text, bg: bg, fg: fg, bs: bs, fw: fw, tf: 'rotate(' + rot[i % 4] + ')' };
+});
+const n = Math.ceil(d.secs / 8);
+const segs = [];
+for (let i = 0; i < 10; i++) segs.push({ bg: i < n ? (mode === 'last10' ? '#FF5FA2' : 'var(--text)') : 'transparent' });
+const last = mode === 'last10';
+const tut = mode === 'tutorial';
+return {
+  themeCls: this.props.theme === 'dark' ? 'sc-dark' : '',
+  tiles: tiles, chips: chips, segs: segs, pts: pts, hintPts: hintPts,
+  pathColor: { sel: '#FFD84A', ok: '#FFFFFF', dupe: '#FFD84A', bad: '#FF5FA2' }[state],
+  pathDash: state === 'bad' ? '1 16' : (state === 'dupe' ? '14 12' : 'none'),
+  nextHref: NEXT[mode] || NEXT.trace,
+  youScore: d.you, oppScore: d.opp, lead: d.lead, hasLead: d.lead !== '', noLead: d.lead === '',
+  oppLabel: tut ? 'PIP · BOT' : 'KAIJUMO · JP',
+  oppSub: tut ? 'LEVEL 1 · EASY' : 'RATING 1,655',
+  oppPop: d.oppPop || '',
+  time: d.time, word: d.word, count: d.count,
+  tSize: last ? 92 : 78, tFs: last ? 30 : 25,
+  tBg: last ? '#FF5FA2' : 'var(--text)', tFg: last ? '#141414' : 'var(--bg)',
+  isLast: last, isValid: mode === 'valid', isDupe: mode === 'dupe', isInvalid: mode === 'invalid', isTutorial: tut,
+  isPending: mode === 'trace' || last || tut,
+  showChips: !tut
+};
+}
+}
+</script>
+</body>
+</html>

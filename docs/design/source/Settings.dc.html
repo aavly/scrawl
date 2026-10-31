@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scrawl settings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:wght@400;700&display=swap">
+<style>
+body{margin:0}
+a{color:inherit}
+.sc{--bg:#FFD84A;--dot:rgba(20,20,20,.13);--text:#141414;--muted:#3B3B3B;--card:#FFFFFF;--card-text:#141414;--line:#141414;--shadow:#141414;--tile:#FFFFFF;--board:#2F4BFF}
+.sc-dark{--bg:#17142E;--dot:rgba(255,246,214,.07);--text:#FFF6D6;--muted:#C9C3E8;--card:#2A2552;--card-text:#FFF6D6;--line:#0B0A1A;--shadow:#0B0A1A}
+</style>
+</helmet>
+<div class="sc {{themeCls}}" style="position: relative; width: 390px; height: 844px; overflow: hidden; background: var(--bg); font-family: 'Bricolage Grotesque', system-ui, sans-serif; color: var(--text)">
+<div style="height: 100%; box-sizing: border-box; padding: 56px 20px 30px; display: flex; flex-direction: column; gap: 16px">
+
+<div style="display: flex; align-items: center; gap: 12px; min-height: 44px">
+<a href="Home.dc.html" aria-label="Back to home" style="width: 44px; height: 44px; border-radius: 50%; border: 3px solid var(--line); background: var(--card); color: var(--card-text); box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-decoration: none">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+</a>
+<span style="font-weight: 800; font-size: 32px">Settings</span>
+</div>
+
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: .12em; padding: 4px 4px 0">SOUND AND FEEL</span>
+<div style="background: var(--card); color: var(--card-text); border: 3px solid var(--line); border-radius: 24px; box-shadow: 4px 5px 0 var(--shadow); overflow: hidden">
+
+<div style="display: flex; align-items: center; justify-content: space-between; min-height: 68px; padding: 0 16px; box-shadow: inset 0 -2px 0 rgba(128,128,128,.25)">
+<span style="font-weight: 800; font-size: 19px">Sound effects</span>
+<button type="button" role="switch" aria-checked="true" aria-label="Sound effects" style="position: relative; width: 76px; height: 42px; flex: none; border: 3px solid var(--line); border-radius: 99px; background: #19D3A2; padding: 0; box-sizing: border-box; cursor: pointer">
+<span style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-family: 'Space Mono', monospace; font-weight: 700; font-size: 11px; color: #141414">ON</span>
+<span style="position: absolute; right: 3px; top: 3px; width: 30px; height: 30px; border-radius: 50%; border: 3px solid #141414; background: #FFFFFF; box-sizing: border-box"></span>
+</button>
+</div>
+
+<div style="display: flex; align-items: center; justify-content: space-between; min-height: 68px; padding: 0 16px; box-shadow: inset 0 -2px 0 rgba(128,128,128,.25)">
+<span style="font-weight: 800; font-size: 19px">Music</span>
+<button type="button" role="switch" aria-checked="true" aria-label="Music" style="position: relative; width: 76px; height: 42px; flex: none; border: 3px solid var(--line); border-radius: 99px; background: #19D3A2; padding: 0; box-sizing: border-box; cursor: pointer">
+<span style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-family: 'Space Mono', monospace; font-weight: 700; font-size: 11px; color: #141414">ON</span>
+<span style="position: absolute; right: 3px; top: 3px; width: 30px; height: 30px; border-radius: 50%; border: 3px solid #141414; background: #FFFFFF; box-sizing: border-box"></span>
+</button>
+</div>
+
+<div style="display: flex; align-items: center; justify-content: space-between; min-height: 68px; padding: 0 16px">
+<span style="font-weight: 800; font-size: 19px">Haptics</span>
+<button type="button" role="switch" aria-checked="false" aria-label="Haptics" style="position: relative; width: 76px; height: 42px; flex: none; border: 3px solid var(--line); border-radius: 99px; background: transparent; padding: 0; box-sizing: border-box; cursor: pointer">
+<span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-family: 'Space Mono', monospace; font-weight: 700; font-size: 11px; color: var(--card-text)">OFF</span>
+<span style="position: absolute; left: 3px; top: 3px; width: 30px; height: 30px; border-radius: 50%; border: 3px solid var(--line); background: var(--card); box-sizing: border-box"></span>
+</button>
+</div>
+
+</div>
+
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: .12em; padding: 8px 4px 0">ACCOUNT</span>
+<div style="background: var(--card); color: var(--card-text); border: 3px solid var(--line); border-radius: 24px; box-shadow: 4px 5px 0 var(--shadow); overflow: hidden">
+<div style="display: flex; align-items: center; justify-content: space-between; min-height: 68px; padding: 0 16px; box-shadow: inset 0 -2px 0 rgba(128,128,128,.25)">
+<span style="display: flex; flex-direction: column; gap: 1px">
+<span style="font-weight: 800; font-size: 19px">Playing as a guest</span>
+<span style="font-size: 13px; font-weight: 500">Progress lives on this phone only</span>
+</span>
+<button type="button" style="height: 44px; padding: 0 14px; border: 3px solid #141414; border-radius: 14px; background: #141414; color: #FFFFFF; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 14px; cursor: pointer">Sign in</button>
+</div>
+<button type="button" style="width: 100%; display: flex; align-items: center; justify-content: space-between; min-height: 68px; padding: 0 16px; border: 0; background: #FF5FA2; color: #141414; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 19px; cursor: pointer; text-align: left">
+<span>Delete account</span>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13h10l1-13"/><path d="M10 11v6M14 11v6"/></svg>
+</button>
+</div>
+
+<span style="margin-top: auto; text-align: center; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: .06em">SCRAWL 1.0.0 (42)</span>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return { themeCls: this.props.theme === 'dark' ? 'sc-dark' : '' };
+}
+}
+</script>
+</body>
+</html>

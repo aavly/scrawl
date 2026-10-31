@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scrawl update required</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:wght@400;700&display=swap">
+<style>
+body{margin:0}
+a{color:inherit}
+.sc{--bg:#FFD84A;--dot:rgba(20,20,20,.13);--text:#141414;--muted:#3B3B3B;--card:#FFFFFF;--card-text:#141414;--line:#141414;--shadow:#141414;--tile:#FFFFFF;--board:#2F4BFF}
+.sc-dark{--bg:#17142E;--dot:rgba(255,246,214,.07);--text:#FFF6D6;--muted:#C9C3E8;--card:#2A2552;--card-text:#FFF6D6;--line:#0B0A1A;--shadow:#0B0A1A}
+@keyframes sc-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+</style>
+</helmet>
+<div class="sc {{themeCls}}" style="position: relative; width: 390px; height: 844px; overflow: hidden; background: var(--bg); font-family: 'Bricolage Grotesque', system-ui, sans-serif; color: var(--text)">
+<div style="height: 100%; box-sizing: border-box; padding: 56px 24px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 36px; text-align: center">
+
+<div style="position: relative; width: 190px; height: 190px">
+<div style="position: absolute; left: 10px; top: 96px; width: 78px; height: 78px; box-sizing: border-box; border: 3px solid #141414; border-radius: 18px; background: #FFFFFF; box-shadow: 0 5px 0 #141414; transform: rotate(-8deg); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 44px; color: #141414">N</div>
+<div style="position: absolute; left: 100px; top: 100px; width: 78px; height: 78px; box-sizing: border-box; border: 3px solid #141414; border-radius: 18px; background: #19D3A2; box-shadow: 0 5px 0 #141414; transform: rotate(6deg); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 44px; color: #141414">E</div>
+<div style="position: absolute; left: 54px; top: 14px; width: 82px; height: 82px; box-sizing: border-box; border: 3px solid #141414; border-radius: 18px; background: #FF5FA2; box-shadow: 0 5px 0 #141414; transform: rotate(-2deg); display: flex; align-items: center; justify-content: center; animation: sc-bob 1.6s ease-in-out infinite">
+<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V5"/><path d="M5 12l7-7 7 7"/></svg>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px">
+<h1 style="margin: 0; font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -.01em">Time for an update</h1>
+<p style="margin: 0; font-size: 18px; font-weight: 500; line-height: 1.35">This version of Scrawl is out of date. Update to keep playing ranked matches.</p>
+</div>
+
+<div style="width: 100%; display: flex; flex-direction: column; gap: 14px; align-items: center">
+<button type="button" style="width: 100%; height: 84px; border: 3px solid var(--line); border-radius: 28px; background: #2F4BFF; color: #FFFFFF; box-shadow: 0 8px 0 var(--shadow); font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 32px; cursor: pointer">Update now</button>
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: .06em; padding-top: 6px">VERSION 1.0.2 OR NEWER REQUIRED</span>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return { themeCls: this.props.theme === 'dark' ? 'sc-dark' : '' };
+}
+}
+</script>
+</body>
+</html>

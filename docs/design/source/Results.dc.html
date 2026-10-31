@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scrawl results</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:wght@400;700&display=swap">
+<style>
+body{margin:0}
+a{color:inherit}
+.sc{--bg:#FFD84A;--dot:rgba(20,20,20,.13);--text:#141414;--muted:#3B3B3B;--card:#FFFFFF;--card-text:#141414;--line:#141414;--shadow:#141414;--tile:#FFFFFF;--board:#2F4BFF}
+.sc-dark{--bg:#17142E;--dot:rgba(255,246,214,.07);--text:#FFF6D6;--muted:#C9C3E8;--card:#2A2552;--card-text:#FFF6D6;--line:#0B0A1A;--shadow:#0B0A1A}
+@keyframes sc-slam{0%{transform:rotate(-3deg) scale(1.6);opacity:0}60%{transform:rotate(-3deg) scale(.95);opacity:1}100%{transform:rotate(-3deg) scale(1);opacity:1}}
+@keyframes sc-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+</style>
+</helmet>
+<div class="sc {{themeCls}}" style="position: relative; width: 390px; height: 844px; overflow: hidden; background-color: var(--bg); background-image: radial-gradient(var(--dot) 1.5px, transparent 1.6px); background-size: 18px 18px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; color: var(--text)">
+
+<sc-if value="{{isWin}}" hint-placeholder-val="{{ true }}">
+<svg width="390" height="240" viewBox="0 0 390 240" style="position: absolute; left: 0; top: 40px; z-index: 0; pointer-events: none" aria-hidden="true">
+<rect x="24" y="34" width="14" height="14" rx="3" fill="#FF5FA2" stroke="#141414" stroke-width="2" transform="rotate(20 31 41)"/>
+<circle cx="352" cy="30" r="8" fill="#2F4BFF" stroke="#141414" stroke-width="2"/>
+<polygon points="344,98 358,124 330,124" fill="#19D3A2" stroke="#141414" stroke-width="2" stroke-linejoin="round"/>
+<rect x="40" y="108" width="12" height="12" rx="3" fill="#FFFFFF" stroke="#141414" stroke-width="2" transform="rotate(-25 46 114)"/>
+<polygon points="84,8 98,34 70,34" fill="#2F4BFF" stroke="#141414" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="18" cy="76" r="7" fill="#19D3A2" stroke="#141414" stroke-width="2"/>
+<rect x="290" y="6" width="13" height="13" rx="3" fill="#FF5FA2" stroke="#141414" stroke-width="2" transform="rotate(35 296 12)"/>
+<circle cx="372" cy="170" r="6" fill="#FFFFFF" stroke="#141414" stroke-width="2"/>
+</svg>
+</sc-if>
+
+<div style="position: relative; z-index: 1; height: 100%; box-sizing: border-box; padding: 56px 14px 0; display: flex; flex-direction: column; gap: 10px">
+
+<div style="display: flex; justify-content: center; padding-top: 2px">
+<div style="padding: 4px 22px; border: 4px solid #141414; border-radius: 18px; background: {{headBg}}; color: #141414; font-weight: 800; font-size: 44px; line-height: 1.05; letter-spacing: .02em; box-shadow: 5px 6px 0 var(--shadow); animation: sc-slam .5s ease-out forwards">{{headline}}</div>
+</div>
+
+<div style="display: flex; align-items: center; gap: 8px; background: var(--card); color: var(--card-text); border: 3px solid var(--line); border-radius: 22px; box-shadow: 4px 5px 0 var(--shadow); padding: 10px 16px">
+<div style="flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 2px">
+<span style="font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: .06em">YOU · WORDFOX_</span>
+<span style="font-weight: 800; font-size: 44px; line-height: 1">{{youScore}}</span>
+<sc-if value="{{isWin}}" hint-placeholder-val="{{ true }}">
+<span style="padding: 0 8px; border: 2px solid var(--line); border-radius: 99px; background: #19D3A2; color: #141414; font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700">WINNER</span>
+</sc-if>
+</div>
+<span style="font-weight: 800; font-size: 16px">VS</span>
+<div style="flex: 1; display: flex; flex-direction: column; align-items: flex-end; gap: 2px">
+<span style="font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: .06em">KAIJUMO · JP</span>
+<span style="font-weight: 800; font-size: 44px; line-height: 1">{{oppScore}}</span>
+<sc-if value="{{isLoss}}" hint-placeholder-val="{{ false }}">
+<span style="padding: 0 8px; border: 2px solid var(--line); border-radius: 99px; background: #19D3A2; color: #141414; font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700">WINNER</span>
+</sc-if>
+</div>
+</div>
+
+<div style="background: var(--card); color: var(--card-text); border: 3px solid var(--line); border-radius: 22px; box-shadow: 4px 5px 0 var(--shadow); padding: 10px 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="font-weight: 800; font-size: 28px; opacity: .6">{{ratingFrom}}</span>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+<span style="font-weight: 800; font-size: 34px; line-height: 1">{{ratingTo}}</span>
+</div>
+<span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 12px 3px 8px; border: 3px solid var(--line); border-radius: 99px; background: {{deltaBg}}; color: #141414; font-weight: 800; font-size: 20px">
+<sc-if value="{{isWin}}" hint-placeholder-val="{{ true }}"><svg width="14" height="14" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1 9 8H1z" fill="#141414"/></svg></sc-if>
+<sc-if value="{{isLoss}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 9 1 2h8z" fill="#141414"/></svg></sc-if>
+<span>{{delta}}</span>
+</span>
+</div>
+<div style="display: flex; align-items: center; gap: 10px">
+<div style="flex: 1; height: 16px; border: 3px solid var(--line); border-radius: 99px; overflow: hidden; box-sizing: border-box">
+<div style="width: {{barW}}; height: 100%; background: #2F4BFF; border-right: 3px solid var(--line); box-sizing: border-box"></div>
+</div>
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 11px; letter-spacing: .04em">{{toNext}}</span>
+</div>
+</div>
+
+<div style="background: var(--card); color: var(--card-text); border: 3px solid var(--line); border-radius: 22px; box-shadow: 4px 5px 0 var(--shadow); padding: 12px; display: flex; gap: 10px">
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 11px; letter-spacing: .04em">YOU · {{mineCount}} WORDS</span>
+<div style="display: flex; flex-wrap: wrap; gap: 5px">
+<sc-for list="{{mine}}" as="w" hint-placeholder-count="10">
+<span style="display: inline-flex; align-items: center; gap: 3px; padding: 1px 6px; border: 2px solid var(--line); border-radius: 8px; background: {{w.bg}}; color: {{w.fg}}; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: {{w.fw}}">
+<sc-if value="{{w.u}}" hint-placeholder-val="{{ false }}"><svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7 7 .6-5.3 4.7 1.6 7.2L12 17.7 5.7 21.5l1.6-7.2L2 9.6 9 9z" fill="#141414"/></svg></sc-if>
+<span>{{w.t}}</span>
+</span>
+</sc-for>
+</div>
+</div>
+<div style="width: 3px; flex: none; background: var(--line); opacity: .2; border-radius: 2px"></div>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 11px; letter-spacing: .04em">KAIJUMO · {{oppCount}} WORDS</span>
+<div style="display: flex; flex-wrap: wrap; gap: 5px">
+<sc-for list="{{opp}}" as="w" hint-placeholder-count="8">
+<span style="display: inline-flex; align-items: center; gap: 3px; padding: 1px 6px; border: 2px solid var(--line); border-radius: 8px; background: {{w.bg}}; color: {{w.fg}}; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: {{w.fw}}">
+<sc-if value="{{w.u}}" hint-placeholder-val="{{ false }}"><svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7 7 .6-5.3 4.7 1.6 7.2L12 17.7 5.7 21.5l1.6-7.2L2 9.6 9 9z" fill="#141414"/></svg></sc-if>
+<span>{{w.t}}</span>
+</span>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div style="background: var(--card); color: var(--card-text); border: 3px solid var(--line); border-radius: 22px; box-shadow: 4px 5px 0 var(--shadow); padding: 10px 12px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 11px; letter-spacing: .04em">BEST WORDS YOU MISSED</span>
+<div style="display: flex; gap: 8px">
+<sc-for list="{{missed}}" as="m" hint-placeholder-count="3">
+<div style="flex: 1; min-width: 0; padding: 4px 6px; border: 2px dashed var(--line); border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 0">
+<span style="font-weight: 800; font-size: 15px; letter-spacing: .04em">{{m.w}}</span>
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 11px">+{{m.p}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+
+</div>
+
+<div style="position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; box-sizing: border-box; padding: 12px 16px 28px; background: var(--bg); display: flex; flex-direction: column; gap: 10px">
+<a href="Reveal.dc.html" style="height: 68px; box-sizing: border-box; border: 3px solid var(--line); border-radius: 24px; padding: 0 22px; background: #2F4BFF; color: #FFFFFF; box-shadow: 0 7px 0 var(--shadow); display: flex; align-items: center; justify-content: space-between; text-decoration: none; animation: sc-pulse 1.6s ease-in-out infinite">
+<span style="display: flex; flex-direction: column; gap: 1px">
+<span style="font-weight: 800; font-size: 30px; line-height: 1">{{rematch}}</span>
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 11px; letter-spacing: .04em">VS KAIJUMO · 1,655</span>
+</span>
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></svg>
+</a>
+<div style="display: flex; gap: 10px; padding-top: 6px">
+<a href="Home.dc.html" style="flex: 1; height: 48px; box-sizing: border-box; border: 3px solid var(--line); border-radius: 18px; background: var(--card); color: var(--card-text); box-shadow: 3px 4px 0 var(--shadow); display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 800; font-size: 17px">Home</a>
+<a href="Report.dc.html" aria-label="Report kaijumo" style="width: 48px; height: 48px; box-sizing: border-box; border: 3px solid var(--line); border-radius: 18px; background: var(--card); color: var(--card-text); box-shadow: 3px 4px 0 var(--shadow); display: flex; align-items: center; justify-content: center; text-decoration: none">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h13l-2.5 4.5L18 13H5"/></svg>
+</a>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"outcome":{"editor":"enum","options":["win","lose"],"default":"win","section":"State"},"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const win = this.props.outcome !== 'lose';
+const P = { ASTRIDE: '1,600', STRIDE: '1,000', CHARTS: '1,000', SATIRE: '1,000' };
+const youWords = ['STRIDE','CHART','CLONE','SPEND','LENS','SEND','ARID','TIDE','HORN','EDIT','ONE','DIN'];
+const kaiWords = ['SATIRE','CLONES','CHART','HORNS','LENS','SEND','TIDE','ARID'];
+const mineW = win ? youWords : kaiWords;
+const oppW = win ? kaiWords : youWords;
+const mk = (list, other) => list.map((w) => {
+  const u = other.indexOf(w) < 0;
+  return { t: w, u: u, bg: u ? '#FFD84A' : 'transparent', fg: u ? '#141414' : 'var(--card-text)', fw: u ? 700 : 400 };
+});
+const missedW = win ? ['ASTRIDE','CHARTS','SATIRE'] : ['ASTRIDE','STRIDE','CHARTS'];
+return {
+  themeCls: this.props.theme === 'dark' ? 'sc-dark' : '',
+  isWin: win, isLoss: !win,
+  headline: win ? 'YOU WIN!' : 'SO CLOSE',
+  headBg: win ? '#19D3A2' : '#FF5FA2',
+  youScore: win ? '4,800' : '4,400',
+  oppScore: win ? '4,400' : '4,800',
+  ratingFrom: '1,642',
+  ratingTo: win ? '1,659' : '1,627',
+  delta: win ? '+17' : '−15',
+  deltaBg: win ? '#19D3A2' : '#FF5FA2',
+  barW: win ? '59%' : '27%',
+  toNext: win ? '41 TO GOLD I' : '73 TO GOLD I',
+  rematch: win ? 'Rematch' : 'Run it back',
+  mine: mk(mineW, oppW), opp: mk(oppW, mineW),
+  mineCount: mineW.length, oppCount: oppW.length,
+  missed: missedW.map((w) => ({ w: w, p: P[w] }))
+};
+}
+}
+</script>
+</body>
+</html>

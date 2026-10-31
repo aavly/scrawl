@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scrawl home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:wght@400;700&display=swap">
+<style>
+body{margin:0}
+a{color:inherit}
+.sc{--bg:#FFD84A;--dot:rgba(20,20,20,.13);--text:#141414;--muted:#3B3B3B;--card:#FFFFFF;--card-text:#141414;--line:#141414;--shadow:#141414;--tile:#FFFFFF;--board:#2F4BFF}
+.sc-dark{--bg:#17142E;--dot:rgba(255,246,214,.07);--text:#FFF6D6;--muted:#C9C3E8;--card:#2A2552;--card-text:#FFF6D6;--line:#0B0A1A;--shadow:#0B0A1A}
+</style>
+</helmet>
+<div class="sc {{themeCls}}" style="position: relative; width: 390px; height: 844px; overflow: hidden; background: var(--bg); font-family: 'Bricolage Grotesque', system-ui, sans-serif; color: var(--text)">
+<div style="height: 100%; box-sizing: border-box; padding: 56px 20px 34px; display: flex; flex-direction: column; gap: 16px">
+
+<div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px">
+<div style="display: flex; align-items: center; gap: 10px">
+<div style="width: 44px; height: 44px; border-radius: 50%; border: 3px solid var(--line); background: #19D3A2; box-sizing: border-box; display: flex; align-items: center; justify-content: center">
+<svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 13 8 2l6 11z" fill="#141414"/></svg>
+</div>
+<span style="font-weight: 800; font-size: 20px">wordfox_</span>
+</div>
+<a href="Settings.dc.html" aria-label="Settings" style="width: 44px; height: 44px; border-radius: 50%; border: 3px solid var(--line); background: var(--card); color: var(--card-text); box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-decoration: none">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+</a>
+</div>
+
+<div style="flex: 1; min-height: 0; background: var(--card); color: var(--card-text); border: 3px solid var(--line); border-radius: 28px; box-shadow: 5px 6px 0 var(--shadow); padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center">
+<span style="padding: 6px 18px; border: 3px solid var(--line); border-radius: 99px; background: #FFD84A; color: #141414; font-weight: 800; font-size: 18px; letter-spacing: .06em">GOLD II</span>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: .14em">RATING</span>
+<span style="font-weight: 800; font-size: 96px; line-height: .95; letter-spacing: -.02em">1,642</span>
+</div>
+<div style="width: 100%; max-width: 270px; display: flex; flex-direction: column; gap: 8px">
+<div style="height: 20px; border: 3px solid var(--line); border-radius: 99px; overflow: hidden; box-sizing: border-box">
+<div style="width: 42%; height: 100%; background: #2F4BFF; border-right: 3px solid var(--line); box-sizing: border-box"></div>
+</div>
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: .08em">58 TO GOLD I</span>
+</div>
+</div>
+
+<a href="Finding.dc.html" style="height: 104px; box-sizing: border-box; border: 3px solid var(--line); border-radius: 28px; padding: 0 26px; background: #2F4BFF; color: #FFFFFF; box-shadow: 0 8px 0 var(--shadow); display: flex; align-items: center; justify-content: space-between; text-decoration: none; margin-bottom: 4px">
+<span style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-weight: 800; font-size: 50px; line-height: .95; letter-spacing: .01em">PLAY</span>
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: .08em">RANKED · 80 SEC</span>
+</span>
+<span style="width: 56px; height: 56px; border-radius: 50%; border: 3px solid #141414; background: #FFD84A; box-sizing: border-box; display: flex; align-items: center; justify-content: center">
+<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z" fill="#141414"/></svg>
+</span>
+</a>
+
+<div style="display: flex; gap: 12px">
+<a href="Practice.dc.html" style="flex: 1; height: 100px; box-sizing: border-box; border: 3px solid var(--line); border-radius: 22px; background: var(--card); color: var(--card-text); box-shadow: 4px 5px 0 var(--shadow); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-decoration: none; font-weight: 800; font-size: 16px">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><circle cx="9" cy="14" r="1.2"/><circle cx="15" cy="14" r="1.2"/></svg>
+<span>Practice</span>
+</a>
+<a href="Leaderboard.dc.html" style="flex: 1; height: 100px; box-sizing: border-box; border: 3px solid var(--line); border-radius: 22px; background: var(--card); color: var(--card-text); box-shadow: 4px 5px 0 var(--shadow); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-decoration: none; font-weight: 800; font-size: 16px">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v6a4 4 0 0 1-8 0V4z"/><path d="M8 6H4v2a4 4 0 0 0 4 4"/><path d="M16 6h4v2a4 4 0 0 1-4 4"/><path d="M12 14v4"/><path d="M8 20h8"/></svg>
+<span>Ranks</span>
+</a>
+<a href="Profile.dc.html" style="flex: 1; height: 100px; box-sizing: border-box; border: 3px solid var(--line); border-radius: 22px; background: var(--card); color: var(--card-text); box-shadow: 4px 5px 0 var(--shadow); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-decoration: none; font-weight: 800; font-size: 16px">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+<span>Profile</span>
+</a>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return { themeCls: this.props.theme === 'dark' ? 'sc-dark' : '' };
+}
+}
+</script>
+</body>
+</html>

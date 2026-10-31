@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scrawl finding a match</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:wght@400;700&display=swap">
+<style>
+body{margin:0}
+a{color:inherit}
+.sc{--bg:#FFD84A;--dot:rgba(20,20,20,.13);--text:#141414;--muted:#3B3B3B;--card:#FFFFFF;--card-text:#141414;--line:#141414;--shadow:#141414;--tile:#FFFFFF;--board:#2F4BFF}
+.sc-dark{--bg:#17142E;--dot:rgba(255,246,214,.07);--text:#FFF6D6;--muted:#C9C3E8;--card:#2A2552;--card-text:#FFF6D6;--line:#0B0A1A;--shadow:#0B0A1A}
+@keyframes sc-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes sc-dots{0%,100%{opacity:.2}50%{opacity:1}}
+</style>
+</helmet>
+<div class="sc {{themeCls}}" style="position: relative; width: 390px; height: 844px; overflow: hidden; background-color: var(--bg); background-image: radial-gradient(var(--dot) 1.5px, transparent 1.6px); background-size: 18px 18px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; color: var(--text)">
+<div style="height: 100%; box-sizing: border-box; padding: 56px 20px 34px; display: flex; flex-direction: column; gap: 16px">
+
+<div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px">
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 13px; letter-spacing: .12em">RANKED · 80 SEC</span>
+<span style="font-family: 'Space Mono', monospace; font-weight: 700; font-size: 13px; letter-spacing: .06em">1,642</span>
+</div>
+
+<a href="{{next}}" aria-label="Continue to opponent reveal" style="margin: auto 0; display: flex; flex-direction: column; align-items: center; gap: 26px; background: var(--card); color: var(--card-text); border: 3px solid var(--line); border-radius: 32px; box-shadow: 5px 6px 0 var(--shadow); padding: 36px 24px 30px; text-decoration: none; text-align: center">
+
+<div style="display: grid; grid-template-columns: repeat(2, 68px); gap: 8px">
+<div style="width: 68px; height: 68px; box-sizing: border-box; border: 3px solid #141414; border-radius: 16px; background: #FF5FA2; box-shadow: 0 5px 0 #141414; color: #141414; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 38px; animation: sc-bob 1.2s ease-in-out infinite">F</div>
+<div style="width: 68px; height: 68px; box-sizing: border-box; border: 3px solid #141414; border-radius: 16px; background: #FFFFFF; box-shadow: 0 5px 0 #141414; color: #141414; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 38px; animation: sc-bob 1.2s ease-in-out .15s infinite">I</div>
+<div style="width: 68px; height: 68px; box-sizing: border-box; border: 3px solid #141414; border-radius: 16px; background: #19D3A2; box-shadow: 0 5px 0 #141414; color: #141414; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 38px; animation: sc-bob 1.2s ease-in-out .45s infinite">N</div>
+<div style="width: 68px; height: 68px; box-sizing: border-box; border: 3px solid #141414; border-radius: 16px; background: #2F4BFF; box-shadow: 0 5px 0 #141414; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 38px; animation: sc-bob 1.2s ease-in-out .3s infinite">D</div>
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+<span style="font-weight: 800; font-size: 38px; line-height: 1.05">{{title}}</span>
+<span style="font-size: 17px; font-weight: 500; line-height: 1.3">{{sub}}</span>
+</div>
+
+<sc-if value="{{isBot}}" hint-placeholder-val="{{ false }}">
+<span style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 10px; border: 3px solid var(--line); border-radius: 99px; background: #FFD84A; color: #141414; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><circle cx="9" cy="14" r="1.2"/><circle cx="15" cy="14" r="1.2"/></svg>
+<span>BOTS ARE ALWAYS LABELLED</span>
+</span>
+</sc-if>
+
+<div style="width: 100%; display: flex; flex-direction: column; gap: 8px">
+<div style="height: 18px; border: 3px solid var(--line); border-radius: 99px; overflow: hidden; box-sizing: border-box">
+<div style="width: {{barW}}; height: 100%; background: #2F4BFF; border-right: 3px solid var(--line); box-sizing: border-box"></div>
+</div>
+<div style="display: flex; justify-content: space-between; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px">
+<span>{{time}}</span>
+<span>UP TO 0:10</span>
+</div>
+</div>
+
+</a>
+
+<a href="Home.dc.html" style="align-self: center; min-height: 52px; padding: 0 28px; box-sizing: border-box; border: 3px solid var(--line); border-radius: 99px; background: var(--card); color: var(--card-text); box-shadow: 3px 4px 0 var(--shadow); display: flex; align-items: center; text-decoration: none; font-weight: 800; font-size: 17px">Cancel</a>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"phase":{"editor":"enum","options":["search","bot"],"default":"search","section":"State"},"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const bot = this.props.phase === 'bot';
+return {
+  themeCls: this.props.theme === 'dark' ? 'sc-dark' : '',
+  isBot: bot,
+  next: bot ? 'RevealBot.dc.html' : 'Reveal.dc.html',
+  title: bot ? 'Nobody nearby' : 'Finding a rival',
+  sub: bot ? 'Bringing in a bot near your rating, 1,640.' : 'Looking for players around 1,642.',
+  time: bot ? '0:10' : '0:04',
+  barW: bot ? '100%' : '40%'
+};
+}
+}
+</script>
+</body>
+</html>
