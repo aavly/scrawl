@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scrawl avatar spec</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:wght@400;700&display=swap">
+<style>
+body{margin:0}a{color:inherit}.sc{--bg:#FFD84A;--dot:rgba(20,20,20,.13);--text:#141414;--muted:#3B3B3B;--card:#FFFFFF;--card-text:#141414;--line:#141414;--shadow:#141414;--tile:#FFFFFF;--board:#2F4BFF;--soft:rgba(20,20,20,.08)}
+.sc-dark{--bg:#17142E;--dot:rgba(255,246,214,.07);--text:#FFF6D6;--muted:#C9C3E8;--card:#2A2552;--card-text:#FFF6D6;--line:#0B0A1A;--shadow:#0B0A1A;--soft:rgba(255,246,214,.1)}
+.sc-dark .keep{background:#FFFFFF;color:#141414}
+@keyframes sc-slam{0%{transform:rotate(-3deg) scale(1.6);opacity:0}60%{transform:rotate(-3deg) scale(.95);opacity:1}100%{transform:rotate(-3deg) scale(1);opacity:1}}
+@keyframes sc-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.sc a{cursor:pointer}
+</style>
+</helmet>
+<div class="sc " style="position: relative; width: 1280px; height: 1500px; overflow: hidden; background-color: var(--bg); font-family: 'Bricolage Grotesque', system-ui, sans-serif; color: var(--text)">
+<div style="padding:36px 44px;display:flex;flex-direction:column;gap:18px"><span style="font-weight:800;font-size:40px">Avatars at every size</span><p style="margin:0;font-size:15px;font-weight:500;max-width:760px;line-height:1.35">House players are animals on bold flat colours, full-bleed, with a white level badge from 40px up. Players are people, shoulders up, smaller in the slot, never a badge. At 34px only the silhouette, colour and badge-free face remain, so every character has a different outline: chick tuft, tall ears, pointed ears and shades, owl ear tufts, round ears on black.</p><div style="display:flex;gap:30px;align-items:flex-start"><div style="width:620px;background:var(--card);color:var(--card-text);border:3px solid var(--line);border-radius:24px;box-shadow:4px 5px 0 var(--shadow);overflow:hidden"><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:11px;letter-spacing:.06em;display:block;padding:12px 18px">HOUSE PLAYERS · SIZES 92 / 52 / 44 / 34</span><div style="display:flex;align-items:center;gap:22px;padding:12px 18px;border-top:2px solid var(--soft)"><div style="width:150px;display:flex;flex-direction:column"><span style="font-weight:800;font-size:24px">Pip</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">LV 1 · EASY</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:92px;height:92px;flex:none"><span style="display:block;width:92px;height:92px;border-radius:50%;border:4px solid #141414;background:#19D3A2;box-sizing:border-box;overflow:hidden;"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M43 22 L40 8 L49 17 L52 4 L57 17 L65 9 L60 24Z" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="56" rx="34" ry="31" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="24" cy="62" rx="6" ry="4" fill="#FF5FA2" opacity=".85"/><ellipse cx="76" cy="62" rx="6" ry="4" fill="#FF5FA2" opacity=".85"/>
+  <circle cx="36" cy="50" r="8" fill="#FFFFFF" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="36" cy="51" r="4" fill="#141414"/><circle cx="37.2" cy="49.4" r="1.28" fill="#FFFFFF"/><circle cx="64" cy="50" r="8" fill="#FFFFFF" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="64" cy="51" r="4" fill="#141414"/><circle cx="65.2" cy="49.4" r="1.28" fill="#FFFFFF"/>
+  <path d="M42 62 L58 62 L50 74Z" fill="#FF8A2A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span style="position:absolute;right:-4px;bottom:-4px;width:33px;height:33px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:17px;line-height:1;box-sizing:border-box">1</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">92px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:52px;height:52px;flex:none"><span style="display:block;width:52px;height:52px;border-radius:50%;border:3px solid #141414;background:#19D3A2;box-sizing:border-box;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M43 22 L40 8 L49 17 L52 4 L57 17 L65 9 L60 24Z" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="56" rx="34" ry="31" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="24" cy="62" rx="6" ry="4" fill="#FF5FA2" opacity=".85"/><ellipse cx="76" cy="62" rx="6" ry="4" fill="#FF5FA2" opacity=".85"/>
+  <circle cx="36" cy="50" r="8" fill="#FFFFFF" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="36" cy="51" r="4" fill="#141414"/><circle cx="37.2" cy="49.4" r="1.28" fill="#FFFFFF"/><circle cx="64" cy="50" r="8" fill="#FFFFFF" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="64" cy="51" r="4" fill="#141414"/><circle cx="65.2" cy="49.4" r="1.28" fill="#FFFFFF"/>
+  <path d="M42 62 L58 62 L50 74Z" fill="#FF8A2A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span style="position:absolute;right:-2px;bottom:-2px;width:19px;height:19px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:10px;line-height:1;box-sizing:border-box">1</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">52px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:44px;height:44px;flex:none"><span style="display:block;width:44px;height:44px;border-radius:50%;border:3px solid #141414;background:#19D3A2;box-sizing:border-box;overflow:hidden;"><svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M43 22 L40 8 L49 17 L52 4 L57 17 L65 9 L60 24Z" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="56" rx="34" ry="31" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="24" cy="62" rx="6" ry="4" fill="#FF5FA2" opacity=".85"/><ellipse cx="76" cy="62" rx="6" ry="4" fill="#FF5FA2" opacity=".85"/>
+  <circle cx="36" cy="50" r="8" fill="#FFFFFF" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="36" cy="51" r="4" fill="#141414"/><circle cx="37.2" cy="49.4" r="1.28" fill="#FFFFFF"/><circle cx="64" cy="50" r="8" fill="#FFFFFF" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="64" cy="51" r="4" fill="#141414"/><circle cx="65.2" cy="49.4" r="1.28" fill="#FFFFFF"/>
+  <path d="M42 62 L58 62 L50 74Z" fill="#FF8A2A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span style="position:absolute;right:-2px;bottom:-2px;width:16px;height:16px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:9px;line-height:1;box-sizing:border-box">1</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">44px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:34px;height:34px;flex:none"><span style="display:block;width:34px;height:34px;border-radius:50%;border:2px solid #141414;background:#19D3A2;box-sizing:border-box;overflow:hidden;"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M43 22 L40 8 L49 17 L52 4 L57 17 L65 9 L60 24Z" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="56" rx="34" ry="31" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="24" cy="62" rx="6" ry="4" fill="#FF5FA2" opacity=".85"/><ellipse cx="76" cy="62" rx="6" ry="4" fill="#FF5FA2" opacity=".85"/>
+  <circle cx="36" cy="50" r="8" fill="#FFFFFF" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="36" cy="51" r="4" fill="#141414"/><circle cx="37.2" cy="49.4" r="1.28" fill="#FFFFFF"/><circle cx="64" cy="50" r="8" fill="#FFFFFF" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="64" cy="51" r="4" fill="#141414"/><circle cx="65.2" cy="49.4" r="1.28" fill="#FFFFFF"/>
+  <path d="M42 62 L58 62 L50 74Z" fill="#FF8A2A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">34px</span></div></div><div style="display:flex;align-items:center;gap:22px;padding:12px 18px;border-top:2px solid var(--soft)"><div style="width:150px;display:flex;flex-direction:column"><span style="font-weight:800;font-size:24px">Dash</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">LV 2 · CASUAL</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:92px;height:92px;flex:none"><span style="display:block;width:92px;height:92px;border-radius:50%;border:4px solid #141414;background:#FFD84A;box-sizing:border-box;overflow:hidden;"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M30 46 C20 20 24 -4 36 -2 C46 0 46 26 44 44Z" fill="#FFFFFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M34 40 C28 22 30 6 35 6 C40 8 40 24 40 40Z" fill="#FF5FA2"/>
+  <path d="M60 44 C58 24 64 6 76 14 C86 22 82 32 70 52Z" fill="#FFFFFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="62" rx="33" ry="29" fill="#FFFFFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M30 52 q6 -5 12 0" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="36" cy="56" r="4" fill="#141414"/>
+  <path d="M58 52 q6 -5 12 0" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="64" cy="56" r="4" fill="#141414"/>
+  <path d="M38 70 Q50 82 62 70" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><path d="M46 76 Q50 90 56 76Z" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M46 63 L54 63 L50 68Z" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 70 L22 66 M10 78 L22 72" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span style="position:absolute;right:-4px;bottom:-4px;width:33px;height:33px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:17px;line-height:1;box-sizing:border-box">2</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">92px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:52px;height:52px;flex:none"><span style="display:block;width:52px;height:52px;border-radius:50%;border:3px solid #141414;background:#FFD84A;box-sizing:border-box;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M30 46 C20 20 24 -4 36 -2 C46 0 46 26 44 44Z" fill="#FFFFFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M34 40 C28 22 30 6 35 6 C40 8 40 24 40 40Z" fill="#FF5FA2"/>
+  <path d="M60 44 C58 24 64 6 76 14 C86 22 82 32 70 52Z" fill="#FFFFFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="62" rx="33" ry="29" fill="#FFFFFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M30 52 q6 -5 12 0" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="36" cy="56" r="4" fill="#141414"/>
+  <path d="M58 52 q6 -5 12 0" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="64" cy="56" r="4" fill="#141414"/>
+  <path d="M38 70 Q50 82 62 70" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><path d="M46 76 Q50 90 56 76Z" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M46 63 L54 63 L50 68Z" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 70 L22 66 M10 78 L22 72" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span style="position:absolute;right:-2px;bottom:-2px;width:19px;height:19px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:10px;line-height:1;box-sizing:border-box">2</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">52px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:44px;height:44px;flex:none"><span style="display:block;width:44px;height:44px;border-radius:50%;border:3px solid #141414;background:#FFD84A;box-sizing:border-box;overflow:hidden;"><svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M30 46 C20 20 24 -4 36 -2 C46 0 46 26 44 44Z" fill="#FFFFFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M34 40 C28 22 30 6 35 6 C40 8 40 24 40 40Z" fill="#FF5FA2"/>
+  <path d="M60 44 C58 24 64 6 76 14 C86 22 82 32 70 52Z" fill="#FFFFFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="62" rx="33" ry="29" fill="#FFFFFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M30 52 q6 -5 12 0" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="36" cy="56" r="4" fill="#141414"/>
+  <path d="M58 52 q6 -5 12 0" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="64" cy="56" r="4" fill="#141414"/>
+  <path d="M38 70 Q50 82 62 70" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><path d="M46 76 Q50 90 56 76Z" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M46 63 L54 63 L50 68Z" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 70 L22 66 M10 78 L22 72" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span style="position:absolute;right:-2px;bottom:-2px;width:16px;height:16px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:9px;line-height:1;box-sizing:border-box">2</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">44px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:34px;height:34px;flex:none"><span style="display:block;width:34px;height:34px;border-radius:50%;border:2px solid #141414;background:#FFD84A;box-sizing:border-box;overflow:hidden;"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M30 46 C20 20 24 -4 36 -2 C46 0 46 26 44 44Z" fill="#FFFFFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M34 40 C28 22 30 6 35 6 C40 8 40 24 40 40Z" fill="#FF5FA2"/>
+  <path d="M60 44 C58 24 64 6 76 14 C86 22 82 32 70 52Z" fill="#FFFFFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="62" rx="33" ry="29" fill="#FFFFFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M30 52 q6 -5 12 0" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="36" cy="56" r="4" fill="#141414"/>
+  <path d="M58 52 q6 -5 12 0" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="64" cy="56" r="4" fill="#141414"/>
+  <path d="M38 70 Q50 82 62 70" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><path d="M46 76 Q50 90 56 76Z" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M46 63 L54 63 L50 68Z" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 70 L22 66 M10 78 L22 72" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">34px</span></div></div><div style="display:flex;align-items:center;gap:22px;padding:12px 18px;border-top:2px solid var(--soft)"><div style="width:150px;display:flex;flex-direction:column"><span style="font-weight:800;font-size:24px">Bolt</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">LV 3 · SKILLED</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:92px;height:92px;flex:none"><span style="display:block;width:92px;height:92px;border-radius:50%;border:4px solid #141414;background:#FF5FA2;box-sizing:border-box;overflow:hidden;"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M16 46 L20 12 L44 30Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M84 46 L80 12 L56 30Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M22 36 L24 22 L35 31Z" fill="#2F4BFF"/><path d="M78 36 L76 22 L65 31Z" fill="#2F4BFF"/>
+  <ellipse cx="50" cy="58" rx="36" ry="30" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M52 30 L44 46 L51 46 L47 58 L60 40 L52 40 L57 30Z" fill="#FFD84A" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M14 46 H86 L82 62 Q78 68 66 66 Q56 64 52 58 H48 Q44 64 34 66 Q22 68 18 62Z" fill="#141414"/>
+  <path d="M24 50 L34 50 L30 56Z" fill="#FFFFFF" opacity=".55"/><path d="M58 50 L68 50 L64 56Z" fill="#FFFFFF" opacity=".55"/>
+  <path d="M44 72 Q50 76 56 72 M44 72 Q40 80 33 78 M56 72 Q60 80 67 78" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M46 68 h8 l-4 4Z" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M6 66 L22 64 M6 74 L22 70 M94 66 L78 64 M94 74 L78 70" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span style="position:absolute;right:-4px;bottom:-4px;width:33px;height:33px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:17px;line-height:1;box-sizing:border-box">3</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">92px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:52px;height:52px;flex:none"><span style="display:block;width:52px;height:52px;border-radius:50%;border:3px solid #141414;background:#FF5FA2;box-sizing:border-box;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M16 46 L20 12 L44 30Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M84 46 L80 12 L56 30Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M22 36 L24 22 L35 31Z" fill="#2F4BFF"/><path d="M78 36 L76 22 L65 31Z" fill="#2F4BFF"/>
+  <ellipse cx="50" cy="58" rx="36" ry="30" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M52 30 L44 46 L51 46 L47 58 L60 40 L52 40 L57 30Z" fill="#FFD84A" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M14 46 H86 L82 62 Q78 68 66 66 Q56 64 52 58 H48 Q44 64 34 66 Q22 68 18 62Z" fill="#141414"/>
+  <path d="M24 50 L34 50 L30 56Z" fill="#FFFFFF" opacity=".55"/><path d="M58 50 L68 50 L64 56Z" fill="#FFFFFF" opacity=".55"/>
+  <path d="M44 72 Q50 76 56 72 M44 72 Q40 80 33 78 M56 72 Q60 80 67 78" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M46 68 h8 l-4 4Z" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M6 66 L22 64 M6 74 L22 70 M94 66 L78 64 M94 74 L78 70" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span style="position:absolute;right:-2px;bottom:-2px;width:19px;height:19px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:10px;line-height:1;box-sizing:border-box">3</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">52px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:44px;height:44px;flex:none"><span style="display:block;width:44px;height:44px;border-radius:50%;border:3px solid #141414;background:#FF5FA2;box-sizing:border-box;overflow:hidden;"><svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M16 46 L20 12 L44 30Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M84 46 L80 12 L56 30Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M22 36 L24 22 L35 31Z" fill="#2F4BFF"/><path d="M78 36 L76 22 L65 31Z" fill="#2F4BFF"/>
+  <ellipse cx="50" cy="58" rx="36" ry="30" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M52 30 L44 46 L51 46 L47 58 L60 40 L52 40 L57 30Z" fill="#FFD84A" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M14 46 H86 L82 62 Q78 68 66 66 Q56 64 52 58 H48 Q44 64 34 66 Q22 68 18 62Z" fill="#141414"/>
+  <path d="M24 50 L34 50 L30 56Z" fill="#FFFFFF" opacity=".55"/><path d="M58 50 L68 50 L64 56Z" fill="#FFFFFF" opacity=".55"/>
+  <path d="M44 72 Q50 76 56 72 M44 72 Q40 80 33 78 M56 72 Q60 80 67 78" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M46 68 h8 l-4 4Z" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M6 66 L22 64 M6 74 L22 70 M94 66 L78 64 M94 74 L78 70" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span style="position:absolute;right:-2px;bottom:-2px;width:16px;height:16px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:9px;line-height:1;box-sizing:border-box">3</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">44px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:34px;height:34px;flex:none"><span style="display:block;width:34px;height:34px;border-radius:50%;border:2px solid #141414;background:#FF5FA2;box-sizing:border-box;overflow:hidden;"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M16 46 L20 12 L44 30Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M84 46 L80 12 L56 30Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M22 36 L24 22 L35 31Z" fill="#2F4BFF"/><path d="M78 36 L76 22 L65 31Z" fill="#2F4BFF"/>
+  <ellipse cx="50" cy="58" rx="36" ry="30" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M52 30 L44 46 L51 46 L47 58 L60 40 L52 40 L57 30Z" fill="#FFD84A" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M14 46 H86 L82 62 Q78 68 66 66 Q56 64 52 58 H48 Q44 64 34 66 Q22 68 18 62Z" fill="#141414"/>
+  <path d="M24 50 L34 50 L30 56Z" fill="#FFFFFF" opacity=".55"/><path d="M58 50 L68 50 L64 56Z" fill="#FFFFFF" opacity=".55"/>
+  <path d="M44 72 Q50 76 56 72 M44 72 Q40 80 33 78 M56 72 Q60 80 67 78" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M46 68 h8 l-4 4Z" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M6 66 L22 64 M6 74 L22 70 M94 66 L78 64 M94 74 L78 70" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">34px</span></div></div><div style="display:flex;align-items:center;gap:22px;padding:12px 18px;border-top:2px solid var(--soft)"><div style="width:150px;display:flex;flex-direction:column"><span style="font-weight:800;font-size:24px">Nova</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">LV 4 · HARD</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:92px;height:92px;flex:none"><span style="display:block;width:92px;height:92px;border-radius:50%;border:4px solid #141414;background:#2F4BFF;box-sizing:border-box;overflow:hidden;"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M20 40 L14 8 L42 24Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M80 40 L86 8 L58 24Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="56" rx="37" ry="34" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="34" cy="50" r="15" fill="#FFFFFF" stroke="#141414" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="66" cy="50" r="15" fill="#FFFFFF" stroke="#141414" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M49 50 H51" stroke="#141414" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M34 41 L37 47 L43 48 L38 52 L40 58 L34 54 L28 58 L30 52 L25 48 L31 47Z" fill="#141414"/>
+  <path d="M66 41 L69 47 L75 48 L70 52 L72 58 L66 54 L60 58 L62 52 L57 48 L63 47Z" fill="#141414"/>
+  <path d="M42 66 L58 66 L50 82Z" fill="#FFD84A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M22 76 q6 6 10 -2 M30 82 q6 6 10 -2 M60 82 q6 6 10 -2 M68 76 q6 6 10 -2" fill="none" stroke="#141414" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity=".6"/></svg></span><span style="position:absolute;right:-4px;bottom:-4px;width:33px;height:33px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:17px;line-height:1;box-sizing:border-box">4</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">92px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:52px;height:52px;flex:none"><span style="display:block;width:52px;height:52px;border-radius:50%;border:3px solid #141414;background:#2F4BFF;box-sizing:border-box;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M20 40 L14 8 L42 24Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M80 40 L86 8 L58 24Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="56" rx="37" ry="34" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="34" cy="50" r="15" fill="#FFFFFF" stroke="#141414" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="66" cy="50" r="15" fill="#FFFFFF" stroke="#141414" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M49 50 H51" stroke="#141414" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M34 41 L37 47 L43 48 L38 52 L40 58 L34 54 L28 58 L30 52 L25 48 L31 47Z" fill="#141414"/>
+  <path d="M66 41 L69 47 L75 48 L70 52 L72 58 L66 54 L60 58 L62 52 L57 48 L63 47Z" fill="#141414"/>
+  <path d="M42 66 L58 66 L50 82Z" fill="#FFD84A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M22 76 q6 6 10 -2 M30 82 q6 6 10 -2 M60 82 q6 6 10 -2 M68 76 q6 6 10 -2" fill="none" stroke="#141414" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity=".6"/></svg></span><span style="position:absolute;right:-2px;bottom:-2px;width:19px;height:19px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:10px;line-height:1;box-sizing:border-box">4</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">52px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:44px;height:44px;flex:none"><span style="display:block;width:44px;height:44px;border-radius:50%;border:3px solid #141414;background:#2F4BFF;box-sizing:border-box;overflow:hidden;"><svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M20 40 L14 8 L42 24Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M80 40 L86 8 L58 24Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="56" rx="37" ry="34" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="34" cy="50" r="15" fill="#FFFFFF" stroke="#141414" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="66" cy="50" r="15" fill="#FFFFFF" stroke="#141414" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M49 50 H51" stroke="#141414" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M34 41 L37 47 L43 48 L38 52 L40 58 L34 54 L28 58 L30 52 L25 48 L31 47Z" fill="#141414"/>
+  <path d="M66 41 L69 47 L75 48 L70 52 L72 58 L66 54 L60 58 L62 52 L57 48 L63 47Z" fill="#141414"/>
+  <path d="M42 66 L58 66 L50 82Z" fill="#FFD84A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M22 76 q6 6 10 -2 M30 82 q6 6 10 -2 M60 82 q6 6 10 -2 M68 76 q6 6 10 -2" fill="none" stroke="#141414" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity=".6"/></svg></span><span style="position:absolute;right:-2px;bottom:-2px;width:16px;height:16px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:9px;line-height:1;box-sizing:border-box">4</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">44px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:34px;height:34px;flex:none"><span style="display:block;width:34px;height:34px;border-radius:50%;border:2px solid #141414;background:#2F4BFF;box-sizing:border-box;overflow:hidden;"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M20 40 L14 8 L42 24Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M80 40 L86 8 L58 24Z" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="56" rx="37" ry="34" fill="#FFF6D6" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="34" cy="50" r="15" fill="#FFFFFF" stroke="#141414" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="66" cy="50" r="15" fill="#FFFFFF" stroke="#141414" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M49 50 H51" stroke="#141414" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M34 41 L37 47 L43 48 L38 52 L40 58 L34 54 L28 58 L30 52 L25 48 L31 47Z" fill="#141414"/>
+  <path d="M66 41 L69 47 L75 48 L70 52 L72 58 L66 54 L60 58 L62 52 L57 48 L63 47Z" fill="#141414"/>
+  <path d="M42 66 L58 66 L50 82Z" fill="#FFD84A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M22 76 q6 6 10 -2 M30 82 q6 6 10 -2 M60 82 q6 6 10 -2 M68 76 q6 6 10 -2" fill="none" stroke="#141414" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity=".6"/></svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">34px</span></div></div><div style="display:flex;align-items:center;gap:22px;padding:12px 18px;border-top:2px solid var(--soft)"><div style="width:150px;display:flex;flex-direction:column"><span style="font-weight:800;font-size:24px">Titan</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">LV 5 · BRUTAL</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:92px;height:92px;flex:none"><span style="display:block;width:92px;height:92px;border-radius:50%;border:4px solid #141414;background:#141414;box-sizing:border-box;overflow:hidden;"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true">
+  <circle cx="22" cy="28" r="12" fill="#FFFFFF" stroke="#FFD84A" stroke-width="4"/><circle cx="78" cy="28" r="12" fill="#FFFFFF" stroke="#FFD84A" stroke-width="4"/>
+  <circle cx="22" cy="28" r="5" fill="#FF5FA2"/><circle cx="78" cy="28" r="5" fill="#FF5FA2"/>
+  <ellipse cx="50" cy="56" rx="38" ry="35" fill="#FFFFFF" stroke="#FFD84A" stroke-width="4"/>
+  <path d="M24 40 L44 50 M76 40 L56 50" fill="none" stroke="#141414" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="36" cy="54" r="4.5" fill="#141414"/><circle cx="64" cy="54" r="4.5" fill="#141414"/>
+  <ellipse cx="50" cy="72" rx="15" ry="11" fill="#FFF6D6" stroke="#141414" stroke-width="3.5"/>
+  <path d="M43 66 h14 l-7 7Z" fill="#141414"/><path d="M42 80 q8 -5 16 0" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M66 36 L74 62" stroke="#FF5FA2" stroke-width="4" stroke-linecap="round"/><path d="M62 46 l9 -3 M65 54 l9 -3" stroke="#FF5FA2" stroke-width="3" stroke-linecap="round"/></svg></span><span style="position:absolute;right:-4px;bottom:-4px;width:33px;height:33px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:17px;line-height:1;box-sizing:border-box">5</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">92px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:52px;height:52px;flex:none"><span style="display:block;width:52px;height:52px;border-radius:50%;border:3px solid #141414;background:#141414;box-sizing:border-box;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+  <circle cx="22" cy="28" r="12" fill="#FFFFFF" stroke="#FFD84A" stroke-width="4"/><circle cx="78" cy="28" r="12" fill="#FFFFFF" stroke="#FFD84A" stroke-width="4"/>
+  <circle cx="22" cy="28" r="5" fill="#FF5FA2"/><circle cx="78" cy="28" r="5" fill="#FF5FA2"/>
+  <ellipse cx="50" cy="56" rx="38" ry="35" fill="#FFFFFF" stroke="#FFD84A" stroke-width="4"/>
+  <path d="M24 40 L44 50 M76 40 L56 50" fill="none" stroke="#141414" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="36" cy="54" r="4.5" fill="#141414"/><circle cx="64" cy="54" r="4.5" fill="#141414"/>
+  <ellipse cx="50" cy="72" rx="15" ry="11" fill="#FFF6D6" stroke="#141414" stroke-width="3.5"/>
+  <path d="M43 66 h14 l-7 7Z" fill="#141414"/><path d="M42 80 q8 -5 16 0" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M66 36 L74 62" stroke="#FF5FA2" stroke-width="4" stroke-linecap="round"/><path d="M62 46 l9 -3 M65 54 l9 -3" stroke="#FF5FA2" stroke-width="3" stroke-linecap="round"/></svg></span><span style="position:absolute;right:-2px;bottom:-2px;width:19px;height:19px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:10px;line-height:1;box-sizing:border-box">5</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">52px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:44px;height:44px;flex:none"><span style="display:block;width:44px;height:44px;border-radius:50%;border:3px solid #141414;background:#141414;box-sizing:border-box;overflow:hidden;"><svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true">
+  <circle cx="22" cy="28" r="12" fill="#FFFFFF" stroke="#FFD84A" stroke-width="4"/><circle cx="78" cy="28" r="12" fill="#FFFFFF" stroke="#FFD84A" stroke-width="4"/>
+  <circle cx="22" cy="28" r="5" fill="#FF5FA2"/><circle cx="78" cy="28" r="5" fill="#FF5FA2"/>
+  <ellipse cx="50" cy="56" rx="38" ry="35" fill="#FFFFFF" stroke="#FFD84A" stroke-width="4"/>
+  <path d="M24 40 L44 50 M76 40 L56 50" fill="none" stroke="#141414" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="36" cy="54" r="4.5" fill="#141414"/><circle cx="64" cy="54" r="4.5" fill="#141414"/>
+  <ellipse cx="50" cy="72" rx="15" ry="11" fill="#FFF6D6" stroke="#141414" stroke-width="3.5"/>
+  <path d="M43 66 h14 l-7 7Z" fill="#141414"/><path d="M42 80 q8 -5 16 0" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M66 36 L74 62" stroke="#FF5FA2" stroke-width="4" stroke-linecap="round"/><path d="M62 46 l9 -3 M65 54 l9 -3" stroke="#FF5FA2" stroke-width="3" stroke-linecap="round"/></svg></span><span style="position:absolute;right:-2px;bottom:-2px;width:16px;height:16px;border-radius:50%;border:2px solid #141414;background:#FFFFFF;color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:9px;line-height:1;box-sizing:border-box">5</span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">44px</span></div><div style="width:104px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:34px;height:34px;flex:none"><span style="display:block;width:34px;height:34px;border-radius:50%;border:2px solid #141414;background:#141414;box-sizing:border-box;overflow:hidden;"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+  <circle cx="22" cy="28" r="12" fill="#FFFFFF" stroke="#FFD84A" stroke-width="4"/><circle cx="78" cy="28" r="12" fill="#FFFFFF" stroke="#FFD84A" stroke-width="4"/>
+  <circle cx="22" cy="28" r="5" fill="#FF5FA2"/><circle cx="78" cy="28" r="5" fill="#FF5FA2"/>
+  <ellipse cx="50" cy="56" rx="38" ry="35" fill="#FFFFFF" stroke="#FFD84A" stroke-width="4"/>
+  <path d="M24 40 L44 50 M76 40 L56 50" fill="none" stroke="#141414" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="36" cy="54" r="4.5" fill="#141414"/><circle cx="64" cy="54" r="4.5" fill="#141414"/>
+  <ellipse cx="50" cy="72" rx="15" ry="11" fill="#FFF6D6" stroke="#141414" stroke-width="3.5"/>
+  <path d="M43 66 h14 l-7 7Z" fill="#141414"/><path d="M42 80 q8 -5 16 0" fill="none" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M66 36 L74 62" stroke="#FF5FA2" stroke-width="4" stroke-linecap="round"/><path d="M62 46 l9 -3 M65 54 l9 -3" stroke="#FF5FA2" stroke-width="3" stroke-linecap="round"/></svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">34px</span></div></div></div><div style="width:540px;background:var(--card);color:var(--card-text);border:3px solid var(--line);border-radius:24px;box-shadow:4px 5px 0 var(--shadow);overflow:hidden"><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:11px;letter-spacing:.06em;display:block;padding:12px 18px">PLAYER AVATARS · SAME SIZES, NO BADGE</span><div style="display:flex;align-items:center;gap:22px;padding:12px 18px;border-top:2px solid var(--soft)"><div style="width:80px;display:flex;flex-direction:column"><span style="font-weight:800;font-size:24px">Sprout</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">PLAYER</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:92px;height:92px;flex:none"><span style="display:block;width:92px;height:92px;border-radius:50%;border:4px solid #141414;background:#FFD84A;box-sizing:border-box;overflow:hidden;"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true">
+  <circle cx="50" cy="14" r="9" fill="#5A3B22" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#19D3A2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#F6C9A3" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#F6C9A3" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M31 40 Q32 22 50 22 Q68 22 69 40 Q58 31 50 32 Q40 31 31 40Z" fill="#5A3B22" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">92px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:52px;height:52px;flex:none"><span style="display:block;width:52px;height:52px;border-radius:50%;border:3px solid #141414;background:#FFD84A;box-sizing:border-box;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+  <circle cx="50" cy="14" r="9" fill="#5A3B22" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#19D3A2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#F6C9A3" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#F6C9A3" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M31 40 Q32 22 50 22 Q68 22 69 40 Q58 31 50 32 Q40 31 31 40Z" fill="#5A3B22" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">52px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:44px;height:44px;flex:none"><span style="display:block;width:44px;height:44px;border-radius:50%;border:3px solid #141414;background:#FFD84A;box-sizing:border-box;overflow:hidden;"><svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true">
+  <circle cx="50" cy="14" r="9" fill="#5A3B22" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#19D3A2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#F6C9A3" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#F6C9A3" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M31 40 Q32 22 50 22 Q68 22 69 40 Q58 31 50 32 Q40 31 31 40Z" fill="#5A3B22" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">44px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:34px;height:34px;flex:none"><span style="display:block;width:34px;height:34px;border-radius:50%;border:2px solid #141414;background:#FFD84A;box-sizing:border-box;overflow:hidden;"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+  <circle cx="50" cy="14" r="9" fill="#5A3B22" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#19D3A2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#F6C9A3" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#F6C9A3" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M31 40 Q32 22 50 22 Q68 22 69 40 Q58 31 50 32 Q40 31 31 40Z" fill="#5A3B22" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">34px</span></div></div><div style="display:flex;align-items:center;gap:22px;padding:12px 18px;border-top:2px solid var(--soft)"><div style="width:80px;display:flex;flex-direction:column"><span style="font-weight:800;font-size:24px">Haze</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">PLAYER</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:92px;height:92px;flex:none"><span style="display:block;width:92px;height:92px;border-radius:50%;border:4px solid #141414;background:#19D3A2;box-sizing:border-box;overflow:hidden;"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true">
+  <circle cx="50" cy="38" r="28" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#FF5FA2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#8A5A3C" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#8A5A3C" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#8A5A3C" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#8A5A3C" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#8A5A3C" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q40 28 50 29 Q60 28 68 38 Q58 33 50 33 Q42 33 32 38Z" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">92px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:52px;height:52px;flex:none"><span style="display:block;width:52px;height:52px;border-radius:50%;border:3px solid #141414;background:#19D3A2;box-sizing:border-box;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+  <circle cx="50" cy="38" r="28" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#FF5FA2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#8A5A3C" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#8A5A3C" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#8A5A3C" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#8A5A3C" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#8A5A3C" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q40 28 50 29 Q60 28 68 38 Q58 33 50 33 Q42 33 32 38Z" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">52px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:44px;height:44px;flex:none"><span style="display:block;width:44px;height:44px;border-radius:50%;border:3px solid #141414;background:#19D3A2;box-sizing:border-box;overflow:hidden;"><svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true">
+  <circle cx="50" cy="38" r="28" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#FF5FA2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#8A5A3C" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#8A5A3C" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#8A5A3C" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#8A5A3C" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#8A5A3C" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q40 28 50 29 Q60 28 68 38 Q58 33 50 33 Q42 33 32 38Z" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">44px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:34px;height:34px;flex:none"><span style="display:block;width:34px;height:34px;border-radius:50%;border:2px solid #141414;background:#19D3A2;box-sizing:border-box;overflow:hidden;"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+  <circle cx="50" cy="38" r="28" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#FF5FA2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#8A5A3C" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#8A5A3C" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#8A5A3C" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#8A5A3C" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#8A5A3C" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q40 28 50 29 Q60 28 68 38 Q58 33 50 33 Q42 33 32 38Z" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">34px</span></div></div><div style="display:flex;align-items:center;gap:22px;padding:12px 18px;border-top:2px solid var(--soft)"><div style="width:80px;display:flex;flex-direction:column"><span style="font-weight:800;font-size:24px">Marlow</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">PLAYER</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:92px;height:92px;flex:none"><span style="display:block;width:92px;height:92px;border-radius:50%;border:4px solid #141414;background:#FF5FA2;box-sizing:border-box;overflow:hidden;"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#2F4BFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#E8AD7E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#E8AD7E" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#E8AD7E" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#E8AD7E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#E8AD7E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q34 22 50 22 Q66 22 68 38 Q58 30 50 31 Q40 30 32 38Z" fill="#2B1B12" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="58" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M49 47h2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">92px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:52px;height:52px;flex:none"><span style="display:block;width:52px;height:52px;border-radius:50%;border:3px solid #141414;background:#FF5FA2;box-sizing:border-box;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#2F4BFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#E8AD7E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#E8AD7E" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#E8AD7E" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#E8AD7E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#E8AD7E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q34 22 50 22 Q66 22 68 38 Q58 30 50 31 Q40 30 32 38Z" fill="#2B1B12" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="58" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M49 47h2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">52px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:44px;height:44px;flex:none"><span style="display:block;width:44px;height:44px;border-radius:50%;border:3px solid #141414;background:#FF5FA2;box-sizing:border-box;overflow:hidden;"><svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#2F4BFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#E8AD7E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#E8AD7E" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#E8AD7E" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#E8AD7E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#E8AD7E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q34 22 50 22 Q66 22 68 38 Q58 30 50 31 Q40 30 32 38Z" fill="#2B1B12" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="58" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M49 47h2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">44px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:34px;height:34px;flex:none"><span style="display:block;width:34px;height:34px;border-radius:50%;border:2px solid #141414;background:#FF5FA2;box-sizing:border-box;overflow:hidden;"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#2F4BFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#E8AD7E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#E8AD7E" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#E8AD7E" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#E8AD7E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#E8AD7E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q34 22 50 22 Q66 22 68 38 Q58 30 50 31 Q40 30 32 38Z" fill="#2B1B12" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="58" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M49 47h2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">34px</span></div></div><div style="display:flex;align-items:center;gap:22px;padding:12px 18px;border-top:2px solid var(--soft)"><div style="width:80px;display:flex;flex-direction:column"><span style="font-weight:800;font-size:24px">Juno</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">PLAYER</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:92px;height:92px;flex:none"><span style="display:block;width:92px;height:92px;border-radius:50%;border:4px solid #141414;background:#2F4BFF;box-sizing:border-box;overflow:hidden;"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M26 44 Q22 80 30 88 L70 88 Q78 80 74 44Z" fill="#1E1410" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#C98A5E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#C98A5E" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#C98A5E" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#C98A5E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#C98A5E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M30 42 Q30 20 50 20 Q70 20 70 42 Q60 30 50 30 Q40 30 30 42Z" fill="#1E1410" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">92px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:52px;height:52px;flex:none"><span style="display:block;width:52px;height:52px;border-radius:50%;border:3px solid #141414;background:#2F4BFF;box-sizing:border-box;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M26 44 Q22 80 30 88 L70 88 Q78 80 74 44Z" fill="#1E1410" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#C98A5E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#C98A5E" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#C98A5E" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#C98A5E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#C98A5E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M30 42 Q30 20 50 20 Q70 20 70 42 Q60 30 50 30 Q40 30 30 42Z" fill="#1E1410" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">52px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:44px;height:44px;flex:none"><span style="display:block;width:44px;height:44px;border-radius:50%;border:3px solid #141414;background:#2F4BFF;box-sizing:border-box;overflow:hidden;"><svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M26 44 Q22 80 30 88 L70 88 Q78 80 74 44Z" fill="#1E1410" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#C98A5E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#C98A5E" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#C98A5E" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#C98A5E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#C98A5E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M30 42 Q30 20 50 20 Q70 20 70 42 Q60 30 50 30 Q40 30 30 42Z" fill="#1E1410" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">44px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:34px;height:34px;flex:none"><span style="display:block;width:34px;height:34px;border-radius:50%;border:2px solid #141414;background:#2F4BFF;box-sizing:border-box;overflow:hidden;"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M26 44 Q22 80 30 88 L70 88 Q78 80 74 44Z" fill="#1E1410" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#C98A5E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#C98A5E" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#C98A5E" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#C98A5E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#C98A5E" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M30 42 Q30 20 50 20 Q70 20 70 42 Q60 30 50 30 Q40 30 30 42Z" fill="#1E1410" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">34px</span></div></div><div style="display:flex;align-items:center;gap:22px;padding:12px 18px;border-top:2px solid var(--soft)"><div style="width:80px;display:flex;flex-direction:column"><span style="font-weight:800;font-size:24px">Kit</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">PLAYER</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:92px;height:92px;flex:none"><span style="display:block;width:92px;height:92px;border-radius:50%;border:4px solid #141414;background:#FFF6D6;box-sizing:border-box;overflow:hidden;"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#2F4BFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#F6C9A3" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#F6C9A3" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q34 22 50 22 Q66 22 68 38 Q58 30 50 31 Q40 30 32 38Z" fill="#D9822B" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  <path d="M31 38 Q32 17 50 17 Q68 17 69 38Z" fill="#2F4BFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M60 36 L88 40 Q86 46 60 44Z" fill="#2F4BFF" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">92px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:52px;height:52px;flex:none"><span style="display:block;width:52px;height:52px;border-radius:50%;border:3px solid #141414;background:#FFF6D6;box-sizing:border-box;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#2F4BFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#F6C9A3" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#F6C9A3" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q34 22 50 22 Q66 22 68 38 Q58 30 50 31 Q40 30 32 38Z" fill="#D9822B" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  <path d="M31 38 Q32 17 50 17 Q68 17 69 38Z" fill="#2F4BFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M60 36 L88 40 Q86 46 60 44Z" fill="#2F4BFF" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">52px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:44px;height:44px;flex:none"><span style="display:block;width:44px;height:44px;border-radius:50%;border:3px solid #141414;background:#FFF6D6;box-sizing:border-box;overflow:hidden;"><svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#2F4BFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#F6C9A3" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#F6C9A3" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q34 22 50 22 Q66 22 68 38 Q58 30 50 31 Q40 30 32 38Z" fill="#D9822B" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  <path d="M31 38 Q32 17 50 17 Q68 17 69 38Z" fill="#2F4BFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M60 36 L88 40 Q86 46 60 44Z" fill="#2F4BFF" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">44px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:34px;height:34px;flex:none"><span style="display:block;width:34px;height:34px;border-radius:50%;border:2px solid #141414;background:#FFF6D6;box-sizing:border-box;overflow:hidden;"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#2F4BFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#F6C9A3" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#F6C9A3" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#F6C9A3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q34 22 50 22 Q66 22 68 38 Q58 30 50 31 Q40 30 32 38Z" fill="#D9822B" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  <path d="M31 38 Q32 17 50 17 Q68 17 69 38Z" fill="#2F4BFF" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M60 36 L88 40 Q86 46 60 44Z" fill="#2F4BFF" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">34px</span></div></div><div style="display:flex;align-items:center;gap:22px;padding:12px 18px;border-top:2px solid var(--soft)"><div style="width:80px;display:flex;flex-direction:column"><span style="font-weight:800;font-size:24px">Ash</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">PLAYER</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:92px;height:92px;flex:none"><span style="display:block;width:92px;height:92px;border-radius:50%;border:4px solid #141414;background:#FF5FA2;box-sizing:border-box;overflow:hidden;"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#19D3A2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#5E3A26" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#5E3A26" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#5E3A26" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#5E3A26" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#5E3A26" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M33 52 Q34 70 50 70 Q66 70 67 52 Q60 62 50 62 Q40 62 33 52Z" fill="#141414" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">92px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:52px;height:52px;flex:none"><span style="display:block;width:52px;height:52px;border-radius:50%;border:3px solid #141414;background:#FF5FA2;box-sizing:border-box;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#19D3A2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#5E3A26" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#5E3A26" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#5E3A26" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#5E3A26" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#5E3A26" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M33 52 Q34 70 50 70 Q66 70 67 52 Q60 62 50 62 Q40 62 33 52Z" fill="#141414" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">52px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:44px;height:44px;flex:none"><span style="display:block;width:44px;height:44px;border-radius:50%;border:3px solid #141414;background:#FF5FA2;box-sizing:border-box;overflow:hidden;"><svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#19D3A2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#5E3A26" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#5E3A26" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#5E3A26" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#5E3A26" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#5E3A26" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M33 52 Q34 70 50 70 Q66 70 67 52 Q60 62 50 62 Q40 62 33 52Z" fill="#141414" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">44px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:34px;height:34px;flex:none"><span style="display:block;width:34px;height:34px;border-radius:50%;border:2px solid #141414;background:#FF5FA2;box-sizing:border-box;overflow:hidden;"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#19D3A2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#5E3A26" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#5E3A26" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#5E3A26" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#5E3A26" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#5E3A26" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M33 52 Q34 70 50 70 Q66 70 67 52 Q60 62 50 62 Q40 62 33 52Z" fill="#141414" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">34px</span></div></div><div style="display:flex;align-items:center;gap:22px;padding:12px 18px;border-top:2px solid var(--soft)"><div style="width:80px;display:flex;flex-direction:column"><span style="font-weight:800;font-size:24px">Wren</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">PLAYER</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:92px;height:92px;flex:none"><span style="display:block;width:92px;height:92px;border-radius:50%;border:4px solid #141414;background:#19D3A2;box-sizing:border-box;overflow:hidden;"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M26 40 Q24 70 30 72 L70 72 Q76 70 74 40Z" fill="#8C3B2A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#FF5FA2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#F2D2B3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#F2D2B3" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#F2D2B3" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#F2D2B3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#F2D2B3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M30 44 Q28 20 50 20 Q72 20 70 44 Q64 30 50 31 Q36 30 30 44Z" fill="#8C3B2A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="58" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M49 47h2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">92px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:52px;height:52px;flex:none"><span style="display:block;width:52px;height:52px;border-radius:50%;border:3px solid #141414;background:#19D3A2;box-sizing:border-box;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M26 40 Q24 70 30 72 L70 72 Q76 70 74 40Z" fill="#8C3B2A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#FF5FA2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#F2D2B3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#F2D2B3" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#F2D2B3" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#F2D2B3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#F2D2B3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M30 44 Q28 20 50 20 Q72 20 70 44 Q64 30 50 31 Q36 30 30 44Z" fill="#8C3B2A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="58" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M49 47h2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">52px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:44px;height:44px;flex:none"><span style="display:block;width:44px;height:44px;border-radius:50%;border:3px solid #141414;background:#19D3A2;box-sizing:border-box;overflow:hidden;"><svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M26 40 Q24 70 30 72 L70 72 Q76 70 74 40Z" fill="#8C3B2A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#FF5FA2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#F2D2B3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#F2D2B3" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#F2D2B3" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#F2D2B3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#F2D2B3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M30 44 Q28 20 50 20 Q72 20 70 44 Q64 30 50 31 Q36 30 30 44Z" fill="#8C3B2A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="58" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M49 47h2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">44px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:34px;height:34px;flex:none"><span style="display:block;width:34px;height:34px;border-radius:50%;border:2px solid #141414;background:#19D3A2;box-sizing:border-box;overflow:hidden;"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+  <path d="M26 40 Q24 70 30 72 L70 72 Q76 70 74 40Z" fill="#8C3B2A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#FF5FA2" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#F2D2B3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#F2D2B3" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#F2D2B3" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#F2D2B3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#F2D2B3" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M30 44 Q28 20 50 20 Q72 20 70 44 Q64 30 50 31 Q36 30 30 44Z" fill="#8C3B2A" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="58" cy="47" r="7" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M49 47h2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">34px</span></div></div><div style="display:flex;align-items:center;gap:22px;padding:12px 18px;border-top:2px solid var(--soft)"><div style="width:80px;display:flex;flex-direction:column"><span style="font-weight:800;font-size:24px">Teddy</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">PLAYER</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:92px;height:92px;flex:none"><span style="display:block;width:92px;height:92px;border-radius:50%;border:4px solid #141414;background:#FFD84A;box-sizing:border-box;overflow:hidden;"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#141414" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#B77A52" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#B77A52" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#B77A52" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#B77A52" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#B77A52" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q34 22 50 22 Q66 22 68 38 Q58 30 50 31 Q40 30 32 38Z" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M31 38 Q32 16 50 16 Q68 16 69 38Z" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><rect x="29" y="34" width="42" height="9" rx="4" fill="#FF5FA2" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="50" cy="13" r="4" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">92px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:52px;height:52px;flex:none"><span style="display:block;width:52px;height:52px;border-radius:50%;border:3px solid #141414;background:#FFD84A;box-sizing:border-box;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#141414" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#B77A52" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#B77A52" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#B77A52" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#B77A52" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#B77A52" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q34 22 50 22 Q66 22 68 38 Q58 30 50 31 Q40 30 32 38Z" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M31 38 Q32 16 50 16 Q68 16 69 38Z" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><rect x="29" y="34" width="42" height="9" rx="4" fill="#FF5FA2" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="50" cy="13" r="4" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">52px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:44px;height:44px;flex:none"><span style="display:block;width:44px;height:44px;border-radius:50%;border:3px solid #141414;background:#FFD84A;box-sizing:border-box;overflow:hidden;"><svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#141414" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#B77A52" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#B77A52" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#B77A52" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#B77A52" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#B77A52" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q34 22 50 22 Q66 22 68 38 Q58 30 50 31 Q40 30 32 38Z" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M31 38 Q32 16 50 16 Q68 16 69 38Z" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><rect x="29" y="34" width="42" height="9" rx="4" fill="#FF5FA2" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="50" cy="13" r="4" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">44px</span></div><div style="width:90px;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="position:relative;display:inline-block;width:34px;height:34px;flex:none"><span style="display:block;width:34px;height:34px;border-radius:50%;border:2px solid #141414;background:#FFD84A;box-sizing:border-box;overflow:hidden;"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+  
+  <path d="M10 104 Q10 76 36 72 L64 72 Q90 76 90 104Z" fill="#141414" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M42 72 Q50 82 58 72Z" fill="#B77A52" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="43" y="60" width="14" height="14" fill="#B77A52" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="50" cy="46" rx="18" ry="21" fill="#B77A52" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="32" cy="48" rx="3.5" ry="5" fill="#B77A52" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="68" cy="48" rx="3.5" ry="5" fill="#B77A52" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M32 38 Q34 22 50 22 Q66 22 68 38 Q58 30 50 31 Q40 30 32 38Z" fill="#141414" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="42" cy="47" r="2.6" fill="#141414"/><circle cx="58" cy="47" r="2.6" fill="#141414"/>
+  <path d="M43 57 Q50 63 57 57" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M31 38 Q32 16 50 16 Q68 16 69 38Z" fill="#FFD84A" stroke="#141414" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><rect x="29" y="34" width="42" height="9" rx="4" fill="#FF5FA2" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="50" cy="13" r="4" fill="#FF5FA2" stroke="#141414" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  </svg></span></span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:9px;letter-spacing:.06em;opacity:.7">34px</span></div></div></div></div></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

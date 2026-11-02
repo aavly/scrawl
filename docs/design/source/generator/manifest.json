@@ -1,0 +1,954 @@
+[
+ {
+  "name": "Board",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "Board-Valid",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "Board-Dark",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "Board-Valid-Dark",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "Board-Dupe",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "Board-Invalid",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "Board-Last10",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "Board-VsBolt",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "Board-VsBolt-Dark",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "Board-Disconnected",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "Board-Offline",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "Board-Forfeit",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "Board-Toast",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "Tutorial",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "Board-HighScore",
+  "title": "Scrawl board",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "Home",
+  "title": "Scrawl home",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Home",
+  "title": "Scrawl home (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Home-Dark",
+  "title": "Scrawl home",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "D-Home-Dark",
+  "title": "Scrawl home (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "Home-Offline",
+  "title": "Scrawl home offline",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Home-Offline",
+  "title": "Scrawl home offline (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Finding",
+  "title": "Scrawl finding",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Finding",
+  "title": "Scrawl finding (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Finding-Dark",
+  "title": "Scrawl finding",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "D-Finding-Dark",
+  "title": "Scrawl finding (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "FindingBot",
+  "title": "Scrawl finding bolt",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-FindingBot",
+  "title": "Scrawl finding bolt (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "FindingBot-Dark",
+  "title": "Scrawl finding bolt",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "D-FindingBot-Dark",
+  "title": "Scrawl finding bolt (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "Reveal",
+  "title": "Scrawl reveal",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Reveal",
+  "title": "Scrawl reveal (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Reveal-Dark",
+  "title": "Scrawl reveal",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "D-Reveal-Dark",
+  "title": "Scrawl reveal (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "RevealBot",
+  "title": "Scrawl reveal bolt",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-RevealBot",
+  "title": "Scrawl reveal bolt (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "RevealBot-Dark",
+  "title": "Scrawl reveal bolt",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "D-RevealBot-Dark",
+  "title": "Scrawl reveal bolt (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "Practice",
+  "title": "Scrawl practice",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Practice",
+  "title": "Scrawl practice (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Practice-Dark",
+  "title": "Scrawl practice",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "D-Practice-Dark",
+  "title": "Scrawl practice (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "Cast",
+  "title": "Scrawl meet the cast",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Cast",
+  "title": "Scrawl meet the cast (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Results",
+  "title": "Scrawl results",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Results",
+  "title": "Scrawl results (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Results-Dark",
+  "title": "Scrawl results",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "D-Results-Dark",
+  "title": "Scrawl results (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "ResultsLoss",
+  "title": "Scrawl results loss",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-ResultsLoss",
+  "title": "Scrawl results loss (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Results-VsBolt",
+  "title": "Scrawl results vs bolt",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Results-VsBolt",
+  "title": "Scrawl results vs bolt (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Results-VsBolt-Dark",
+  "title": "Scrawl results vs bolt",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "D-Results-VsBolt-Dark",
+  "title": "Scrawl results vs bolt (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "Results-HighScore",
+  "title": "Scrawl results five-digit score",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Results-HighScore",
+  "title": "Scrawl results five-digit score (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Results-Walkover",
+  "title": "Scrawl results walkover",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Results-Walkover",
+  "title": "Scrawl results walkover (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "TutorialResults",
+  "title": "Scrawl tutorial results",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-TutorialResults",
+  "title": "Scrawl tutorial results (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "MatchCancelled",
+  "title": "Scrawl match cancelled",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-MatchCancelled",
+  "title": "Scrawl match cancelled (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Leaderboard",
+  "title": "Scrawl leaderboard",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Leaderboard",
+  "title": "Scrawl leaderboard (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Leaderboard-Dark",
+  "title": "Scrawl leaderboard",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "D-Leaderboard-Dark",
+  "title": "Scrawl leaderboard (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "Leaderboard-US",
+  "title": "Scrawl leaderboard US",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Leaderboard-US",
+  "title": "Scrawl leaderboard US (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Leaderboard-Empty",
+  "title": "Scrawl leaderboard empty",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Leaderboard-Empty",
+  "title": "Scrawl leaderboard empty (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "SignIn",
+  "title": "Scrawl sign in",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-SignIn",
+  "title": "Scrawl sign in (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "SignIn-Android",
+  "title": "Scrawl sign in Android",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "SignIn-Dark",
+  "title": "Scrawl sign in dark",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "RankedGate",
+  "title": "Scrawl web ranked gate",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-RankedGate",
+  "title": "Scrawl web ranked gate (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "MagicLink",
+  "title": "Scrawl email link",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-MagicLink",
+  "title": "Scrawl email link (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "MagicLink-Error",
+  "title": "Scrawl email link error",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "CheckEmail",
+  "title": "Scrawl check email",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-CheckEmail",
+  "title": "Scrawl check email (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "ProgressKept",
+  "title": "Scrawl progress kept",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-ProgressKept",
+  "title": "Scrawl progress kept (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Profile",
+  "title": "Scrawl profile",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Profile",
+  "title": "Scrawl profile (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Profile-Dark",
+  "title": "Scrawl profile",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "D-Profile-Dark",
+  "title": "Scrawl profile (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "Profile-SignedIn",
+  "title": "Scrawl profile signed in",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Profile-SignedIn",
+  "title": "Scrawl profile signed in (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Settings",
+  "title": "Scrawl settings",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Settings",
+  "title": "Scrawl settings (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Settings-Dark",
+  "title": "Scrawl settings",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "D-Settings-Dark",
+  "title": "Scrawl settings (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "Settings-SignedIn",
+  "title": "Scrawl settings signed in",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Settings-SignedIn",
+  "title": "Scrawl settings signed in (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "AvatarPicker",
+  "title": "Scrawl avatar picker",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-AvatarPicker",
+  "title": "Scrawl avatar picker (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "AvatarPicker-Dark",
+  "title": "Scrawl avatar picker",
+  "w": 390,
+  "h": 844,
+  "theme": "dark"
+ },
+ {
+  "name": "D-AvatarPicker-Dark",
+  "title": "Scrawl avatar picker (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "Ladder",
+  "title": "Scrawl rank ladder",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Ladder",
+  "title": "Scrawl rank ladder (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Toasts",
+  "title": "Scrawl toasts",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Toasts",
+  "title": "Scrawl toasts (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Board-Access",
+  "title": "Scrawl board accessible",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Board",
+  "title": "Scrawl desktop Board",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "D-Board-Valid",
+  "title": "Scrawl desktop Board-Valid",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "D-Board-Dark",
+  "title": "Scrawl desktop Board-Dark",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "D-Board-Valid-Dark",
+  "title": "Scrawl desktop Board-Valid-Dark",
+  "w": 1440,
+  "h": 900,
+  "theme": "dark"
+ },
+ {
+  "name": "D-Board-HighScore",
+  "title": "Scrawl desktop Board-HighScore",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "D-Board-Hover",
+  "title": "Scrawl desktop Board-Hover",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "D-Board-Dupe",
+  "title": "Scrawl desktop Board-Dupe",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "D-Board-Invalid",
+  "title": "Scrawl desktop Board-Invalid",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "D-Board-Last10",
+  "title": "Scrawl desktop Board-Last10",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "D-Board-VsBolt",
+  "title": "Scrawl desktop Board-VsBolt",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "D-Board-Disconnected",
+  "title": "Scrawl desktop Board-Disconnected",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "D-Board-Toast",
+  "title": "Scrawl desktop Board-Toast",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "D-Board-Forfeit",
+  "title": "Scrawl desktop Board-Forfeit",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "D-Tutorial",
+  "title": "Scrawl desktop Tutorial",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Pointer-States",
+  "title": "Scrawl pointer states",
+  "w": 1440,
+  "h": 840,
+  "theme": "light"
+ },
+ {
+  "name": "MobileWeb-Board",
+  "title": "Scrawl mobile web 390x664",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "MobileWeb-Board-Small",
+  "title": "Scrawl mobile web 375x548",
+  "w": 375,
+  "h": 667,
+  "theme": "light"
+ },
+ {
+  "name": "Spec-Avatars",
+  "title": "Scrawl avatar spec",
+  "w": 1280,
+  "h": 1500,
+  "theme": "light"
+ },
+ {
+  "name": "Spec-Avatars-Dark",
+  "title": "Scrawl avatar spec",
+  "w": 1280,
+  "h": 1500,
+  "theme": "dark"
+ },
+ {
+  "name": "Spec-Tiers",
+  "title": "Scrawl tier chips",
+  "w": 1260,
+  "h": 760,
+  "theme": "light"
+ },
+ {
+  "name": "Welcome",
+  "title": "Scrawl welcome",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Welcome",
+  "title": "Scrawl welcome (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Update",
+  "title": "Scrawl update",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Update",
+  "title": "Scrawl update (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Report",
+  "title": "Scrawl report",
+  "w": 390,
+  "h": 844,
+  "theme": "light"
+ },
+ {
+  "name": "D-Report",
+  "title": "Scrawl report (desktop)",
+  "w": 1440,
+  "h": 900,
+  "theme": "light"
+ },
+ {
+  "name": "Board-360",
+  "title": "Scrawl board small phone",
+  "w": 360,
+  "h": 640,
+  "theme": "light"
+ },
+ {
+  "name": "Tutorial-360",
+  "title": "Scrawl board small phone",
+  "w": 360,
+  "h": 640,
+  "theme": "light"
+ },
+ {
+  "name": "Board-Last10-360",
+  "title": "Scrawl board small phone",
+  "w": 360,
+  "h": 640,
+  "theme": "light"
+ },
+ {
+  "name": "Board-375",
+  "title": "Scrawl board small phone",
+  "w": 375,
+  "h": 667,
+  "theme": "light"
+ },
+ {
+  "name": "Tutorial-375",
+  "title": "Scrawl board small phone",
+  "w": 375,
+  "h": 667,
+  "theme": "light"
+ },
+ {
+  "name": "Board-Last10-375",
+  "title": "Scrawl board small phone",
+  "w": 375,
+  "h": 667,
+  "theme": "light"
+ },
+ {
+  "name": "Board-HighScore-360",
+  "title": "Scrawl board small phone",
+  "w": 360,
+  "h": 640,
+  "theme": "light"
+ }
+]

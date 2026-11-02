@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scrawl finding</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:wght@400;700&display=swap">
+<style>
+body{margin:0}a{color:inherit}.sc{--bg:#FFD84A;--dot:rgba(20,20,20,.13);--text:#141414;--muted:#3B3B3B;--card:#FFFFFF;--card-text:#141414;--line:#141414;--shadow:#141414;--tile:#FFFFFF;--board:#2F4BFF;--soft:rgba(20,20,20,.08)}
+.sc-dark{--bg:#17142E;--dot:rgba(255,246,214,.07);--text:#FFF6D6;--muted:#C9C3E8;--card:#2A2552;--card-text:#FFF6D6;--line:#0B0A1A;--shadow:#0B0A1A;--soft:rgba(255,246,214,.1)}
+.sc-dark .keep{background:#FFFFFF;color:#141414}
+@keyframes sc-slam{0%{transform:rotate(-3deg) scale(1.6);opacity:0}60%{transform:rotate(-3deg) scale(.95);opacity:1}100%{transform:rotate(-3deg) scale(1);opacity:1}}
+@keyframes sc-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.sc a{cursor:pointer}
+</style>
+</helmet>
+<div class="sc sc-dark" style="position: relative; width: 390px; height: 844px; overflow: hidden; background-color: var(--bg); background-image: radial-gradient(var(--dot) 1.5px, transparent 1.6px); background-size: 18px 18px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; color: var(--text)">
+<div style="position:relative;z-index:1;height:100%;box-sizing:border-box;padding:56px 20px 34px;display:flex;flex-direction:column;gap:14px"><div style="display:flex;justify-content:space-between;padding:0 4px"><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:11px;letter-spacing:.06em;">RANKED · 80 SEC</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:11px;letter-spacing:.06em;">1,642</span></div><div style="margin:auto 0;display:flex;flex-direction:column;gap:30px"><div style="background:var(--card);color:var(--card-text);border:3px solid var(--line);border-radius:32px;box-shadow:4px 5px 0 var(--shadow);padding:28px 22px 22px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;"><div style="display:grid;grid-template-columns:repeat(2,66px);gap:8px"><span style="width:66px;height:66px;border:3px solid #141414;border-radius:14.52px;background:#FF5FA2;color:#141414;box-shadow:0 4px 0 #141414;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:33px;transform:rotate(-4deg)">F</span><span style="width:66px;height:66px;border:3px solid #141414;border-radius:14.52px;background:#FFFFFF;color:#141414;box-shadow:0 4px 0 #141414;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:33px;transform:rotate(3deg)">I</span><span style="width:66px;height:66px;border:3px solid #141414;border-radius:14.52px;background:#19D3A2;color:#141414;box-shadow:0 4px 0 #141414;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:33px;transform:rotate(2deg)">N</span><span style="width:66px;height:66px;border:3px solid #141414;border-radius:14.52px;background:#2F4BFF;color:#FFFFFF;box-shadow:0 4px 0 #141414;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:33px;transform:rotate(-3deg)">D</span></div><span style="font-weight:800;font-size:36px;line-height:1">Finding a rival</span><span style="font-size:16px;font-weight:500">Looking for players around 1,642.</span><div style="width:100%;display:flex;flex-direction:column;gap:6px"><div style="height:18px;box-sizing:border-box;border:3px solid var(--line);border-radius:99px;background:var(--card);overflow:hidden"><div style="width:40%;height:100%;background:#2F4BFF;border-right:3px solid var(--line)"></div></div><div style="display:flex;justify-content:space-between"><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">0:04</span><span style="font-family:'Space Mono', monospace;font-weight:700;font-size:10px;letter-spacing:.06em;">UP TO 0:10</span></div></div></div><a href="Home.dc.html" style="align-self:center;padding:0 26px;height:48px;border:3px solid var(--line);border-radius:99px;background:var(--card);color:var(--card-text);box-shadow:0 4px 0 var(--shadow);display:flex;align-items:center;text-decoration:none;font-weight:800;font-size:18px">Cancel</a></div></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

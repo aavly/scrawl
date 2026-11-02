@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scrawl email link error</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:wght@400;700&display=swap">
+<style>
+body{margin:0}a{color:inherit}.sc{--bg:#FFD84A;--dot:rgba(20,20,20,.13);--text:#141414;--muted:#3B3B3B;--card:#FFFFFF;--card-text:#141414;--line:#141414;--shadow:#141414;--tile:#FFFFFF;--board:#2F4BFF;--soft:rgba(20,20,20,.08)}
+.sc-dark{--bg:#17142E;--dot:rgba(255,246,214,.07);--text:#FFF6D6;--muted:#C9C3E8;--card:#2A2552;--card-text:#FFF6D6;--line:#0B0A1A;--shadow:#0B0A1A;--soft:rgba(255,246,214,.1)}
+.sc-dark .keep{background:#FFFFFF;color:#141414}
+@keyframes sc-slam{0%{transform:rotate(-3deg) scale(1.6);opacity:0}60%{transform:rotate(-3deg) scale(.95);opacity:1}100%{transform:rotate(-3deg) scale(1);opacity:1}}
+@keyframes sc-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.sc a{cursor:pointer}
+</style>
+</helmet>
+<div class="sc " style="position: relative; width: 390px; height: 844px; overflow: hidden; background-color: var(--bg); font-family: 'Bricolage Grotesque', system-ui, sans-serif; color: var(--text)">
+<div style="position:relative;z-index:1;height:100%;box-sizing:border-box;padding:56px 20px 34px;display:flex;flex-direction:column;gap:14px"><div style="display:flex;align-items:center;gap:12px;min-height:44px"><a href="SignIn.dc.html" aria-label="Back" style="width:44px;height:44px;flex:none;border-radius:50%;border:3px solid var(--line);background:var(--card);color:var(--card-text);box-sizing:border-box;display:flex;align-items:center;justify-content:center;text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;"><path d="M15 5l-7 7 7 7"/></svg></a><span style="font-weight:800;font-size:32px;flex:1">Your email</span></div><p style="margin:0;font-size:17px;font-weight:500;line-height:1.3">We'll email you a link. Tap it and you're in. No password to remember.</p><div style="height:64px;box-sizing:border-box;border:3px solid #141414;border-radius:18px;background:#FFFFFF;color:#141414;display:flex;align-items:center;gap:10px;padding:0 16px;box-shadow:0 0 0 4px #FF5FA2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 8l8 6 8-6"/></svg><span style="font-weight:700;font-size:20px">ann.ly@gmail</span></div><div style="display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px;margin-top:-4px;color:var(--text)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg><span>That email looks incomplete. Add the part after the dot, like .com.</span></div><a href="#" style="width:100%;height:64px;box-sizing:border-box;border:3px solid var(--line);border-radius:20px;background:#CFC8AE;color:#4A4A4A;box-shadow:0 7px 0 var(--shadow);display:flex;align-items:center;justify-content:center;gap:12px;text-decoration:none;font-weight:800;font-size:24px;"><span>Send me a link</span></a></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
