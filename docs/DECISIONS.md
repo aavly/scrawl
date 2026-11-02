@@ -19,6 +19,14 @@ Add new decisions at the bottom of the relevant table, with the date and who mad
 | 2026-10-31 | ~~Scrawl is the final name~~ Superseded by the next row | User |
 | 2026-10-31 | Scrawl stays as a placeholder name while the user brainstorms alternatives, because the checks found a trademark conflict (see [ROADMAP.md](ROADMAP.md#stage-0-close-out-planning)). Keep the name easy to change: in config and copy, not baked into code identifiers | User |
 | 2026-10-31 | GitHub repository is https://github.com/aavly/scrawl | User |
+| 2026-11-01 | Design v2.0 adopted ([design/DESIGN.md](design/DESIGN.md)): house-player cast, player avatars, tier ladder, accounts, desktop and mobile web layouts, new states | User (design chat) |
+| 2026-11-01 | Build follows the roadmap stages, not the design handoff's order. Design features outside the current stage are reference for later stages. The design is guidance: conflicts that would obstruct the game get flagged and sent back to the design chat | User |
+| 2026-11-02 | Ranked matches against house players count for rating | User |
+| 2026-11-02 | Rating change includes a tiered bonus for the points margin, with a cap. Formula proposed in [PRODUCT.md](PRODUCT.md#rating) | User |
+| 2026-11-02 | No weekly leaderboard reset. The leaderboard is permanent and ranks current ratings | User |
+| 2026-11-02 | Skip for now, revisit later: the "Beaten 3 of 5" strip on Profile, the "MORE SOON" locked avatars and the leaderboard footer. Not built in release 1 | User |
+| 2026-11-02 | Design v2.1 adopted: compact board layout for small phones, one bounded found-words row, five-digit score sizes, Appearance group in Settings | User (design chat) |
+| 2026-11-01 | Butter (light) is the default theme. Night is only used when the player turns it on with a toggle in Settings. The phone's own light/dark setting is ignored | User |
 | 2026-10-25 | Visual identity is "sticker-sheet pop" with Butter (light) and Night (dark) themes, specified in [design/DESIGN.md](design/DESIGN.md) | User (design chat) |
 | 2026-10-25 | Word scoring uses the reward ladder in DESIGN.md §7 (placeholder values, tuned in playtests) | User (design chat) |
 | 2026-10-25 | ~~Bots are always labelled as generic bots~~, then ~~ranked bots are not labelled~~. Both superseded by the next row | User |
@@ -40,7 +48,7 @@ Add new decisions at the bottom of the relevant table, with the date and who mad
 
 | Proposal | Reasoning |
 |---|---|
-| Bot matches move rating by a reduced amount | Bots stand in for real opponents, so a win against one should count for less |
+| The rating formula, hidden house-player ratings and margin tiers in [PRODUCT.md](PRODUCT.md#rating), applied to every ranked match | Uses the user's margin idea without making bot matches worth more than human ones |
 | ENABLE dictionary with offensive words filtered | Public domain. The tournament word lists are licensed |
 | The rivalry ID travels in the link, not in browser storage | Safari clears storage and in-app browsers don't share it |
 | Monetization arrives after the beta, phased as in [PRODUCT.md](PRODUCT.md#monetization) (user's instinct, Claude's phasing) | A clean beta measures retention without ads skewing it. Light ads at launch avoid a later "they added ads" backlash |

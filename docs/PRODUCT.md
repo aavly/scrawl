@@ -22,6 +22,41 @@
 - **Sign-in methods:** Apple, Google and email magic link. No passwords.
 - **Ranked on the web needs an account,** for anti-cheat. Guests can play ranked in the app.
 
+## Rating
+
+**Decided (user, 2026-11-02)**
+- Ranked matches against house players count for rating.
+- How well the player did adds to the rating change: the bigger the points margin, the bigger the change, in tiers, with a cap.
+- The leaderboard is permanent: it ranks current ratings, with no weekly reset.
+- Start 1,300, floor 1,000, tiers as DESIGN.md §8.
+
+**Proposed formula (engineering, awaiting confirmation)**
+1. **Expected result:** `E = 1 / (1 + 10^((opponent − player) / 400))`. A house player uses a hidden fixed rating: Pip 1,300, Dash 1,500, Bolt 1,700, Nova 1,950, Titan 2,200. It is never shown.
+2. **Base change:** `32 × (result − E)`, where result is 1 for a win, 0.5 for a tie and 0 for a loss.
+3. **Margin multiplier**, from the margin as a share of the winner's score, `(winner − loser) / winner`:
+
+   | Margin | Multiplier |
+   |---|---|
+   | under 10% | ×1.0 |
+   | 10% to under 25% | ×1.15 |
+   | 25% to under 50% | ×1.3 |
+   | 50% or more | ×1.5 (cap) |
+
+4. **Cap:** the change is rounded and never more than ±40 in one match. Rating never drops below 1,000.
+5. **Same for every ranked match** (proposed): the multiplier applies to human matches too, and to losses as well as wins, so a heavy loss costs more. In a human match both players get the same multiplier, so one gains what the other loses.
+
+Worked examples for a 1,642 player:
+
+| Match | Result | Change |
+|---|---|---|
+| vs human 1,655, 4,800 to 4,400 (8% margin) | win | +17 (matches the Results mockup) |
+| vs Bolt (1,700), narrow win | win | +19 |
+| vs Bolt, wins by 60% | win | +28 |
+| vs Bolt, loses by 60% | loss | −20 |
+| a 1,790 player beats Bolt by 60% | win | +18 |
+
+House-player strength has to be tuned during the beta so that each one wins about as often as its hidden rating predicts. Otherwise bot matches add or drain rating across the whole player base.
+
 ## Iteration 1: ranked play
 
 **Matches**

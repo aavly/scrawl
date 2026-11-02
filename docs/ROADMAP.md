@@ -38,33 +38,42 @@ The full web version (ranked on the web, desktop layout, web sign-in) is in iter
 
 **Exit:** no open decisions block Stage 1. Met on 2026-10-31. The unticked items above carry on alongside Stage 1, and must be done before the stage noted:
 - Final name, domain and individual-or-company choice: before developer account sign-up at the end of Stage 1.
-- Design follow-ups: the bot cast and the time bar are needed for Stage 1's round and reveal, with placeholders until then. Sign-in screens are needed for Stage 2.
+- Design follow-ups: v2.1 arrived on 2026-11-02 and resolved the board-fit, found-words and score-size issues. Nothing design-side blocks Stage 1.
+- Rating formula: confirm the proposal in [PRODUCT.md](PRODUCT.md#rating) before step 2 (game engine).
 - Monetization confirmation: before Stage 2.
 
 ## Stage 1: playable game
 
-The focus is the actual gameplay and how it feels, including the social feel of facing an opponent. Everything runs locally against bot characters, with no backend.
+The focus is the actual gameplay and how it feels, including the social feel of facing an opponent. Everything runs locally against the house players, with no backend. Design references: DESIGN.md v2.0 (house players §6, avatars §7, tiers §8). Sign-in, online states and desktop layouts in the design are for later stages.
 
 1. **Foundations**
-   - [ ] Scaffold the Expo app and fill in Commands and Layout in [CLAUDE.md](../CLAUDE.md)
-   - [ ] Load fonts, build the theme tokens (Butter and Night) and the `StickerBox` component
+   - [x] Scaffold the Expo app and fill in Commands and Layout in [CLAUDE.md](../CLAUDE.md)
+   - [x] Load fonts, build the theme tokens (Butter and Night) and the `StickerBox` component
+   - [x] Butter by default, with a saved theme choice ready for the Settings toggle
+   - [ ] v2 tokens (divider, tier, hover, disabled and focus colours; 40px score numerals), `Avatar` (13 avatars as SVG) and `TierChip`
 2. **Game engine** (plain TypeScript, unit tested, no React)
    - [ ] Board generation, adjacency, trace validation, dictionary lookup and scoring, using the sample data in DESIGN.md §6
    - [ ] Dictionary loaded (ENABLE, with offensive words filtered)
    - [ ] Solver that rejects boards with too few words
-   - [ ] Bot characters as data, with difficulty and play style
+   - [ ] Rating and tier logic: DESIGN.md §8 tiers and the formula in [PRODUCT.md](PRODUCT.md#rating)
+   - [ ] House-player profiles, how they play, and band matching (DESIGN.md §6)
 3. **The round**
-   - [ ] Swipe board with all eight directions, a forgiving hit radius and the chain drawn under the finger
-   - [ ] Every feedback state from DESIGN.md §7 (valid, already found, invalid, last 10 seconds), with haptics, animations and sound hooks
+   - [ ] `Board` component with tile, gap and mode props: swiping in all eight directions, a forgiving hit radius and the chain drawn under the finger
+   - [ ] Every feedback state from DESIGN.md §13 (valid, already found, invalid, last 10 seconds), with haptics, animations and sound hooks
+   - [ ] Board header with avatars, scores, the house-player level pill and the timer
 4. **The head-to-head experience**
-   - [ ] Opponent reveal before the round
+   - [ ] Finding and Reveal, for human and house-player opponents
    - [ ] Live opponent score during the round, with the "+points" pop
-   - [ ] Results: win or loss, both word lists, best missed words, rating change (mocked)
+   - [ ] Results: win, loss, house-player win, both word lists, best missed words, rating change (local)
    - [ ] Rematch straight into a new round
-   - [ ] Tutorial round against the easiest character
-5. **Cross-platform check**
+   - [ ] Tutorial round against Pip, and the tutorial results screen
+   - [ ] Practice and the house-player cast page
+5. **Calm screens with sample data**
+   - [ ] Welcome, Home and the rank ladder, Leaderboard (including empty), Profile and the avatar picker, Settings (theme and accessibility toggles), Report, Update
+   - [ ] Toasts, the forfeit dialog and Android back behaviour
+6. **Cross-platform check**
    - [ ] Same game running on an iPhone, a mid-range Android phone and in mobile Safari (Expo Go is enough, no developer accounts needed)
-6. **Developer accounts, by the end of this stage** (Stage 2 needs them)
+7. **Developer accounts, by the end of this stage** (Stage 2 needs them)
    - [ ] Enrol in the Apple Developer Program ($99/yr)
    - [ ] Register a Google Play Console account ($25 one-time) and complete identity verification
 

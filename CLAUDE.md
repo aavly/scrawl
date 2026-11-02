@@ -10,14 +10,16 @@ Repository: https://github.com/aavly/scrawl
 
 **All UI follows [docs/design/DESIGN.md](docs/design/DESIGN.md).** Read the relevant sections before building or changing any screen or component.
 
-- **Precedence:** when DESIGN.md and a mockup disagree, DESIGN.md wins. When a newer entry in [docs/DECISIONS.md](docs/DECISIONS.md) contradicts DESIGN.md, the decision wins until DESIGN.md is updated (for example, bots are now a recurring cast of named characters, and the web now needs a desktop layout).
-- **Mockups:** [docs/design/source/](docs/design/source/) holds HTML mockups at 390×844. Use them to look up exact values only. Never import or port their markup. PNG references go in `docs/design/screens/` if added.
+- **Precedence:** when DESIGN.md and a mockup disagree, DESIGN.md wins. When a newer entry in [docs/DECISIONS.md](docs/DECISIONS.md) contradicts DESIGN.md, the decision wins until DESIGN.md is updated. The first part of [OPEN_QUESTIONS.md](docs/design/OPEN_QUESTIONS.md) lists the user decisions DESIGN.md hasn't caught up with yet (for example, the theme toggle, and that the full web version waits for iteration 2).
+- **Visual reference:** the PNGs in [docs/design/screens/](docs/design/screens/) (`phone/`, `desktop/`, `specs/`; `v1-archive/` is old). After building a screen, compare it with its PNG and report deviations.
+- **Mockups:** [docs/design/source/](docs/design/source/) holds the HTML mockups. Use them to look up exact values only, never import or port their markup. Serve the folder over HTTP to render them. `source/generator/avatars.js` has the SVG art for all 13 avatars.
 - **When DESIGN.md is silent:** don't invent a look. Add the question to [docs/design/OPEN_QUESTIONS.md](docs/design/OPEN_QUESTIONS.md), build the most conservative option, and flag it in your reply.
 - **Tokens:** every colour, font, radius and shadow comes from the one theme object (Butter light, Night dark) built from DESIGN.md §3. No hard-coded hex values in components.
 - **Hard-shadow look:** use the shared `StickerBox` component, never a one-off shadow.
 - **Feedback states:** valid, already found and invalid each need their non-colour signals exactly as DESIGN.md §7 specifies.
 - **Busy visuals** (dot background, stickers, confetti) appear only on gameplay and matchmaking screens. Navigation screens stay flat.
-- **Don't build anything in DESIGN.md §10** ("Planned, not designed yet"), but keep grid size, tile size and the avatar slot parameterised.
+- **Don't build anything in DESIGN.md §16** ("Planned, not designed yet"), but keep grid size, tile size and the avatar slot parameterised.
+- **Build to the roadmap, not the design's scope.** DESIGN.md covers every stage. Screens and features outside the current roadmap stage are reference for later only. Treat the design as guidance, not gospel: when a spec would obstruct building the game (it doesn't fit, contradicts itself, or misses a state), log it in OPEN_QUESTIONS.md and tell the user, rather than building around it silently.
 
 ## Current stage
 
@@ -58,8 +60,27 @@ Repository: https://github.com/aavly/scrawl
 
 ## Commands
 
-None yet. Add the install, run, test, typecheck and lint commands here once the project is scaffolded in Stage 1.
+```bash
+npm install                 # install dependencies
+npx expo start              # dev server; scan the QR code with Expo Go on a phone
+npx expo start --web        # run in the browser
+npm run typecheck           # TypeScript check
+npx expo-doctor             # check dependency and config issues
+npx expo install <package>  # ALWAYS add packages this way, so versions match the Expo SDK
+```
+
+Run the typecheck before declaring any task done.
+
+## Expo notes
+
+- **Expo SDK 58 is newer than your training data.** Before using an Expo, EAS or React Native API, check the versioned docs at `https://docs.expo.dev/versions/v58.0.0/` or the index at https://docs.expo.dev/llms.txt instead of answering from memory.
+- **Expo Go only includes its bundled native modules.** Everything so far runs in Expo Go. Adding a library with other native code means switching to a development build, so check before adding one.
+- **Never create or edit `ios/` or `android/`.** They are generated. Configure native behaviour in `app.json` and config plugins.
 
 ## Layout
 
-None yet. Add a short map of the top-level folders here once code exists.
+- `src/app/`: Expo Router routes only. Every file is a screen, `_layout.tsx` files define navigators. `index.tsx` is currently a temporary foundations preview.
+- `src/theme/`: design tokens from DESIGN.md §3 (`tokens.ts`, the only place raw colours live), `ThemeProvider` and `useTheme`, font assets.
+- `src/components/`: shared UI. `StickerBox` (outline plus hard shadow) and `DotBackground` (gameplay screens only).
+- `docs/`: planning docs, and `docs/design/` for the design spec and mockups.
+- Import from `src` with the `@/` alias, for example `@/theme`.
