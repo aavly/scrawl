@@ -21,5 +21,16 @@ Still open:
 Built differently from the mockup (engineering, 2026-11-02):
 - **Tier chip division dots.** §4.9 says one dot means II and two mean I, but in `Spec-Tiers.png` the dots are ink on an ink glyph, so they're invisible. The app draws them in the chip's fill colour so they show, as the mockup code already does for Diamond. No change needed unless the design chat prefers another treatment.
 
+- **Board screen, where the PNGs and DESIGN.md disagree** (engineering, 2026-11-02). The board was built to DESIGN.md. Which is intended?
+  - Valid word bar: the PNG fills it Mint with an Ink check disc; §4.5 says card fill with a Mint check circle.
+  - Valid chain: the PNG draws it Butter; §4.1 says Paper (white).
+  - Invalid tiles: the PNG uses #E9E4D0 / #CFC8AE stripes with grey letters; §4.1 says white / #D3D3E0 stripes with Ink letters.
+  - Invalid ✕: the PNG draws a Bubblegum ✕ on Ink; §4.5 says a white ✕.
+  - Score card corners: the PNG uses 22px radius; §3.3 says 16.
+  - Word-tier labels (NICE!, GREAT!, AMAZING!, LEGENDARY!): §4.5 calls for a starburst label but no PNG shows one. Engineering drew a simple Butter starburst at the top left of the word bar. It needs a design.
+- **Engineering choices where the design is silent:**
+  - Tracing one or two letters and letting go does nothing: no "not a word" feedback, since a short trace is usually an accidental touch.
+  - Sliding back onto the previous tile undoes the last letter.
+
 Small fix for next time:
 - §4.1b's table says a 360×592 Android phone gets 64px tiles, but the formula gives 72 (min(336, 520 − 160) = 336). Engineering follows the formula.

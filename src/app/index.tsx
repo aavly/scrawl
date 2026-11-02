@@ -2,6 +2,7 @@
 // docs/design/screens/specs (avatars, tier chips) on real devices. Replaced by
 // the Welcome and Home screens later in Stage 1.
 
+import { router } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -43,6 +44,23 @@ export default function Specimen() {
             </Text>
           </Pressable>
         </StickerBox>
+
+        <Section title="PLAY A ROUND">
+          <View style={styles.chipRow}>
+            {HOUSE_PLAYERS.map((h) => (
+              <StickerBox key={h.id} fill={colors.butter} shadow="secondary" radius={18}>
+                <Pressable
+                  accessibilityRole="button"
+                  onPress={() => router.push({ pathname: '/round', params: { opponent: h.id } })}
+                  style={styles.playButton}
+                >
+                  <Avatar id={h.id} size={34} />
+                  <Text style={[type.cardTitle, { color: colors.ink, fontSize: 16 }]}>{h.name}</Text>
+                </Pressable>
+              </StickerBox>
+            ))}
+          </View>
+        </Section>
 
         <Section title="HOUSE PLAYERS · 92 / 52 / 44 / 34">
           {HOUSE_PLAYERS.map((h) => (
@@ -101,4 +119,5 @@ const styles = StyleSheet.create({
   section: { padding: 14, gap: 10 },
   avatarRow: { flexDirection: 'row', alignItems: 'center', gap: 12, borderTopWidth: 2, paddingTop: 10 },
   chipRow: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
+  playButton: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 10, paddingVertical: 6 },
 });

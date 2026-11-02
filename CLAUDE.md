@@ -89,7 +89,12 @@ Run the typecheck and the tests before declaring any task done.
   - `engine/`: board, traces, dictionary, scoring, solver, board generator, a player's round, house-player round plans, rating maths and plausibility checks. `words.generated.ts` is built from `data/` and never edited by hand.
   - `__tests__/` and `__fixtures__/` (the DESIGN.md §6 sample board and match).
 - `data/`: source word lists with their licences. ENABLE (public domain), the LDNOOBW offensive-word list (CC BY 4.0, needs attribution) and SCOWL commonness levels (keep `SCOWL-COPYRIGHT.txt`).
-- `src/components/`: shared UI. `StickerBox` (outline plus hard shadow), `DotBackground` (gameplay screens only), `TierChip`, and `avatar/Avatar` with its generated art (`art.generated.ts`, never edit by hand).
+- `src/components/`: shared UI. `StickerBox` (outline plus hard shadow), `DotBackground` (gameplay screens only), `TierChip`, `icons`, and `avatar/Avatar` with its generated art (`art.generated.ts`, never edit by hand).
+  - `board/`: `Board` (plate, tiles, chain, pan gesture), `Tile`, and `geometry.ts` (layout and hit-testing, unit tested).
+  - `round/`: the board screen's header pieces: `ScoreCard`, `Timer`, `WordDisplay`, `FoundWords`, `Pop`.
+- `src/features/round/`: `useLocalRound` (a round against a house player, on the device) and `RoundView` (the board screen layout, no logic).
+- `src/feedback/feedback.ts`: the only place round events become haptics, and later sound.
+- `src/app/round.tsx` plays a round (`?opponent=bolt&seed=123`). `src/app/dev/board.tsx` freezes the board screen in each mockup state (`?state=valid`) for comparing with the PNGs; dev only.
 - `scripts/`: dev scripts, such as the avatar art generator.
 - `docs/`: planning docs, and `docs/design/` for the design spec and mockups.
 - Import from `src` with the `@/` alias, for example `@/theme`.

@@ -59,9 +59,10 @@ The focus is the actual gameplay and how it feels, including the social feel of 
    - [x] House-player profiles, how they play, and band matching (DESIGN.md §6)
    - [x] Plausibility checks for ranked wins (run on the server from Stage 2)
 3. **The round**
-   - [ ] `Board` component with tile, gap and mode props: swiping in all eight directions, a forgiving hit radius and the chain drawn under the finger
-   - [ ] Every feedback state from DESIGN.md §13 (valid, already found, invalid, last 10 seconds), with haptics, animations and sound hooks
-   - [ ] Board header with avatars, scores, the house-player level pill and the timer
+   - [x] `Board` component with tile and gap props and full/compact layouts: swiping in all eight directions, a forgiving hit radius and the chain drawn under the finger
+   - [x] Every feedback state from DESIGN.md §13 (valid, already found, invalid, last 10 seconds), with haptics, animations and sound hooks
+   - [x] Board header with avatars, scores, the house-player level pill and the timer
+   - [ ] Check the swipe feel on a real iPhone and Android phone in Expo Go (verified on web with a scripted mouse drag only)
 4. **The head-to-head experience**
    - [ ] Finding and Reveal, for human and house-player opponents
    - [ ] Live opponent score during the round, with the "+points" pop
