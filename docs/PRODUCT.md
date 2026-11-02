@@ -30,9 +30,11 @@
 - The leaderboard is permanent: it ranks current ratings, with no weekly reset.
 - Start 1,300, floor 1,000, tiers as DESIGN.md §8.
 
-**Proposed formula (engineering, awaiting confirmation)**
+- The margin layer applies to every ranked match, human or house player, and to losses as well as wins: a heavy loss costs more (user, 2026-11-02).
+
+**Formula (engineering proposal; the structure is agreed, the numbers are tunable in beta)**
 1. **Expected result:** `E = 1 / (1 + 10^((opponent − player) / 400))`. A house player uses a hidden fixed rating: Pip 1,300, Dash 1,500, Bolt 1,700, Nova 1,950, Titan 2,200. It is never shown.
-2. **Base change:** `32 × (result − E)`, where result is 1 for a win, 0.5 for a tie and 0 for a loss.
+2. **Base change:** `K × (result − E)`, where result is 1 for a win, 0.5 for a tie and 0 for a loss. K is 32 normally, 48 for a player's first 10 ranked matches (placement), and 24 at 2,000 and above.
 3. **Margin multiplier**, from the margin as a share of the winner's score, `(winner − loser) / winner`:
 
    | Margin | Multiplier |
@@ -42,8 +44,14 @@
    | 25% to under 50% | ×1.3 |
    | 50% or more | ×1.5 (cap) |
 
-4. **Cap:** the change is rounded and never more than ±40 in one match. Rating never drops below 1,000.
-5. **Same for every ranked match** (proposed): the multiplier applies to human matches too, and to losses as well as wins, so a heavy loss costs more. In a human match both players get the same multiplier, so one gains what the other loses.
+4. **Cap:** the change is rounded and never more than ±40 in one match (±60 during placement). Rating never drops below 1,000.
+5. In a human match both players get the same multiplier, so one gains what the other loses.
+
+**Why these caps** (compared with similar ranked games, 2026-11-02):
+- Valorant adds a performance bonus to wins but caps a match at +50 on a 100-point division. Apex caps its kill bonus and gives less for each extra kill. Scrawl's ×1.5 multiplier cap and ±40 match cap follow the same idea: performance counts, but one result can't jump a whole division.
+- Clash Royale's ranked mode moves a flat ±30 per match, and established chess players move about 10–20 points a game with K around 20–32. A normal Scrawl win is +16 to +20, so a division (100 points) takes 5–6 wins, much like Valorant.
+- Chess sites move new players by 100 or more points a game until their rating settles. Scrawl's placement K of 48 (cap ±60) is a milder version, so new players reach their level within about 10 matches.
+- Both chess and Valorant shrink the changes near the top, so the leaderboard stays stable. Scrawl drops K to 24 at 2,000 and above.
 
 Worked examples for a 1,642 player:
 

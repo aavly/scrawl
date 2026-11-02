@@ -67,6 +67,7 @@ npx expo start --web        # run in the browser
 npm run typecheck           # TypeScript check
 npx expo-doctor             # check dependency and config issues
 npx expo install <package>  # ALWAYS add packages this way, so versions match the Expo SDK
+node scripts/generate-avatars.js  # re-copy avatar art after the design files change
 ```
 
 Run the typecheck before declaring any task done.
@@ -79,8 +80,10 @@ Run the typecheck before declaring any task done.
 
 ## Layout
 
-- `src/app/`: Expo Router routes only. Every file is a screen, `_layout.tsx` files define navigators. `index.tsx` is currently a temporary foundations preview.
-- `src/theme/`: design tokens from DESIGN.md §3 (`tokens.ts`, the only place raw colours live), `ThemeProvider` and `useTheme`, font assets.
-- `src/components/`: shared UI. `StickerBox` (outline plus hard shadow) and `DotBackground` (gameplay screens only).
+- `src/app/`: Expo Router routes only. Every file is a screen, `_layout.tsx` files define navigators. `index.tsx` is currently a temporary specimen page (avatars, tier chips, theme switch).
+- `src/theme/`: design tokens from DESIGN.md §3 (`tokens.ts`, the only place raw UI colours live), `ThemeProvider` with `useTheme` and `useThemeChoice`, font assets.
+- `src/game/`: plain TypeScript game logic and data, no React. Runs in the app, the browser and later the server. So far: `tiers.ts` (rank ladder) and `housePlayers.ts` (the cast).
+- `src/components/`: shared UI. `StickerBox` (outline plus hard shadow), `DotBackground` (gameplay screens only), `TierChip`, and `avatar/Avatar` with its generated art (`art.generated.ts`, never edit by hand).
+- `scripts/`: dev scripts, such as the avatar art generator.
 - `docs/`: planning docs, and `docs/design/` for the design spec and mockups.
 - Import from `src` with the `@/` alias, for example `@/theme`.

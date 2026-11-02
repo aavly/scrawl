@@ -50,7 +50,7 @@ The focus is the actual gameplay and how it feels, including the social feel of 
    - [x] Scaffold the Expo app and fill in Commands and Layout in [CLAUDE.md](../CLAUDE.md)
    - [x] Load fonts, build the theme tokens (Butter and Night) and the `StickerBox` component
    - [x] Butter by default, with a saved theme choice ready for the Settings toggle
-   - [ ] v2 tokens (divider, tier, hover, disabled and focus colours; 40px score numerals), `Avatar` (13 avatars as SVG) and `TierChip`
+   - [x] v2 tokens (divider, tier, hover, disabled and focus colours; score numeral sizes), `Avatar` (13 avatars as SVG) and `TierChip`
 2. **Game engine** (plain TypeScript, unit tested, no React)
    - [ ] Board generation, adjacency, trace validation, dictionary lookup and scoring, using the sample data in DESIGN.md §6
    - [ ] Dictionary loaded (ENABLE, with offensive words filtered)

@@ -18,5 +18,8 @@ Decided by the user since v2.1 (2026-11-02), for DESIGN.md to catch up on:
 Still open:
 - Final name and trademark check for "Scrawl" (working name).
 
+Built differently from the mockup (engineering, 2026-11-02):
+- **Tier chip division dots.** §4.9 says one dot means II and two mean I, but in `Spec-Tiers.png` the dots are ink on an ink glyph, so they're invisible. The app draws them in the chip's fill colour so they show, as the mockup code already does for Diamond. No change needed unless the design chat prefers another treatment.
+
 Small fix for next time:
 - §4.1b's table says a 360×592 Android phone gets 64px tiles, but the formula gives 72 (min(336, 520 − 160) = 336). Engineering follows the formula.

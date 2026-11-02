@@ -6,6 +6,7 @@ import {
   accents,
   butter,
   dotGrid,
+  focusRing,
   fontFamilies,
   night,
   outline,
@@ -13,7 +14,9 @@ import {
   radii,
   shadows,
   spacing,
+  tierColors,
   type,
+  ui,
   type Palette,
 } from './tokens';
 
@@ -22,7 +25,9 @@ export type ThemeName = 'butter' | 'night';
 export type Theme = {
   name: ThemeName;
   isDark: boolean;
-  colors: Palette & typeof accents;
+  colors: Palette & typeof accents & typeof ui;
+  tierColors: typeof tierColors;
+  focusRing: typeof focusRing;
   fonts: typeof fontFamilies;
   type: typeof type;
   outline: typeof outline;
@@ -44,7 +49,9 @@ function buildTheme(name: ThemeName): Theme {
   return {
     name,
     isDark: name === 'night',
-    colors: { ...accents, ...palette },
+    colors: { ...accents, ...ui, ...palette },
+    tierColors,
+    focusRing,
     fonts: fontFamilies,
     type,
     outline,
@@ -90,8 +97,11 @@ export function ThemeProvider({ children, initial = DEFAULT_THEME, override }: P
 
   // Keep native UI (keyboard, system dialogs, scroll indicators) in step with
   // the in-app theme rather than the phone's setting.
+  // react-native-web has no setColorScheme, so this is native only.
   useEffect(() => {
-    if (!override) Appearance.setColorScheme(choice === 'night' ? 'dark' : 'light');
+    if (!override && typeof Appearance.setColorScheme === 'function') {
+      Appearance.setColorScheme(choice === 'night' ? 'dark' : 'light');
+    }
   }, [choice, override]);
 
   const theme = useMemo(() => buildTheme(name), [name]);

@@ -9,7 +9,29 @@ export const accents = {
   ink: '#141414',
   paper: '#FFFFFF',
   hatch: '#D3D3E0',
+  cream: '#FFF6D6',
 } as const;
+
+// Fixed UI colours that don't change with the theme (§4.1, §4.7, §7.3).
+export const ui = {
+  tileHover: '#FFF1A8',
+  disabledFill: '#CFC8AE',
+  disabledText: '#4A4A4A',
+  lockedFill: '#E9E4D0',
+} as const;
+
+// Tier chip fill and text colours (§3.1). Used only inside tier chips.
+export const tierColors = {
+  bronze: { fill: '#E39A5B', text: accents.ink },
+  silver: { fill: '#DADDE8', text: accents.ink },
+  gold: { fill: '#FFD84A', text: accents.ink },
+  platinum: { fill: '#9FE8F2', text: accents.ink },
+  diamond: { fill: '#2F4BFF', text: accents.paper },
+  legend: { fill: '#141414', text: '#FFD84A' },
+} as const;
+
+// Keyboard and screen-reader focus ring (§4.1).
+export const focusRing = { color: accents.cobalt, width: 4, offset: 3 } as const;
 
 export type Palette = {
   bg: string;
@@ -22,6 +44,8 @@ export type Palette = {
   shadow: string;
   tile: string;
   board: string;
+  /** Hairline dividers inside cards. */
+  soft: string;
 };
 
 export const butter: Palette = {
@@ -35,6 +59,7 @@ export const butter: Palette = {
   shadow: '#141414',
   tile: '#FFFFFF',
   board: '#2F4BFF',
+  soft: 'rgba(20,20,20,.08)',
 };
 
 export const night: Palette = {
@@ -48,6 +73,7 @@ export const night: Palette = {
   shadow: '#0B0A1A',
   tile: '#FFFFFF',
   board: '#2F4BFF',
+  soft: 'rgba(255,246,214,.10)',
 };
 
 // Each weight is its own font family, because Android ignores fontWeight for
@@ -70,7 +96,8 @@ export const fontFamilies = {
 export const type = {
   display: { fontFamily: fontFamilies.display[800], fontSize: 54 },
   screenTitle: { fontFamily: fontFamilies.display[800], fontSize: 32 },
-  scoreHeader: { fontFamily: fontFamilies.display[800], fontSize: 34 },
+  scoreHeader: { fontFamily: fontFamilies.display[800], fontSize: 40 },
+  scoreHeaderCompact: { fontFamily: fontFamilies.display[800], fontSize: 26 },
   scoreResults: { fontFamily: fontFamilies.display[800], fontSize: 44 },
   ratingHero: { fontFamily: fontFamilies.display[800], fontSize: 96 },
   tracedWord: { fontFamily: fontFamilies.display[800], fontSize: 42, letterSpacing: 42 * 0.08 },
@@ -82,6 +109,21 @@ export const type = {
   timer: { fontFamily: fontFamilies.mono[700], fontSize: 25 },
   timerUrgent: { fontFamily: fontFamilies.mono[700], fontSize: 30 },
 } as const;
+
+// Score numerals step down by character count so five- and six-figure scores
+// never wrap (§4.2). Index by the formatted string's length, comma included.
+export const scoreSizes = {
+  boardFull: { 5: 40, 6: 34, 7: 30 },
+  boardCompact: { 5: 26, 6: 22, 7: 19 },
+  results: { 5: 44, 6: 38, 7: 33 },
+} as const;
+
+export function scoreFontSize(kind: keyof typeof scoreSizes, formatted: string): number {
+  const sizes = scoreSizes[kind];
+  if (formatted.length <= 5) return sizes[5];
+  if (formatted.length === 6) return sizes[6];
+  return sizes[7];
+}
 
 // §3.3
 export const outline = { standard: 3, small: 2 } as const;

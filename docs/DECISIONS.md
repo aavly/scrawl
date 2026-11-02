@@ -23,6 +23,7 @@ Add new decisions at the bottom of the relevant table, with the date and who mad
 | 2026-11-01 | Build follows the roadmap stages, not the design handoff's order. Design features outside the current stage are reference for later stages. The design is guidance: conflicts that would obstruct the game get flagged and sent back to the design chat | User |
 | 2026-11-02 | Ranked matches against house players count for rating | User |
 | 2026-11-02 | Rating change includes a tiered bonus for the points margin, with a cap. Formula proposed in [PRODUCT.md](PRODUCT.md#rating) | User |
+| 2026-11-02 | The margin layer applies to human matches too, and heavy losses cost more (same multiplier on losses) | User |
 | 2026-11-02 | No weekly leaderboard reset. The leaderboard is permanent and ranks current ratings | User |
 | 2026-11-02 | Skip for now, revisit later: the "Beaten 3 of 5" strip on Profile, the "MORE SOON" locked avatars and the leaderboard footer. Not built in release 1 | User |
 | 2026-11-02 | Design v2.1 adopted: compact board layout for small phones, one bounded found-words row, five-digit score sizes, Appearance group in Settings | User (design chat) |
@@ -48,7 +49,7 @@ Add new decisions at the bottom of the relevant table, with the date and who mad
 
 | Proposal | Reasoning |
 |---|---|
-| The rating formula, hidden house-player ratings and margin tiers in [PRODUCT.md](PRODUCT.md#rating), applied to every ranked match | Uses the user's margin idea without making bot matches worth more than human ones |
+| The rating numbers in [PRODUCT.md](PRODUCT.md#rating): K of 32 (48 for the first 10 matches, 24 at 2,000+), margin multiplier capped at ×1.5, match cap ±40 (±60 in placement), hidden house-player ratings | Benchmarked against Valorant, Apex, Clash Royale and chess. Tunable in beta |
 | ENABLE dictionary with offensive words filtered | Public domain. The tournament word lists are licensed |
 | The rivalry ID travels in the link, not in browser storage | Safari clears storage and in-app browsers don't share it |
 | Monetization arrives after the beta, phased as in [PRODUCT.md](PRODUCT.md#monetization) (user's instinct, Claude's phasing) | A clean beta measures retention without ads skewing it. Light ads at launch avoid a later "they added ads" backlash |
