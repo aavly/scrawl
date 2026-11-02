@@ -23,7 +23,9 @@ Add new decisions at the bottom of the relevant table, with the date and who mad
 | 2026-11-01 | Build follows the roadmap stages, not the design handoff's order. Design features outside the current stage are reference for later stages. The design is guidance: conflicts that would obstruct the game get flagged and sent back to the design chat | User |
 | 2026-11-02 | Ranked matches against house players count for rating | User |
 | 2026-11-02 | Rating change includes a tiered bonus for the points margin, with a cap. Formula proposed in [PRODUCT.md](PRODUCT.md#rating) | User |
-| 2026-11-02 | The margin layer applies to human matches too, and heavy losses cost more (same multiplier on losses) | User |
+| 2026-11-02 | The margin layer applies to human matches too | User |
+| 2026-11-02 | ~~Heavy losses cost more (same multiplier on losses)~~ Superseded by the next row | User |
+| 2026-11-02 | Losses are softened rather than amplified, so losing doesn't discourage players. No margin penalty on losses | User |
 | 2026-11-02 | No weekly leaderboard reset. The leaderboard is permanent and ranks current ratings | User |
 | 2026-11-02 | Skip for now, revisit later: the "Beaten 3 of 5" strip on Profile, the "MORE SOON" locked avatars and the leaderboard footer. Not built in release 1 | User |
 | 2026-11-02 | Design v2.1 adopted: compact board layout for small phones, one bounded found-words row, five-digit score sizes, Appearance group in Settings | User (design chat) |
@@ -49,8 +51,12 @@ Add new decisions at the bottom of the relevant table, with the date and who mad
 
 | Proposal | Reasoning |
 |---|---|
-| The rating numbers in [PRODUCT.md](PRODUCT.md#rating): K of 32 (48 for the first 10 matches, 24 at 2,000+), margin multiplier capped at ×1.5, match cap ±40 (±60 in placement), hidden house-player ratings | Benchmarked against Valorant, Apex, Clash Royale and chess. Tunable in beta |
-| ENABLE dictionary with offensive words filtered | Public domain. The tournament word lists are licensed |
+| The rating numbers in [PRODUCT.md](PRODUCT.md#rating): K of 32 (48 for the first 10 matches, 24 at 2,000+), win margin multiplier capped at ×1.5, losses at 75% of base, match cap ±40 (±60 in placement), hidden house-player ratings | Benchmarked against Valorant, Apex, Clash Royale and chess. Tunable in beta. Softened losses cause mild rating inflation to watch |
+| A plausibility check on ranked wins: inhuman play gets no margin bonus and is flagged; stored rating changes allow reversing a cheater's gains and refunding their opponents | The margin cap limits the bonus, but not a cheater who simply wins every match |
+| ENABLE dictionary with offensive words filtered (LDNOOBW list plus common inflections) | Public domain. The tournament word lists are licensed. Built 2026-11-02: 170,096 words, 302 removed |
+| House players draw on SCOWL word-commonness levels, so they favour everyday words | Without it they find obscure ENABLE words ("ORT") and feel robotic |
+| No Q tiles in release 1, and at most one of each rare letter (J, K, V, X, Z) per board | A lone Q is nearly unplayable. Harder letters are a later mode (DESIGN.md §16) |
+| Boards need at least 70 findable words and a 6-letter word | Calibrated on 300 random boards: median 97 words. Rejects the weakest tenth |
 | The rivalry ID travels in the link, not in browser storage | Safari clears storage and in-app browsers don't share it |
 | Monetization arrives after the beta, phased as in [PRODUCT.md](PRODUCT.md#monetization) (user's instinct, Claude's phasing) | A clean beta measures retention without ads skewing it. Light ads at launch avoid a later "they added ads" backlash |
 | Never sell a competitive advantage. Purchases are cosmetic or convenience only | Ranked play has to stay fair or the competitive core collapses |

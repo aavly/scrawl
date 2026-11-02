@@ -52,11 +52,12 @@ The focus is the actual gameplay and how it feels, including the social feel of 
    - [x] Butter by default, with a saved theme choice ready for the Settings toggle
    - [x] v2 tokens (divider, tier, hover, disabled and focus colours; score numeral sizes), `Avatar` (13 avatars as SVG) and `TierChip`
 2. **Game engine** (plain TypeScript, unit tested, no React)
-   - [ ] Board generation, adjacency, trace validation, dictionary lookup and scoring, using the sample data in DESIGN.md §6
-   - [ ] Dictionary loaded (ENABLE, with offensive words filtered)
-   - [ ] Solver that rejects boards with too few words
-   - [ ] Rating and tier logic: DESIGN.md §8 tiers and the formula in [PRODUCT.md](PRODUCT.md#rating)
-   - [ ] House-player profiles, how they play, and band matching (DESIGN.md §6)
+   - [x] Board generation, adjacency, trace validation, dictionary lookup and scoring, using the sample data in DESIGN.md §6
+   - [x] Dictionary loaded (ENABLE, with offensive words filtered, plus SCOWL commonness levels)
+   - [x] Solver, and a generator that rejects boards with too few words
+   - [x] Rating and tier logic: DESIGN.md §8 tiers and the formula in [PRODUCT.md](PRODUCT.md#rating)
+   - [x] House-player profiles, how they play, and band matching (DESIGN.md §6)
+   - [x] Plausibility checks for ranked wins (run on the server from Stage 2)
 3. **The round**
    - [ ] `Board` component with tile, gap and mode props: swiping in all eight directions, a forgiving hit radius and the chain drawn under the finger
    - [ ] Every feedback state from DESIGN.md §13 (valid, already found, invalid, last 10 seconds), with haptics, animations and sound hooks
@@ -123,6 +124,7 @@ Features are specified in [PRODUCT.md](PRODUCT.md#iteration-1-ranked-play).
 ## Stage 4: launch on iOS and Android
 
 - [ ] Store listings, screenshots, privacy details and age ratings (13 and up) for both stores
+- [ ] Acknowledgements screen or page crediting the word lists: LDNOOBW (CC BY 4.0 requires attribution) and SCOWL (its copyright notice must be included)
 - [ ] Ads between matches and a "Remove ads" purchase (see [PRODUCT.md](PRODUCT.md#monetization))
 - [ ] App Review and Play review passed
 - [ ] Phased rollout on both stores

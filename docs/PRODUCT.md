@@ -26,16 +26,15 @@
 
 **Decided (user, 2026-11-02)**
 - Ranked matches against house players count for rating.
-- How well the player did adds to the rating change: the bigger the points margin, the bigger the change, in tiers, with a cap.
+- Wins get a bonus for the points margin, in tiers, with a cap. It applies to every ranked match, human or house player.
+- Losses are softened, not amplified, so losing doesn't discourage players. A heavy loss costs no more than a close one. This replaces the earlier "heavy losses cost more" rule.
 - The leaderboard is permanent: it ranks current ratings, with no weekly reset.
 - Start 1,300, floor 1,000, tiers as DESIGN.md §8.
 
-- The margin layer applies to every ranked match, human or house player, and to losses as well as wins: a heavy loss costs more (user, 2026-11-02).
-
-**Formula (engineering proposal; the structure is agreed, the numbers are tunable in beta)**
+**Formula (engineering proposal; the structure follows the decisions above, the numbers are tunable in beta)**
 1. **Expected result:** `E = 1 / (1 + 10^((opponent − player) / 400))`. A house player uses a hidden fixed rating: Pip 1,300, Dash 1,500, Bolt 1,700, Nova 1,950, Titan 2,200. It is never shown.
 2. **Base change:** `K × (result − E)`, where result is 1 for a win, 0.5 for a tie and 0 for a loss. K is 32 normally, 48 for a player's first 10 ranked matches (placement), and 24 at 2,000 and above.
-3. **Margin multiplier**, from the margin as a share of the winner's score, `(winner − loser) / winner`:
+3. **Wins: margin multiplier**, from the margin as a share of the winner's score, `(winner − loser) / winner`:
 
    | Margin | Multiplier |
    |---|---|
@@ -44,14 +43,16 @@
    | 25% to under 50% | ×1.3 |
    | 50% or more | ×1.5 (cap) |
 
-4. **Cap:** the change is rounded and never more than ±40 in one match (±60 during placement). Rating never drops below 1,000.
-5. In a human match both players get the same multiplier, so one gains what the other loses.
+4. **Losses: softened.** A loss costs 75% of the base change, whatever the margin.
+5. **Cap:** the change is rounded and never more than ±40 in one match (±60 during placement). Rating never drops below 1,000.
+6. **Plausibility check (proposed):** if the winner's play looks inhuman (an implausible share of the board's points, or words found faster than a person can trace), the win gets no margin bonus and the match is flagged for review. Every match's change is stored, so a confirmed cheater's gains can be reversed and their opponents' losses refunded.
 
 **Why these caps** (compared with similar ranked games, 2026-11-02):
 - Valorant adds a performance bonus to wins but caps a match at +50 on a 100-point division. Apex caps its kill bonus and gives less for each extra kill. Scrawl's ×1.5 multiplier cap and ±40 match cap follow the same idea: performance counts, but one result can't jump a whole division.
 - Clash Royale's ranked mode moves a flat ±30 per match, and established chess players move about 10–20 points a game with K around 20–32. A normal Scrawl win is +16 to +20, so a division (100 points) takes 5–6 wins, much like Valorant.
 - Chess sites move new players by 100 or more points a game until their rating settles. Scrawl's placement K of 48 (cap ±60) is a milder version, so new players reach their level within about 10 matches.
 - Both chess and Valorant shrink the changes near the top, so the leaderboard stays stable. Scrawl drops K to 24 at 2,000 and above.
+- The margin is a share of the winner's score, so it can't exceed 100%, and everything from 50% up earns the same ×1.5. Running up a huge score, honestly or by cheating, earns nothing extra.
 
 Worked examples for a 1,642 player:
 
@@ -60,10 +61,14 @@ Worked examples for a 1,642 player:
 | vs human 1,655, 4,800 to 4,400 (8% margin) | win | +17 (matches the Results mockup) |
 | vs Bolt (1,700), narrow win | win | +19 |
 | vs Bolt, wins by 60% | win | +28 |
-| vs Bolt, loses by 60% | loss | −20 |
+| vs human 1,655, any margin | loss | −12 |
+| vs Bolt, any margin | loss | −10 |
 | a 1,790 player beats Bolt by 60% | win | +18 |
 
-House-player strength has to be tuned during the beta so that each one wins about as often as its hidden rating predicts. Otherwise bot matches add or drain rating across the whole player base.
+**Side effects to watch in the beta**
+- **Rating inflation.** Because winners gain more than losers lose, every human match adds a few points to the ladder overall (about +5 per even match). Over time ratings drift upward and the tiers get easier to reach. Options if it matters: shift the tier thresholds, slightly reduce K, or later keep a hidden, symmetric skill rating for matchmaking alongside the visible rating (Valorant does this).
+- **House-player tuning.** Each house player should win about as often as its hidden rating predicts. Otherwise bot matches add or drain rating across the player base.
+- The ResultsLoss mockup shows −15. With softened losses that match would show −12. No screen change needed.
 
 ## Iteration 1: ranked play
 

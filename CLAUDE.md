@@ -65,12 +65,14 @@ npm install                 # install dependencies
 npx expo start              # dev server; scan the QR code with Expo Go on a phone
 npx expo start --web        # run in the browser
 npm run typecheck           # TypeScript check
+npm test                    # unit tests (Jest); the game engine is covered in src/game/__tests__
+node scripts/build-dictionary.js  # rebuild the word list after changing anything in data/
 npx expo-doctor             # check dependency and config issues
 npx expo install <package>  # ALWAYS add packages this way, so versions match the Expo SDK
 node scripts/generate-avatars.js  # re-copy avatar art after the design files change
 ```
 
-Run the typecheck before declaring any task done.
+Run the typecheck and the tests before declaring any task done.
 
 ## Expo notes
 
@@ -82,7 +84,11 @@ Run the typecheck before declaring any task done.
 
 - `src/app/`: Expo Router routes only. Every file is a screen, `_layout.tsx` files define navigators. `index.tsx` is currently a temporary specimen page (avatars, tier chips, theme switch).
 - `src/theme/`: design tokens from DESIGN.md §3 (`tokens.ts`, the only place raw UI colours live), `ThemeProvider` with `useTheme` and `useThemeChoice`, font assets.
-- `src/game/`: plain TypeScript game logic and data, no React. Runs in the app, the browser and later the server. So far: `tiers.ts` (rank ladder) and `housePlayers.ts` (the cast).
+- `src/game/`: plain TypeScript game logic and data, no React. Runs in the app, the browser and later the server.
+  - `tiers.ts` (rank ladder) and `housePlayers.ts` (the cast and how each plays).
+  - `engine/`: board, traces, dictionary, scoring, solver, board generator, a player's round, house-player round plans, rating maths and plausibility checks. `words.generated.ts` is built from `data/` and never edited by hand.
+  - `__tests__/` and `__fixtures__/` (the DESIGN.md §6 sample board and match).
+- `data/`: source word lists with their licences. ENABLE (public domain), the LDNOOBW offensive-word list (CC BY 4.0, needs attribution) and SCOWL commonness levels (keep `SCOWL-COPYRIGHT.txt`).
 - `src/components/`: shared UI. `StickerBox` (outline plus hard shadow), `DotBackground` (gameplay screens only), `TierChip`, and `avatar/Avatar` with its generated art (`art.generated.ts`, never edit by hand).
 - `scripts/`: dev scripts, such as the avatar art generator.
 - `docs/`: planning docs, and `docs/design/` for the design spec and mockups.
