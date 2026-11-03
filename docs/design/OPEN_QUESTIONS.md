@@ -45,5 +45,12 @@ Built differently from the mockup (engineering, 2026-11-02):
   - **Tutorial coaching** before ONE is started: "Drag across touching letters. Start on the O and slide down to the N." After ONE: "Nice one! Longer words score way more. Find as many as you can before the time runs out."
   - **Best words you missed:** familiar words first, so suggestions teach rather than show obscure ENABLE words.
 
+- **User feedback on the tutorial and word list (2026-11-03), for DESIGN.md to catch up on:**
+  - **Tutorial in two parts.** Part 1: learn alone, no score cards or timer. Pip coaches three words in a speech bubble: ONE ("Start on the O. Slide down to N, then left to E."), TIDE ("Diagonals count too. Trace TIDE."), then any word ("Your turn. Find any word."), then "Nice! Now play me." with a Play Pip button. Part 2: Reveal ("YOUR FIRST MATCH") and a normal round against a gentle Pip, then Tutorial results. The Tutorial mockup's single-screen version is replaced.
+  - **Coach bubble.** It must look clearly different from the score cards. Engineering drew a cream speech bubble with a tail pointing at Pip and no hard shadow. It needs a design.
+  - **Found words wrap** inside the spare space above the board instead of one scrolling row (§4.6), so players can see their progress. Newest first, count at the top right, fade at the bottom; the board still never moves.
+  - **No Cast page.** Remove `Cast` and the "MEET THE HOUSE PLAYERS ›" link on Practice.
+  - **Copy:** all in-game text should be short. Several mockup lines were cut down, for example the Finding and Reveal house-player sentences.
+
 Small fix for next time:
 - §4.1b's table says a 360×592 Android phone gets 64px tiles, but the formula gives 72 (min(336, 520 − 160) = 336). Engineering follows the formula.

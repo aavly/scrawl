@@ -57,15 +57,14 @@ export default function Finding() {
               <Text style={[type.screenTitle, styles.center, { color: colors.cardText, fontSize: 36, lineHeight: 40 }]}>{house.name} stepped up</Text>
               <Tag label={`HOUSE PLAYER · LV ${house.level}`} />
               <Text style={[type.body, styles.center, { color: colors.cardText }]}>
-                Quiet right now, so {house.name}, one of our house players, is taking this one. A computer opponent at your level. It counts for your
-                rating.
+                Nobody free right now. {house.name} is a computer player at your level. Counts for rating.
               </Text>
             </>
           ) : (
             <>
               <FindTiles />
               <Text style={[type.screenTitle, styles.center, { color: colors.cardText, fontSize: 36, lineHeight: 40 }]}>Finding a rival</Text>
-              <Text style={[type.body, styles.center, { color: colors.cardText }]}>Looking for players around {rating}.</Text>
+              <Text style={[type.body, styles.center, { color: colors.cardText }]}>Looking around {rating}.</Text>
             </>
           )}
           <View style={{ alignSelf: 'stretch', gap: 6 }}>

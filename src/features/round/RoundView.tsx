@@ -35,8 +35,8 @@ export type RoundViewProps = {
   onTraceEnd: (path: number[]) => void;
   /** Drawn over the whole screen, e.g. a dialog. */
   overlay?: ReactNode;
-  /** Tutorial: a coach card shown in place of the found-words row. */
-  coach?: ReactNode;
+  /** Replaces the score cards and timer, e.g. Pip's coaching in the tutorial. */
+  header?: ReactNode;
   /** Tutorial: the tile to point at next. */
   hintTile?: number | null;
 };
@@ -84,19 +84,21 @@ export function RoundView(p: RoundViewProps) {
           },
         ]}
       >
-        <View style={styles.header}>
-          <ScoreCard side="you" avatar={p.me.avatar} name="YOU" score={p.me.score} footer={youFooter} compact={compact} />
-          <Timer msLeft={p.msLeft} compact={compact} />
-          <ScoreCard
-            side="opponent"
-            avatar={p.opponent.player.id}
-            name={p.opponent.player.name.toUpperCase()}
-            score={p.opponent.score}
-            footer={<SubPill label={`LV ${p.opponent.player.level} · ${p.opponent.player.label}`} fill={colors.ink} color={colors.paper} />}
-            bubble={p.opponent.bubble}
-            compact={compact}
-          />
-        </View>
+        {p.header ?? (
+          <View style={styles.header}>
+            <ScoreCard side="you" avatar={p.me.avatar} name="YOU" score={p.me.score} footer={youFooter} compact={compact} />
+            <Timer msLeft={p.msLeft} compact={compact} />
+            <ScoreCard
+              side="opponent"
+              avatar={p.opponent.player.id}
+              name={p.opponent.player.name.toUpperCase()}
+              score={p.opponent.score}
+              footer={<SubPill label={`LV ${p.opponent.player.level} · ${p.opponent.player.label}`} fill={colors.ink} color={colors.paper} />}
+              bubble={p.opponent.bubble}
+              compact={compact}
+            />
+          </View>
+        )}
 
         <WordDisplay
           look={p.word.look}
@@ -106,14 +108,15 @@ export function RoundView(p: RoundViewProps) {
           resultKey={p.word.key}
           compact={compact}
         />
-        {p.coach ?? <FoundWords words={p.finds} highlightNewest={p.highlightNewest} duplicate={p.duplicate} compact={compact} />}
-        {last10 && (
-          <View style={[styles.last10Tag, { backgroundColor: colors.bubblegum, borderColor: colors.ink }]}>
-            <Text style={{ fontFamily: fonts.mono[700], fontSize: 13, lineHeight: lineHeightFor(13), color: colors.ink }}>LAST 10!</Text>
-          </View>
-        )}
-
-        <View style={styles.fill} />
+        {/* The found words fill the spare height above the board. */}
+        <View style={styles.fill}>
+          <FoundWords words={p.finds} highlightNewest={p.highlightNewest} duplicate={p.duplicate} compact={compact} />
+          {last10 && (
+            <View style={[styles.last10Tag, { backgroundColor: colors.bubblegum, borderColor: colors.ink }]}>
+              <Text style={{ fontFamily: fonts.mono[700], fontSize: 13, lineHeight: lineHeightFor(13), color: colors.ink }}>LAST 10!</Text>
+            </View>
+          )}
+        </View>
         <View style={styles.center}>
           <Board
             board={p.board}
@@ -152,5 +155,5 @@ const styles = StyleSheet.create({
   fill: { flex: 1 },
   center: { alignItems: 'center', justifyContent: 'center' },
   header: { flexDirection: 'row', gap: 8, alignItems: 'stretch' },
-  last10Tag: { alignSelf: 'flex-start', marginLeft: 6, marginTop: -4, paddingHorizontal: 10, borderWidth: 3, borderRadius: 10, transform: [{ rotate: '-3deg' }] },
+  last10Tag: { position: 'absolute', left: 6, bottom: 0, paddingHorizontal: 10, borderWidth: 3, borderRadius: 10, transform: [{ rotate: '-3deg' }] },
 });

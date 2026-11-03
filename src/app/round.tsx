@@ -1,5 +1,6 @@
-// A ranked or practice round against a house player, on the device. When the
-// clock runs out the result is recorded and Results takes over.
+// A ranked, practice or tutorial round against a house player, on the
+// device. When the clock runs out the result is recorded and Results (or the
+// tutorial's results) takes over.
 
 import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useRef } from 'react';
@@ -9,8 +10,8 @@ import { useProfile } from '@/features/profile/ProfileProvider';
 import { recordMatch } from '@/features/profile/recordMatch';
 import { RoundView } from '@/features/round/RoundView';
 import { useLocalRound } from '@/features/round/useLocalRound';
-import { isHousePlayerId, type HousePlayerId } from '@/game/housePlayers';
-import { buildMatchResult } from '@/game/results';
+import { isHousePlayerId, TUTORIAL_PIP_STYLE, type HousePlayerId } from '@/game/housePlayers';
+import { buildMatchResult, type MatchMode } from '@/game/results';
 
 /** A beat after the buzzer before Results, so the end isn't abrupt. */
 const END_PAUSE_MS = 1100;
@@ -18,11 +19,12 @@ const END_PAUSE_MS = 1100;
 export default function RoundScreen() {
   // ?seed= replays a specific board, for testing and bug reports.
   const params = useLocalSearchParams<{ mode?: string; opponent?: string; seed?: string }>();
-  const mode = params.mode === 'practice' ? 'practice' : 'ranked';
+  const mode: MatchMode = params.mode === 'practice' || params.mode === 'tutorial' ? params.mode : 'ranked';
   const opponentId: HousePlayerId = params.opponent && isHousePlayerId(params.opponent) ? params.opponent : 'bolt';
   const seed = params.seed ? Number(params.seed) : 1;
   const { profile, update } = useProfile();
-  const r = useLocalRound(opponentId, seed);
+  // The tutorial match uses a gentler Pip so a new player can win it.
+  const r = useLocalRound(opponentId, seed, mode === 'tutorial' ? { style: TUTORIAL_PIP_STYLE } : {});
   const done = useRef(false);
   const toResults = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => () => {
@@ -45,7 +47,7 @@ export default function RoundScreen() {
     update((p) => recordMatch(p, result));
     // Not cleaned up by this effect: recording the match changes the profile,
     // which re-runs it, and that must not cancel the move to Results.
-    toResults.current = setTimeout(() => router.replace('/results'), END_PAUSE_MS);
+    toResults.current = setTimeout(() => router.replace(mode === 'tutorial' ? '/tutorial-results' : '/results'), END_PAUSE_MS);
   }, [r.finished, r.solved, r.player.finds, r.opponentFinds, r.opponent, mode, opponentId, seed, profile, update]);
 
   return (

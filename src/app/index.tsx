@@ -69,7 +69,6 @@ export default function Specimen() {
             { label: 'Tutorial', sub: 'vs Pip, first run', go: () => router.push('/tutorial') },
             { label: 'Ranked', sub: `vs ${housePlayerForRating(profile.rating).name} after a search`, go: () => router.push('/finding') },
             { label: 'Practice', sub: 'pick a house player', go: () => router.push('/practice') },
-            { label: 'House players', sub: 'meet the cast', go: () => router.push('/cast') },
           ].map((e) => (
             <StickerButton key={e.label} onPress={e.go} fill={colors.butter} shadow="secondary" radius={18} contentStyle={styles.playButton}>
               <Text style={[type.cardTitle, styles.flex, { color: colors.ink }]}>{e.label}</Text>

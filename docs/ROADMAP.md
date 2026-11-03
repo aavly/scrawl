@@ -68,8 +68,8 @@ The focus is the actual gameplay and how it feels, including the social feel of 
    - [x] Live opponent score during the round, with the "+points" pop
    - [x] Results: win, loss, house-player win, both word lists, best missed words, rating change (local)
    - [x] Rematch straight into a new round
-   - [x] Tutorial round against Pip, and the tutorial results screen
-   - [x] Practice and the house-player cast page
+   - [x] Tutorial in two parts: learn three words with Pip coaching (untimed, no opponent), then a first match against a gentle Pip, then the tutorial results screen
+   - [x] Practice (the house-player cast page was dropped: Practice is enough)
    - [x] Profile kept on the device (rating, record, best word, high score) until accounts arrive
 5. **Calm screens with sample data**
    - [ ] Welcome, Home and the rank ladder, Leaderboard (including empty), Profile and the avatar picker, Settings (theme and accessibility toggles), Report, Update

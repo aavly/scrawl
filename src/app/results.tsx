@@ -78,7 +78,7 @@ export default function Results() {
       <WordsCard result={result} theirName={house.name} />
       {result.missed.length > 0 && <MissedCard missed={result.missed} />}
       {result.mode === 'practice' && (
-        <Text style={[type.monoLabel, { color: colors.text, textAlign: 'center' }]}>PRACTICE ROUNDS NEVER CHANGE YOUR RATING</Text>
+        <Text style={[type.monoLabel, { color: colors.text, textAlign: 'center' }]}>PRACTICE NEVER CHANGES YOUR RATING</Text>
       )}
     </Screen>
   );

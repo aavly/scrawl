@@ -2,7 +2,7 @@
 // A navigation screen, so it stays flat: no dots.
 
 import { router } from 'expo-router';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { Avatar } from '@/components/avatar/Avatar';
 import { LevelPips, ScreenHeader } from '@/components/parts';
@@ -23,7 +23,7 @@ export default function Practice() {
     <Screen scroll>
       <ScreenHeader title="Practice" />
       <Text style={[type.body, { color: colors.text, fontSize: 18, lineHeight: 24 }]}>
-        Pick a house player. Unranked, so your rating never changes. Works offline.
+        Pick a house player. Unranked. Works offline.
       </Text>
 
       {HOUSE_PLAYERS.map((h) => (
@@ -55,10 +55,6 @@ export default function Practice() {
           </View>
         </StickerButton>
       ))}
-
-      <Pressable onPress={() => router.push('/cast')} accessibilityRole="link" hitSlop={8} style={styles.link}>
-        <Text style={[mono, { color: colors.text, textDecorationLine: 'underline', fontSize: 12 }]}>MEET THE HOUSE PLAYERS ›</Text>
-      </Pressable>
     </Screen>
   );
 }
@@ -67,5 +63,4 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 14, paddingVertical: 14 },
   nameRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   nearest: { borderWidth: 2, borderRadius: 99, paddingHorizontal: 7, paddingVertical: 1 },
-  link: { alignSelf: 'center', padding: 8 },
 });

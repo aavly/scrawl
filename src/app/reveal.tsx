@@ -18,7 +18,7 @@ export default function Reveal() {
   const { colors, type, fonts } = useTheme();
   const { profile } = useProfile();
   const params = useLocalSearchParams<{ mode?: string; opponent?: string; seed?: string }>();
-  const mode = params.mode === 'practice' ? 'practice' : 'ranked';
+  const mode = params.mode === 'practice' || params.mode === 'tutorial' ? params.mode : 'ranked';
   const house = housePlayer(params.opponent && isHousePlayerId(params.opponent) ? params.opponent : 'pip');
   const [count, setCount] = useState(3);
 
@@ -31,11 +31,13 @@ export default function Reveal() {
     return () => clearTimeout(id);
   }, [count, mode, house.id, params.seed]);
 
-  const headline = mode === 'practice' ? 'PRACTICE MATCH' : `${house.name.toUpperCase()} STEPPED UP`;
-  const note =
-    mode === 'practice'
-      ? `${house.name} is a computer player. Same board, same 80 seconds. Practice never changes your rating.`
-      : `${house.name} is a computer player at your level. Same board, same 80 seconds, and it counts for your rating.`;
+  // Short copy: one line each (user feedback, 2026-11-03).
+  const headline = { tutorial: 'YOUR FIRST MATCH', practice: 'PRACTICE MATCH', ranked: `${house.name.toUpperCase()} STEPPED UP` }[mode];
+  const note = {
+    tutorial: 'Same board, 80 seconds. Most points wins.',
+    practice: `${house.name} is a computer player. Unranked.`,
+    ranked: `${house.name} is a computer player at your level. Counts for rating.`,
+  }[mode];
 
   return (
     <Screen dots contentStyle={{ justifyContent: 'space-between' }}>

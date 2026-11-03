@@ -21,7 +21,13 @@ export type TraceView = {
 export function useLocalRound(
   opponentId: HousePlayerId,
   seed: number,
-  options: { /** A fixed board ("CHAS/LORT/ENIE/PSDA"), e.g. for the tutorial. */ boardText?: string; style?: PlayStyle } = {},
+  options: {
+    /** A fixed board ("CHAS/LORT/ENIE/PSDA"), e.g. for the tutorial. */
+    boardText?: string;
+    style?: PlayStyle;
+    /** No clock and no opponent: the tutorial's learning part. */
+    untimed?: boolean;
+  } = {},
 ) {
   const dictionary = useMemo(() => gameDictionary(), []);
   const { board, solved } = useMemo(() => {
@@ -31,20 +37,22 @@ export function useLocalRound(
   }, [seed, dictionary, options.boardText]);
   const opponent = housePlayer(opponentId);
   const style = options.style ?? opponent.style;
-  const plan = useMemo(() => planHouseRound(style, solved, seed + 1), [style, solved, seed]);
+  const untimed = !!options.untimed;
+  const plan = useMemo(() => (untimed ? [] : planHouseRound(style, solved, seed + 1)), [untimed, style, solved, seed]);
 
   const round = useMemo(() => new PlayerRound(board, dictionary), [board, dictionary]);
   const [startedAt] = useState(() => Date.now());
   const [now, setNow] = useState(startedAt);
-  const elapsed = Math.min(ROUND_MS, now - startedAt);
+  const elapsed = untimed ? 0 : Math.min(ROUND_MS, now - startedAt);
   const finished = elapsed >= ROUND_MS;
 
   // Clock: ten updates a second is plenty for M:SS and the opponent's score.
   useEffect(() => {
+    if (untimed) return;
     feedback({ type: 'round-start' });
     const id = setInterval(() => setNow(Date.now()), 100);
     return () => clearInterval(id);
-  }, []);
+  }, [untimed]);
 
   // Opponent score from the plan, and a "+points" bubble when it changes.
   const opponentFinds = plan.filter((f) => f.atMs <= elapsed);
@@ -62,8 +70,8 @@ export function useLocalRound(
   // A tick each second in the last 10.
   const secondsLeft = Math.ceil((ROUND_MS - elapsed) / 1000);
   useEffect(() => {
-    if (secondsLeft <= 10 && secondsLeft > 0) feedback({ type: 'last10-tick', secondsLeft });
-  }, [secondsLeft]);
+    if (!untimed && secondsLeft <= 10 && secondsLeft > 0) feedback({ type: 'last10-tick', secondsLeft });
+  }, [secondsLeft, untimed]);
 
   // The player's side.
   const [trace, setTrace] = useState<TraceView>({ path: [], look: 'tracing' });

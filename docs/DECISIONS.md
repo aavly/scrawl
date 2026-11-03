@@ -31,6 +31,11 @@ Add new decisions at the bottom of the relevant table, with the date and who mad
 | 2026-11-02 | Design v2.1 adopted: compact board layout for small phones, one bounded found-words row, five-digit score sizes, Appearance group in Settings | User (design chat) |
 | 2026-11-01 | ~~Butter (light) is the default theme. The phone's own light/dark setting is ignored~~ Superseded by the next row | User |
 | 2026-11-03 | The theme follows the phone's light or dark mode by default (Butter in light, Night in dark). Settings can pin Butter or Night, or go back to following the phone | User |
+| 2026-11-03 | All in-game text is short and concise: one instruction or idea per line, no repeated phrases | User |
+| 2026-11-03 | The tutorial is two parts: first learn alone (no opponent, no clock) by making three words with Pip coaching, then a first match against a gentle Pip | User |
+| 2026-11-03 | Pip's coaching uses a speech bubble that looks clearly different from the players' score cards | User |
+| 2026-11-03 | Found words wrap inside a taller area (the spare space above the board) instead of one scrolling row, so players can see how much they've found. Supersedes DESIGN.md v2.1 §4.6; the board still never moves | User |
+| 2026-11-03 | No separate "meet the house players" page. The Practice list is enough | User |
 | 2026-11-03 | Mild words get a fun exclamation when found ("CHEEKY!", "NAUGHTY!", "HEY, WATCH IT!" and others, picked at random) | User |
 | 2026-11-03 | Mild words such as ASS are valid. Slurs, strong profanity and explicit sexual terms stay blocked. No disclaimer or setting to switch mild words off for release 1 | User |
 | 2026-10-25 | Visual identity is "sticker-sheet pop" with Butter (light) and Night (dark) themes, specified in [design/DESIGN.md](design/DESIGN.md) | User (design chat) |

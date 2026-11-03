@@ -20,6 +20,7 @@ Repository: https://github.com/aavly/scrawl
 - **Wrapping rows:** on iOS a wrapped row using `gap` overflowed its card. Prefer stacked rows or fixed columns. When content must wrap (word chips), space items with margins, not `gap`.
 - **Feedback states:** valid, already found and invalid each need their non-colour signals exactly as DESIGN.md §7 specifies.
 - **Busy visuals** (dot background, stickers, confetti) appear only on gameplay and matchmaking screens. Navigation screens stay flat.
+- **Copy is short and concise** (user rule): one instruction or idea per line, no repeated phrases. Cut words before adding them.
 - **Don't build anything in DESIGN.md §16** ("Planned, not designed yet"), but keep grid size, tile size and the avatar slot parameterised.
 - **Build to the roadmap, not the design's scope.** DESIGN.md covers every stage. Screens and features outside the current roadmap stage are reference for later only. Treat the design as guidance, not gospel: when a spec would obstruct building the game (it doesn't fit, contradicts itself, or misses a state), log it in OPEN_QUESTIONS.md and tell the user, rather than building around it silently.
 
@@ -97,7 +98,7 @@ Run the typecheck and the tests before declaring any task done.
 - `src/features/round/`: `useLocalRound` (a round against a house player, on the device) and `RoundView` (the board screen layout, no logic).
 - `src/features/profile/`: the on-device profile (`ProfileProvider`, `useProfile`) and `recordMatch`. `src/features/match/matchStore.ts` hands a finished match to Results.
 - `src/game/results.ts`: turns a finished round into what Results shows (plain logic, tested).
-- Screens in `src/app/`: `finding`, `reveal`, `round`, `results`, `tutorial`, `tutorial-results`, `practice`, `cast`. `index.tsx` is a temporary hub with dev controls until Home exists. Shared screen pieces: `components/Screen.tsx`, `components/parts.tsx`.
+- Screens in `src/app/`: `finding`, `reveal`, `round` (ranked, practice or tutorial match), `results`, `tutorial` (learning part, untimed), `tutorial-results`, `practice`. `index.tsx` is a temporary hub with dev controls until Home exists. Shared screen pieces: `components/Screen.tsx`, `components/parts.tsx`.
 - `src/feedback/feedback.ts`: the only place round events become haptics, and later sound.
 - `src/app/round.tsx` plays a round (`?mode=ranked&opponent=bolt&seed=123`). `src/app/dev/board.tsx` freezes the board screen in each mockup state (`?state=valid`) for comparing with the PNGs; dev only.
 - `scripts/`: dev scripts, such as the avatar art generator.

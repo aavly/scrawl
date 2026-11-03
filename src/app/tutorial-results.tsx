@@ -42,7 +42,7 @@ export default function TutorialResults() {
           <StickerButton onPress={() => router.replace('/')} fill={colors.cobalt} shadow="stepLarge" radius={26} contentStyle={styles.continue}>
             <Text style={[type.screenTitle, { color: colors.paper, fontSize: 36, lineHeight: 40 }]}>Continue →</Text>
           </StickerButton>
-          <Text style={[type.monoLabel, { color: colors.text, textAlign: 'center' }]}>PRACTICE ROUNDS NEVER CHANGE YOUR RATING</Text>
+          <Text style={[type.monoLabel, { color: colors.text, textAlign: 'center' }]}>PRACTICE NEVER CHANGES YOUR RATING</Text>
         </>
       }
     >
@@ -50,7 +50,7 @@ export default function TutorialResults() {
         {won && <Confetti />}
         <Headline text={won ? 'YOU BEAT PIP!' : 'GOOD TRY!'} fill={won ? colors.mint : colors.butter} size={40} />
         <Text style={[type.bodyStrong, { color: colors.text, textAlign: 'center', fontSize: 18, lineHeight: 23 }]}>
-          {won ? "Nice work. Here's how that round went." : "That's the hang of it. Here's how that round went."}
+          {won ? 'Nice work!' : 'You’ve got the hang of it.'}
         </Text>
       </View>
 
@@ -91,12 +91,12 @@ export default function TutorialResults() {
             </View>
           ))}
         </View>
-        <Text style={[type.body, { color: colors.cardText }]}>Letters in the word on top, points underneath. One long word beats a handful of short ones.</Text>
+        <Text style={[type.body, { color: colors.cardText }]}>One long word beats lots of short ones.</Text>
       </StickerBox>
 
       <StickerBox radius={26} shadow="cardLarge" contentStyle={[styles.row, { padding: 16, gap: 14 }]}>
         <Avatar id="pip" size={52} />
-        <Text style={[type.bodyStrong, { color: colors.cardText, flex: 1 }]}>Pip will be around in Practice and when the lobby is quiet. Say hi any time.</Text>
+        <Text style={[type.bodyStrong, { color: colors.cardText, flex: 1 }]}>Find me in Practice any time.</Text>
       </StickerBox>
     </Screen>
   );

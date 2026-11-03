@@ -18,25 +18,25 @@ type Props = {
 const TILTS = [-1.5, 1, -1, 1.5];
 
 /**
- * One bounded row of found words (DESIGN.md §4.6): newest first, never grows,
- * so the board never moves. Older words scroll sideways behind a fade, with a
- * count pinned at the right.
+ * Found words, wrapped and newest first, so players can see how much they've
+ * found (user decision, 2026-11-03). The area takes the spare height between
+ * the word bar and the board: it never pushes the board, which stays put at
+ * the bottom. Words that don't fit scroll, with a fade and a count.
  */
 export function FoundWords({ words, highlightNewest, duplicate, compact }: Props) {
   const { colors, fonts } = useTheme();
   const scroller = useRef<ComponentRef<typeof ScrollView>>(null);
-  const height = compact ? 30 : 38;
 
   // A duplicate jumps to the front.
   const ordered = duplicate ? [...words.filter((w) => w.word === duplicate.word), ...words.filter((w) => w.word !== duplicate.word)] : words;
 
   useEffect(() => {
-    scroller.current?.scrollTo({ x: 0, animated: false });
+    scroller.current?.scrollTo({ y: 0, animated: false });
   }, [words.length, duplicate?.key]);
 
   return (
-    <View style={{ height }} accessibilityLabel={`${words.length} words found`}>
-      <ScrollView ref={scroller} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.row}>
+    <View style={[styles.area, { minHeight: compact ? 30 : 38 }]} accessibilityLabel={`${words.length} words found`}>
+      <ScrollView ref={scroller} showsVerticalScrollIndicator={false} contentContainerStyle={styles.wrap}>
         {ordered.map((w, i) => {
           const isDuplicate = duplicate?.word === w.word && i === 0;
           const isNew = highlightNewest && i === 0 && !duplicate;
@@ -53,20 +53,21 @@ export function FoundWords({ words, highlightNewest, duplicate, compact }: Props
             />
           );
         })}
-        <View style={{ width: 70 }} />
       </ScrollView>
-      <Svg pointerEvents="none" width={70} height={height} style={styles.fade}>
+      <Svg pointerEvents="none" width="100%" height={24} style={styles.fade}>
         <Defs>
-          <LinearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+          <LinearGradient id="foundFade" x1="0" y1="0" x2="0" y2="1">
             <Stop offset="0" stopColor={colors.bg} stopOpacity={0} />
-            <Stop offset="0.55" stopColor={colors.bg} stopOpacity={1} />
+            <Stop offset="1" stopColor={colors.bg} stopOpacity={1} />
           </LinearGradient>
         </Defs>
-        <Rect width={70} height={height} fill="url(#fade)" />
+        <Rect width="100%" height={24} fill="url(#foundFade)" />
       </Svg>
-      <View style={[styles.count, { height: compact ? 26 : 30, minWidth: compact ? 26 : 30, borderColor: colors.line, backgroundColor: colors.ink }]}>
-        <Text style={{ fontFamily: fonts.mono[700], fontSize: 12, lineHeight: lineHeightFor(12), color: colors.butter }}>{words.length}</Text>
-      </View>
+      {words.length > 0 && (
+        <View style={[styles.count, { borderColor: colors.line, backgroundColor: colors.ink }]}>
+          <Text style={{ fontFamily: fonts.mono[700], fontSize: 12, lineHeight: lineHeightFor(12), color: colors.butter }}>{words.length}</Text>
+        </View>
+      )}
     </View>
   );
 }
@@ -97,21 +98,37 @@ function Chip({
     }
   }, [wiggleKey, reduced, wiggle]);
   const style = useAnimatedStyle(() => ({ transform: [{ rotate: `${tilt + wiggle.value}deg` }] }));
+  const size = compact ? 13 : 15;
 
   return (
-    <Animated.View style={style}>
-      <View style={[styles.chipShadow, { backgroundColor: colors.shadow, borderRadius: 10 }]} />
+    <Animated.View style={[styles.chipSpace, style]}>
+      <View style={[styles.chipShadow, { backgroundColor: colors.shadow }]} />
       <View style={[styles.chip, { backgroundColor: fill, borderColor: colors.line, borderStyle: dashed ? 'dashed' : 'solid' }]}>
-        <Text style={{ fontFamily: fonts.display[800], fontSize: compact ? 13 : 15, lineHeight: lineHeightFor(compact ? 13 : 15), color }}>{label}</Text>
+        <Text style={{ fontFamily: fonts.display[800], fontSize: size, lineHeight: lineHeightFor(size), color }}>{label}</Text>
       </View>
     </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
-  row: { alignItems: 'center', gap: 8, paddingHorizontal: 2, paddingBottom: 3 },
+  area: { flex: 1 },
+  // Margins, not gap, on wrapping rows (see CLAUDE.md). Right padding keeps
+  // chips clear of the count pill.
+  wrap: { flexDirection: 'row', flexWrap: 'wrap', paddingTop: 2, paddingLeft: 2, paddingRight: 40, paddingBottom: 20 },
+  chipSpace: { marginRight: 8, marginBottom: 8 },
   chip: { borderWidth: 2, borderRadius: 10, paddingHorizontal: 9, paddingVertical: 1 },
-  chipShadow: { ...StyleSheet.absoluteFill, transform: [{ translateX: 2 }, { translateY: 2 }] },
-  fade: { position: 'absolute', right: 0, top: 0 },
-  count: { position: 'absolute', right: 0, alignSelf: 'center', top: 4, borderWidth: 2, borderRadius: 99, paddingHorizontal: 6, alignItems: 'center', justifyContent: 'center' },
+  chipShadow: { ...StyleSheet.absoluteFill, borderRadius: 10, transform: [{ translateX: 2 }, { translateY: 2 }] },
+  fade: { position: 'absolute', left: 0, right: 0, bottom: 0 },
+  count: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    minWidth: 30,
+    height: 30,
+    borderWidth: 2,
+    borderRadius: 99,
+    paddingHorizontal: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

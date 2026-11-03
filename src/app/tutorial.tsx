@@ -1,101 +1,84 @@
-// The first-run tutorial (DESIGN.md §5.2): a real round against a gentle Pip
-// on the sample board, with Pip coaching the first word, ONE.
+// Tutorial, part 1 (user feedback, 2026-11-03): learn on your own first. No
+// opponent and no clock: Pip coaches three words, then offers a first match
+// (part 2 is a normal round against a gentle Pip, mode "tutorial").
 
 import { router } from 'expo-router';
-import { useEffect, useRef } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Text } from 'react-native';
 
-import { Avatar } from '@/components/avatar/Avatar';
-import { StickerBox } from '@/components/StickerBox';
-import { setLastMatch } from '@/features/match/matchStore';
+import { CoachBubble } from '@/components/round/CoachBubble';
+import { StickerButton } from '@/components/StickerButton';
+import { newSeed } from '@/features/match/matchStore';
 import { useProfile } from '@/features/profile/ProfileProvider';
-import { recordMatch } from '@/features/profile/recordMatch';
 import { RoundView } from '@/features/round/RoundView';
 import { useLocalRound } from '@/features/round/useLocalRound';
-import { TUTORIAL_PIP_STYLE } from '@/game/housePlayers';
-import { buildMatchResult } from '@/game/results';
-import { lineHeightFor, useTheme } from '@/theme';
+import { useTheme } from '@/theme';
 
 /** The DESIGN.md sample board, which the tutorial mockup uses. */
-const TUTORIAL_BOARD = 'CHAS/LORT/ENIE/PSDA';
-/** O, N, E on that board. */
-const FIRST_WORD = { word: 'ONE', path: [5, 9, 8] };
-const SEED = 7;
+const LEARN_BOARD = 'CHAS/LORT/ENIE/PSDA';
+
+type Step = { say: string; word?: string; path?: number[] };
+
+// Short lines only: one instruction each.
+const STEPS: Step[] = [
+  // O(5) down to N(9), left to E(8).
+  { say: 'Start on the O. Slide down to N, then left to E.', word: 'ONE', path: [5, 9, 8] },
+  // T(7) diagonally to I(10), down to D(14), diagonally to E(11).
+  { say: 'Diagonals count too. Trace TIDE.', word: 'TIDE', path: [7, 10, 14, 11] },
+  { say: 'Your turn. Find any word.' },
+];
 
 export default function Tutorial() {
-  const { profile, update } = useProfile();
-  const r = useLocalRound('pip', SEED, { boardText: TUTORIAL_BOARD, style: TUTORIAL_PIP_STYLE });
-  const foundFirst = r.player.finds.some((f) => f.word === FIRST_WORD.word);
-  const done = useRef(false);
-  const toResults = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { colors, type } = useTheme();
+  const { profile } = useProfile();
+  const [seed] = useState(1);
+  const r = useLocalRound('pip', seed, { boardText: LEARN_BOARD, untimed: true });
+  const found = new Set(r.player.finds.map((f) => f.word));
 
-  // Point at the next letter of ONE while the trace is following it.
+  // The first step whose word isn't found yet; the free step needs any new word.
+  const guidedDone = STEPS.filter((s) => s.word).every((s) => found.has(s.word!));
+  const freeDone = guidedDone && r.player.finds.some((f) => !STEPS.some((s) => s.word === f.word));
+  const stepIndex = STEPS.findIndex((s) => (s.word ? !found.has(s.word) : !freeDone));
+  const step = stepIndex >= 0 ? STEPS[stepIndex] : null;
+
+  // Point at the next letter of a guided word while the trace follows it.
   const traced = r.trace.look === 'tracing' ? r.trace.path : [];
-  const following = traced.every((t, i) => t === FIRST_WORD.path[i]);
-  const hintTile = !foundFirst && following && traced.length < FIRST_WORD.path.length ? FIRST_WORD.path[traced.length] : null;
+  const path = step?.path;
+  const following = !!path && traced.every((t, i) => t === path[i]);
+  const hintTile = path && following && traced.length < path.length ? path[traced.length] : null;
 
-  const coachText = foundFirst
-    ? 'Nice one! Longer words score way more. Find as many as you can before the time runs out.'
-    : traced.length >= 2 && following
-      ? 'Drag across touching letters. Diagonals count! Slide on to the E to finish ONE.'
-      : 'Drag across touching letters. Start on the O and slide down to the N.';
-
-  useEffect(() => () => {
-    if (toResults.current) clearTimeout(toResults.current);
-  }, []);
-
-  useEffect(() => {
-    if (!r.finished || done.current) return;
-    done.current = true;
-    const result = buildMatchResult({
-      mode: 'tutorial',
-      solved: r.solved,
-      yourWords: r.player.finds.map((f) => f.word),
-      theirWords: r.opponentFinds.map((f) => f.word),
-      yourRating: profile.rating,
-      theirRating: r.opponent.hiddenRating,
-      rankedPlayed: profile.rankedPlayed,
-    });
-    setLastMatch({ result, opponentId: 'pip', seed: SEED });
-    update((p) => recordMatch(p, result));
-    toResults.current = setTimeout(() => router.replace('/tutorial-results'), 1100);
-  }, [r.finished, r.solved, r.player.finds, r.opponentFinds, r.opponent, profile, update]);
+  const playPip = () => router.replace({ pathname: '/reveal', params: { mode: 'tutorial', opponent: 'pip', seed: String(newSeed()) } });
 
   return (
     <RoundView
       board={r.board}
       msLeft={r.msLeft}
       me={{ avatar: profile.avatar, username: profile.username, score: r.player.score }}
-      opponent={{ player: r.opponent, score: r.opponentScore, bubble: r.bubble }}
+      opponent={{ player: r.opponent, score: 0 }}
       word={r.word}
       finds={r.player.finds}
       highlightNewest={r.highlightNewest}
       duplicate={r.duplicate}
       trace={r.trace}
-      disabled={r.finished}
       onTraceChange={r.onTraceChange}
       onTraceEnd={r.onTraceEnd}
       hintTile={hintTile}
-      coach={<CoachCard text={coachText} />}
+      header={
+        step ? (
+          <CoachBubble speaker="pip" label={`PIP · STEP ${stepIndex + 1} OF ${STEPS.length}`} text={step.say} />
+        ) : (
+          <CoachBubble
+            speaker="pip"
+            label="PIP · YOU'RE READY"
+            text="Nice! Now play me."
+            action={
+              <StickerButton onPress={playPip} fill={colors.cobalt} radius={16} contentStyle={{ alignItems: 'center', paddingVertical: 10 }}>
+                <Text style={[type.cardTitle, { color: colors.paper }]}>Play Pip</Text>
+              </StickerButton>
+            }
+          />
+        )
+      }
     />
   );
 }
-
-function CoachCard({ text }: { text: string }) {
-  const { colors, fonts } = useTheme();
-  return (
-    <StickerBox radius={22} contentStyle={styles.coach} accessibilityLiveRegion="polite">
-      <Avatar id="pip" size={52} />
-      <View style={{ flex: 1, gap: 3 }}>
-        <Text style={{ fontFamily: fonts.mono[700], fontSize: 11, lineHeight: lineHeightFor(11), letterSpacing: 0.44, color: colors.cardText }}>
-          PIP · YOUR PRACTICE PARTNER
-        </Text>
-        <Text style={{ fontFamily: fonts.display[700], fontSize: 16, lineHeight: 20, color: colors.cardText }}>{text}</Text>
-      </View>
-    </StickerBox>
-  );
-}
-
-const styles = StyleSheet.create({
-  coach: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 14, paddingVertical: 12 },
-});
