@@ -4,7 +4,7 @@ import path from 'path';
 import { parseBoard } from '../engine/board';
 import { gameDictionary } from '../engine/dictionary';
 import { PlayerRound } from '../engine/round';
-import { pointsForWord, wordTier } from '../engine/scoring';
+import { MILD_EXCLAMATIONS, mildExclamation, pointsForWord, wordTier } from '../engine/scoring';
 import { solveBoard } from '../engine/solver';
 import { readTrace } from '../engine/trace';
 
@@ -63,6 +63,12 @@ describe('scoring', () => {
     expect(wordTier('CHART')).toBe('nice');
     expect(wordTier('AERATIONS')).toBe('legendary');
   });
+
+  it('has a range of reactions for mild words', () => {
+    expect(MILD_EXCLAMATIONS.length).toBeGreaterThanOrEqual(8);
+    const seen = new Set(Array.from({ length: 50 }, (_, i) => mildExclamation(i * 7919)));
+    expect(seen.size).toBeGreaterThan(5);
+  });
 });
 
 describe('solver', () => {
@@ -99,6 +105,11 @@ describe('PlayerRound', () => {
     expect(round.submit([3, 7], 4000)).toMatchObject({ kind: 'too-short' });
     expect(round.submit([0, 15], 5000)).toMatchObject({ kind: 'bad-trace' });
     expect(round.finds.map((f) => f.word)).toEqual(['STRIDE']);
+  });
+
+  it('marks mild words so the UI can react to them', () => {
+    const round = new PlayerRound(board, dictionary);
+    expect(round.submit(pathOf('STRIDE'), 1000)).toMatchObject({ kind: 'valid', mild: false });
   });
 
   it('lists finds newest first', () => {

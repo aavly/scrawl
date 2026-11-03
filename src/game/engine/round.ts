@@ -6,7 +6,7 @@ import { readTrace } from './trace';
 export const ROUND_MS = 80_000;
 
 export type SubmitResult =
-  | { kind: 'valid'; word: string; points: number; score: number }
+  | { kind: 'valid'; word: string; points: number; score: number; mild: boolean }
   | { kind: 'duplicate'; word: string; score: number }
   | { kind: 'invalid'; word: string; score: number }
   | { kind: 'too-short'; word: string; score: number }
@@ -46,6 +46,6 @@ export class PlayerRound {
     const points = pointsForWord(word);
     this.found.set(word, { word, points, atMs });
     this.total += points;
-    return { kind: 'valid', word, points, score: this.total };
+    return { kind: 'valid', word, points, score: this.total, mild: this.dictionary.isMild(word) };
   }
 }

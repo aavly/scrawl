@@ -25,7 +25,7 @@ export type RoundViewProps = {
   msLeft: number;
   me: { avatar: AvatarId; username: string; score: number };
   opponent: { player: HousePlayer; score: number; bubble?: { text: string; key: number } | null };
-  word: { look: WordLook; text: string; points?: number; key: number };
+  word: { look: WordLook; text: string; points?: number; exclamation?: string; key: number };
   finds: { word: string; points: number }[];
   highlightNewest: boolean;
   duplicate: { word: string; key: number } | null;
@@ -94,7 +94,14 @@ export function RoundView(p: RoundViewProps) {
           />
         </View>
 
-        <WordDisplay look={p.word.look} word={p.word.text} points={p.word.points} resultKey={p.word.key} compact={compact} />
+        <WordDisplay
+          look={p.word.look}
+          word={p.word.text}
+          points={p.word.points}
+          exclamation={p.word.exclamation}
+          resultKey={p.word.key}
+          compact={compact}
+        />
         <FoundWords words={p.finds} highlightNewest={p.highlightNewest} duplicate={p.duplicate} compact={compact} />
         {last10 && (
           <View style={[styles.last10Tag, { backgroundColor: colors.bubblegum, borderColor: colors.ink }]}>

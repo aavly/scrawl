@@ -18,3 +18,25 @@ export function wordTier(word: string): 'none' | 'nice' | 'great' | 'amazing' | 
   if (word.length === 5) return 'nice';
   return 'none';
 }
+
+// Fun reactions when a player finds a mild word (data/mild-words.txt), shown
+// in place of the word-tier label. Cheeky, never scolding.
+export const MILD_EXCLAMATIONS = [
+  'CHEEKY!',
+  'NAUGHTY!',
+  'HEY, WATCH IT!',
+  'OI!',
+  'LANGUAGE!',
+  'TUT TUT!',
+  'OOH, SPICY!',
+  'SCANDALOUS!',
+  'WE SAW THAT!',
+  'RUDE!',
+  'MIND YOUR MOUTH!',
+  'GASP!',
+] as const;
+
+/** A reaction for a mild word. Pass any changing number (e.g. a timestamp) to vary it. */
+export function mildExclamation(seed: number): string {
+  return MILD_EXCLAMATIONS[Math.abs(Math.floor(seed)) % MILD_EXCLAMATIONS.length];
+}

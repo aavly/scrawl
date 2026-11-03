@@ -34,5 +34,7 @@ Built differently from the mockup (engineering, 2026-11-02):
 
 - **Theme: the user reversed the v2.1 default (2026-11-03).** The theme now follows the phone's light or dark mode by default, and Settings can pin Butter or Night. The §3.5 Appearance group shows only Butter and Night swatches, so it needs a third option, such as "Match phone", which is selected by default. Meanwhile the specimen page has a plain three-way picker: Phone, Butter, Night.
 
+- **Mild-word reactions (user, 2026-11-03).** A valid mild word (ASS, DAMN …) shows a random cheeky exclamation ("CHEEKY!", "NAUGHTY!", "HEY, WATCH IT!") in place of the word-tier label. Engineering reused the starburst sticker in Bubblegum. It needs a design: the sticker look, and whether it gets its own sound and animation.
+
 Small fix for next time:
 - §4.1b's table says a 360×592 Android phone gets 64px tiles, but the formula gives 72 (min(336, 520 − 160) = 336). Engineering follows the formula.

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import type { WordLook } from '@/components/round/WordDisplay';
 import { feedback } from '@/feedback/feedback';
-import { gameDictionary, generateBoard, planHouseRound, PlayerRound, ROUND_MS } from '@/game/engine';
+import { gameDictionary, generateBoard, mildExclamation, planHouseRound, PlayerRound, ROUND_MS } from '@/game/engine';
 import { housePlayer, type HousePlayerId } from '@/game/housePlayers';
 
 /** How long a submitted word's colours stay on the tiles. */
@@ -58,7 +58,11 @@ export function useLocalRound(opponentId: HousePlayerId, seed: number) {
 
   // The player's side.
   const [trace, setTrace] = useState<TraceView>({ path: [], look: 'tracing' });
-  const [word, setWord] = useState<{ look: WordLook; text: string; points?: number; key: number }>({ look: 'empty', text: '', key: 0 });
+  const [word, setWord] = useState<{ look: WordLook; text: string; points?: number; exclamation?: string; key: number }>({
+    look: 'empty',
+    text: '',
+    key: 0,
+  });
   const [finds, setFinds] = useState(round.finds);
   const [duplicate, setDuplicate] = useState<{ word: string; key: number } | null>(null);
   const clearTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -83,9 +87,9 @@ export function useLocalRound(opponentId: HousePlayerId, seed: number) {
       const result = round.submit(path, Date.now() - startedAt);
       const key = Date.now();
       if (result.kind === 'valid') {
-        feedback({ type: 'valid', letters: result.word.length });
+        feedback({ type: 'valid', letters: result.word.length, mild: result.mild });
         setTrace({ path, look: 'valid' });
-        setWord({ look: 'valid', text: result.word, points: result.points, key });
+        setWord({ look: 'valid', text: result.word, points: result.points, exclamation: result.mild ? mildExclamation(key) : undefined, key });
         setFinds(round.finds);
       } else if (result.kind === 'duplicate') {
         feedback({ type: 'duplicate' });

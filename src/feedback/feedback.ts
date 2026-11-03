@@ -7,7 +7,7 @@ import { Platform } from 'react-native';
 
 export type FeedbackEvent =
   | { type: 'tile'; letterIndex: number } // a tile joins the trace; sound rises a semitone per letter
-  | { type: 'valid'; letters: number }
+  | { type: 'valid'; letters: number; mild: boolean }
   | { type: 'duplicate' }
   | { type: 'invalid' }
   | { type: 'opponent-scored' }

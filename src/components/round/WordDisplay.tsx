@@ -16,6 +16,8 @@ type Props = {
   look: WordLook;
   word: string;
   points?: number;
+  /** A cheeky reaction for a mild word ("CHEEKY!"), shown instead of the word-tier label. */
+  exclamation?: string;
   /** Changes on every submitted word, to replay the stickers and the shake. */
   resultKey: number;
   compact?: boolean;
@@ -24,7 +26,7 @@ type Props = {
 const TIER_LABEL = { nice: 'NICE!', great: 'GREAT!', amazing: 'AMAZING!', legendary: 'LEGENDARY!' } as const;
 
 /** The word above the board (DESIGN.md §4.5). Each state has an icon and a tag as well as a colour. */
-export function WordDisplay({ look, word, points, resultKey, compact }: Props) {
+export function WordDisplay({ look, word, points, exclamation, resultKey, compact }: Props) {
   const { colors, fonts, radii } = useTheme();
   const reduced = useReducedMotion();
   const height = compact ? 48 : 62;
@@ -108,10 +110,16 @@ export function WordDisplay({ look, word, points, resultKey, compact }: Props) {
           </Sticker>
         </Pop>
       )}
-      {tier !== 'none' && (
-        <Pop key={`t${resultKey}`} style={styles.tagLeft}>
-          <Starburst label={TIER_LABEL[tier]} />
+      {look === 'valid' && exclamation ? (
+        <Pop key={`m${resultKey}`} style={styles.tagLeft}>
+          <Starburst label={exclamation} fill={colors.bubblegum} />
         </Pop>
+      ) : (
+        tier !== 'none' && (
+          <Pop key={`t${resultKey}`} style={styles.tagLeft}>
+            <Starburst label={TIER_LABEL[tier]} fill={colors.butter} />
+          </Pop>
+        )
       )}
       {look === 'duplicate' && (
         <Pop key={`d${resultKey}`} style={styles.tagRight}>
@@ -162,8 +170,8 @@ function Sticker({ children, fill, color, rotate, big }: { children: string; fil
   );
 }
 
-/** Word-tier label (NICE!, GREAT! …) on a Butter starburst. */
-function Starburst({ label }: { label: string }) {
+/** Word-tier label (NICE!, GREAT! …) or a mild-word reaction on a starburst. */
+function Starburst({ label, fill }: { label: string; fill: string }) {
   const { colors, fonts } = useTheme();
   const w = 34 + label.length * 9;
   const h = 40;
@@ -177,7 +185,7 @@ function Starburst({ label }: { label: string }) {
   return (
     <View style={{ width: w, height: h, transform: [{ rotate: '-6deg' }] }}>
       <Svg width={w} height={h} style={StyleSheet.absoluteFill}>
-        <Polygon points={points.join(' ')} fill={colors.butter} stroke={colors.ink} strokeWidth={3} strokeLinejoin="round" />
+        <Polygon points={points.join(' ')} fill={fill} stroke={colors.ink} strokeWidth={3} strokeLinejoin="round" />
       </Svg>
       <View style={styles.burstText}>
         <Text style={{ fontFamily: fonts.display[800], fontSize: 13, lineHeight: lineHeightFor(13), color: colors.ink }}>{label}</Text>

@@ -13,6 +13,7 @@
 - The dictionary is ENABLE with two curated lists of exact words in `data/`:
   - **Blocked:** slurs, strong profanity, explicit sexual terms and sexual violence. Never valid.
   - **Mild:** mild profanity (ASS, DAMN, CRAP), crude humour and clinical terms (SEX, PENIS). Valid for players, but house players never play them.
+  - **Finding a mild word gets a cheeky reaction** in place of the NICE!/GREAT! label, picked at random from a range: CHEEKY!, NAUGHTY!, HEY, WATCH IT!, OI!, LANGUAGE!, TUT TUT!, OOH, SPICY!, SCANDALOUS!, WE SAW THAT!, RUDE!, MIND YOUR MOUTH!, GASP! (user, 2026-11-03). The list lives in `src/game/engine/scoring.ts`.
 - No disclaimer or setting is needed for release 1 (user, 2026-11-03). No law requires a word game to filter words. What matters is answering the store age-rating questions honestly: mild words count as "infrequent/mild profanity or crude humour", which fits the planned 13+ rating.
 - If schools or parents ask for it later, a "family-friendly words" setting could also block the mild list.
 
