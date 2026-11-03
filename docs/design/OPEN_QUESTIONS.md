@@ -32,5 +32,7 @@ Built differently from the mockup (engineering, 2026-11-02):
   - Tracing one or two letters and letting go does nothing: no "not a word" feedback, since a short trace is usually an accidental touch.
   - Sliding back onto the previous tile undoes the last letter.
 
+- **Theme: the user reversed the v2.1 default (2026-11-03).** The theme now follows the phone's light or dark mode by default, and Settings can pin Butter or Night. The §3.5 Appearance group shows only Butter and Night swatches, so it needs a third option, such as "Match phone", which is selected by default. Meanwhile the specimen page has a plain three-way picker: Phone, Butter, Night.
+
 Small fix for next time:
 - §4.1b's table says a 360×592 Android phone gets 64px tiles, but the formula gives 72 (min(336, 520 − 160) = 336). Engineering follows the formula.

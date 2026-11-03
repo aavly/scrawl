@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { cancelAnimation, useAnimatedStyle, useReducedMotion, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 
-import { useTheme } from '@/theme';
+import { lineHeightFor, useTheme } from '@/theme';
 
 /** Round timer (DESIGN.md §4.3): a circle with M:SS, Bubblegum with a pulsing ring in the last 10 s. */
 export function Timer({ msLeft, compact }: { msLeft: number; compact?: boolean }) {
@@ -42,7 +42,7 @@ export function Timer({ msLeft, compact }: { msLeft: number; compact?: boolean }
           },
         ]}
       >
-        <Text style={{ fontFamily: fonts.mono[700], fontSize: compact ? 17 : hot ? 24 : 21, color: hot ? colors.ink : colors.bg }}>{label}</Text>
+        <Text style={{ fontFamily: fonts.mono[700], fontSize: compact ? 17 : hot ? 24 : 21, lineHeight: lineHeightFor(compact ? 17 : hot ? 24 : 21), color: hot ? colors.ink : colors.bg }}>{label}</Text>
       </View>
     </View>
   );

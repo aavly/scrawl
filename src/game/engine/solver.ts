@@ -9,6 +9,8 @@ export type Solution = {
   path: number[];
   points: number;
   commonness: Commonness;
+  /** Mild profanity or a clinical term: valid, but house players skip it. */
+  mild: boolean;
 };
 
 export type Solved = {
@@ -44,6 +46,7 @@ export function solveBoard(board: Board, dictionary: Dictionary): Solved {
     path: p,
     points: pointsForWord(w),
     commonness: dictionary.commonness(w),
+    mild: dictionary.isMild(w),
   }));
   words.sort((a, b) => b.points - a.points || a.word.localeCompare(b.word));
   return { words, maxScore: words.reduce((sum, s) => sum + s.points, 0) };

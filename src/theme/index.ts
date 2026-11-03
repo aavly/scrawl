@@ -1,12 +1,13 @@
 export {
-  DEFAULT_THEME,
+  DEFAULT_THEME_CHOICE,
   loadThemeChoice,
   ThemeProvider,
   useTheme,
   useThemeChoice,
   type Theme,
+  type ThemeChoiceValue,
   type ThemeName,
 } from './ThemeProvider';
 export { fontAssets } from './fonts';
-export { scoreFontSize } from './tokens';
+export { lineHeightFor, scoreFontSize } from './tokens';
 export type { ShadowName } from './tokens';

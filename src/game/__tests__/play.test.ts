@@ -33,6 +33,15 @@ describe('generateBoard', () => {
 describe('planHouseRound', () => {
   const { solved } = boards[0];
 
+  it('never plays a mild word', () => {
+    for (const { solved: s } of boards) {
+      for (const h of HOUSE_PLAYERS) {
+        const mild = new Set(s.words.filter((w) => w.mild).map((w) => w.word));
+        expect(planHouseRound(h.style, s, 9).filter((f) => mild.has(f.word))).toEqual([]);
+      }
+    }
+  });
+
   it('is deterministic for a seed', () => {
     const style = housePlayer('bolt').style;
     expect(planHouseRound(style, solved, 1)).toEqual(planHouseRound(style, solved, 1));

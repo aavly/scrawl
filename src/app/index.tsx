@@ -1,24 +1,30 @@
 // TEMPORARY: a specimen page for checking the foundations against
-// docs/design/screens/specs (avatars, tier chips) on real devices. Replaced by
-// the Welcome and Home screens later in Stage 1.
+// docs/design/screens/specs (avatars, tier chips) on real devices, and a way
+// into a round. Replaced by the Welcome and Home screens later in Stage 1.
 
 import { router } from 'expo-router';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Avatar, PLAYER_AVATAR_IDS, type AvatarId } from '@/components/avatar/Avatar';
 import { StickerBox } from '@/components/StickerBox';
+import { StickerButton } from '@/components/StickerButton';
 import { TierChip } from '@/components/TierChip';
 import { HOUSE_PLAYERS } from '@/game/housePlayers';
 import { TIERS } from '@/game/tiers';
-import { useTheme, useThemeChoice } from '@/theme';
+import { useTheme, useThemeChoice, type ThemeChoiceValue } from '@/theme';
 
 const SIZES = [92, 52, 44, 34];
+const THEME_OPTIONS: { value: ThemeChoiceValue; label: string }[] = [
+  { value: 'system', label: 'Phone' },
+  { value: 'butter', label: 'Butter' },
+  { value: 'night', label: 'Night' },
+];
 
 export default function Specimen() {
   const theme = useTheme();
-  const { colors, type, radii } = theme;
-  const { theme: choice, setTheme } = useThemeChoice();
+  const { colors, type } = theme;
+  const { choice, setChoice } = useThemeChoice();
   const insets = useSafeAreaInsets();
 
   return (
@@ -33,33 +39,46 @@ export default function Specimen() {
       >
         <Text style={[type.monoLabel, { color: colors.muted }]}>SPECIMEN · {theme.name.toUpperCase()}</Text>
 
-        <StickerBox fill={colors.cobalt} shadow="step" radius={radii.button} contentStyle={styles.button}>
-          <Pressable
-            onPress={() => setTheme(choice === 'butter' ? 'night' : 'butter')}
-            accessibilityRole="button"
-            style={styles.fill}
-          >
-            <Text style={[type.cardTitle, { color: colors.paper }]}>
-              Switch to {choice === 'butter' ? 'Night' : 'Butter'}
-            </Text>
-          </Pressable>
-        </StickerBox>
+        <Section title="THEME">
+          <View style={styles.row}>
+            {THEME_OPTIONS.map((o) => {
+              const selected = choice === o.value;
+              return (
+                <StickerButton
+                  key={o.value}
+                  onPress={() => setChoice(o.value)}
+                  accessibilityLabel={`Theme: ${o.label}${selected ? ', selected' : ''}`}
+                  fill={selected ? colors.cobalt : colors.card}
+                  shadow="secondary"
+                  radius={16}
+                  style={styles.flex}
+                  contentStyle={styles.themeButton}
+                >
+                  <Text style={[type.cardTitle, { fontSize: 16, lineHeight: 20, color: selected ? colors.paper : colors.cardText }]}>{o.label}</Text>
+                </StickerButton>
+              );
+            })}
+          </View>
+        </Section>
 
         <Section title="PLAY A ROUND">
-          <View style={styles.chipRow}>
-            {HOUSE_PLAYERS.map((h) => (
-              <StickerBox key={h.id} fill={colors.butter} shadow="secondary" radius={18}>
-                <Pressable
-                  accessibilityRole="button"
-                  onPress={() => router.push({ pathname: '/round', params: { opponent: h.id } })}
-                  style={styles.playButton}
-                >
-                  <Avatar id={h.id} size={34} />
-                  <Text style={[type.cardTitle, { color: colors.ink, fontSize: 16 }]}>{h.name}</Text>
-                </Pressable>
-              </StickerBox>
-            ))}
-          </View>
+          {HOUSE_PLAYERS.map((h) => (
+            <StickerButton
+              key={h.id}
+              onPress={() => router.push({ pathname: '/round', params: { opponent: h.id } })}
+              accessibilityLabel={`Play ${h.name}, level ${h.level}`}
+              fill={colors.butter}
+              shadow="secondary"
+              radius={18}
+              contentStyle={styles.playButton}
+            >
+              <Avatar id={h.id} size={44} />
+              <Text style={[type.cardTitle, styles.flex, { color: colors.ink }]}>{h.name}</Text>
+              <Text style={[type.monoLabel, { color: colors.ink }]}>
+                LV {h.level} · {h.label}
+              </Text>
+            </StickerButton>
+          ))}
         </Section>
 
         <Section title="HOUSE PLAYERS · 92 / 52 / 44 / 34">
@@ -76,10 +95,12 @@ export default function Specimen() {
 
         <Section title="TIER CHIPS · L / M / S">
           {TIERS.map((t) => (
-            <View key={t.id} style={styles.chipRow}>
+            <View key={t.id} style={styles.tierBlock}>
               <TierChip tier={t} size="l" />
-              <TierChip tier={t} size="m" />
-              <TierChip tier={t} size="s" />
+              <View style={styles.row}>
+                <TierChip tier={t} size="m" />
+                <TierChip tier={t} size="s" />
+              </View>
             </View>
           ))}
         </Section>
@@ -104,7 +125,7 @@ function AvatarRow({ id, name, caption }: { id: AvatarId; name: string; caption:
     <View style={[styles.avatarRow, { borderTopColor: colors.soft }]}>
       <View style={{ width: 80 }}>
         <Text style={[type.cardTitle, { color: colors.cardText }]}>{name}</Text>
-        <Text style={[type.monoLabel, { color: colors.cardText, fontSize: 9 }]}>{caption}</Text>
+        <Text style={[type.monoLabel, { color: colors.cardText, fontSize: 9, lineHeight: 12 }]}>{caption}</Text>
       </View>
       {SIZES.map((s) => (
         <Avatar key={s} id={id} size={s} />
@@ -114,10 +135,11 @@ function AvatarRow({ id, name, caption }: { id: AvatarId; name: string; caption:
 }
 
 const styles = StyleSheet.create({
-  fill: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  button: { height: 60 },
-  section: { padding: 14, gap: 10 },
+  flex: { flex: 1 },
+  row: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  section: { padding: 14, gap: 12 },
+  themeButton: { minHeight: 48, alignItems: 'center', justifyContent: 'center' },
+  playButton: { flexDirection: 'row', alignItems: 'center', gap: 12, minHeight: 60, paddingHorizontal: 12, paddingVertical: 8 },
   avatarRow: { flexDirection: 'row', alignItems: 'center', gap: 12, borderTopWidth: 2, paddingTop: 10 },
-  chipRow: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
-  playButton: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 10, paddingVertical: 6 },
+  tierBlock: { gap: 6 },
 });

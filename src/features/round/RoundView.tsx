@@ -18,7 +18,7 @@ import { WordDisplay, type WordLook } from '@/components/round/WordDisplay';
 import { StickerBox } from '@/components/StickerBox';
 import type { Board as BoardData } from '@/game/engine/board';
 import type { HousePlayer } from '@/game/housePlayers';
-import { useTheme } from '@/theme';
+import { lineHeightFor, useTheme } from '@/theme';
 
 export type RoundViewProps = {
   board: BoardData;
@@ -62,7 +62,7 @@ export function RoundView(p: RoundViewProps) {
     ) : diff < 0 ? (
       <SubPill label={`BEHIND ${(-diff).toLocaleString('en-US')}`} fill={colors.paper} color={colors.ink} icon={<Icon name="down" size={9} color={colors.ink} />} />
     ) : (
-      <Text style={{ fontFamily: fonts.mono[700], fontSize: 10, color: colors.cardText }}>{p.me.username}</Text>
+      <Text style={{ fontFamily: fonts.mono[700], fontSize: 10, lineHeight: lineHeightFor(10), color: colors.cardText }}>{p.me.username}</Text>
     );
 
   return (
@@ -98,7 +98,7 @@ export function RoundView(p: RoundViewProps) {
         <FoundWords words={p.finds} highlightNewest={p.highlightNewest} duplicate={p.duplicate} compact={compact} />
         {last10 && (
           <View style={[styles.last10Tag, { backgroundColor: colors.bubblegum, borderColor: colors.ink }]}>
-            <Text style={{ fontFamily: fonts.mono[700], fontSize: 13, color: colors.ink }}>LAST 10!</Text>
+            <Text style={{ fontFamily: fonts.mono[700], fontSize: 13, lineHeight: lineHeightFor(13), color: colors.ink }}>LAST 10!</Text>
           </View>
         )}
 

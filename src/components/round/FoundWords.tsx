@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useReducedMotion, useSharedValue, withSequence, withTiming } from 'react-native-reanimated';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 
-import { useTheme } from '@/theme';
+import { lineHeightFor, useTheme } from '@/theme';
 
 type Props = {
   /** Found words, newest first. */
@@ -65,7 +65,7 @@ export function FoundWords({ words, highlightNewest, duplicate, compact }: Props
         <Rect width={70} height={height} fill="url(#fade)" />
       </Svg>
       <View style={[styles.count, { height: compact ? 26 : 30, minWidth: compact ? 26 : 30, borderColor: colors.line, backgroundColor: colors.ink }]}>
-        <Text style={{ fontFamily: fonts.mono[700], fontSize: 12, color: colors.butter }}>{words.length}</Text>
+        <Text style={{ fontFamily: fonts.mono[700], fontSize: 12, lineHeight: lineHeightFor(12), color: colors.butter }}>{words.length}</Text>
       </View>
     </View>
   );
@@ -102,7 +102,7 @@ function Chip({
     <Animated.View style={style}>
       <View style={[styles.chipShadow, { backgroundColor: colors.shadow, borderRadius: 10 }]} />
       <View style={[styles.chip, { backgroundColor: fill, borderColor: colors.line, borderStyle: dashed ? 'dashed' : 'solid' }]}>
-        <Text style={{ fontFamily: fonts.display[800], fontSize: compact ? 13 : 15, color }}>{label}</Text>
+        <Text style={{ fontFamily: fonts.display[800], fontSize: compact ? 13 : 15, lineHeight: lineHeightFor(compact ? 13 : 15), color }}>{label}</Text>
       </View>
     </Animated.View>
   );

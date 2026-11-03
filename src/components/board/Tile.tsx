@@ -65,7 +65,7 @@ export const Tile = memo(function Tile({ letter, state, order, hint, size }: Pro
               },
             ]}
           >
-            <Text style={{ fontFamily: fonts.mono[700], fontSize: Math.max(8, Math.round(11 * s)), color: colors.butter }}>
+            <Text style={{ fontFamily: fonts.mono[700], fontSize: Math.max(8, Math.round(11 * s)), lineHeight: Math.max(10, Math.round(13 * s)), color: colors.butter }}>
               {order}
             </Text>
           </View>

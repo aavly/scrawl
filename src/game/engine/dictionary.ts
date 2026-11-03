@@ -8,18 +8,21 @@ export type Commonness = 1 | 2 | 3 | 4;
 export class Dictionary {
   private readonly words: readonly string[];
   private readonly levels: string | null;
+  private readonly mild: ReadonlySet<string>;
 
   /**
    * Words must be lower case and sorted. `commonness` is optional: one digit
-   * (1–4) per word in the same order.
+   * (1–4) per word in the same order. `mild` lists valid words that house
+   * players avoid.
    */
-  constructor(sortedWords: readonly string[], commonness: string | null = null) {
+  constructor(sortedWords: readonly string[], commonness: string | null = null, mild: ReadonlySet<string> = new Set()) {
     this.words = sortedWords;
     this.levels = commonness;
+    this.mild = mild;
   }
 
-  static fromNewlineList(list: string, commonness: string | null = null): Dictionary {
-    return new Dictionary(list.split('\n'), commonness);
+  static fromNewlineList(list: string, commonness: string | null = null, mild: ReadonlySet<string> = new Set()): Dictionary {
+    return new Dictionary(list.split('\n'), commonness, mild);
   }
 
   get size(): number {
@@ -44,6 +47,11 @@ export class Dictionary {
     return Number(this.levels[i]) as Commonness;
   }
 
+  /** Valid, but mild profanity or a clinical term: house players never play it. */
+  isMild(word: string): boolean {
+    return this.mild.has(word.toLowerCase());
+  }
+
   private indexOf(word: string): number {
     const w = word.toLowerCase();
     const i = this.lowerBound(w);
@@ -65,14 +73,15 @@ export class Dictionary {
 let shared: Dictionary | null = null;
 
 /**
- * The game dictionary (ENABLE minus offensive words, with SCOWL commonness).
+ * The game dictionary (ENABLE minus blocked words, with SCOWL commonness and
+ * the mild-word list).
  * Loaded on first use because the word list is large.
  */
 export function gameDictionary(): Dictionary {
   if (!shared) {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { WORDS, COMMONNESS } = require('./words.generated') as { WORDS: string; COMMONNESS: string };
-    shared = Dictionary.fromNewlineList(WORDS, COMMONNESS);
+    const { WORDS, COMMONNESS, MILD } = require('./words.generated') as { WORDS: string; COMMONNESS: string; MILD: string };
+    shared = Dictionary.fromNewlineList(WORDS, COMMONNESS, new Set(MILD.split('\n')));
   }
   return shared;
 }

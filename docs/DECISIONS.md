@@ -29,7 +29,9 @@ Add new decisions at the bottom of the relevant table, with the date and who mad
 | 2026-11-02 | No weekly leaderboard reset. The leaderboard is permanent and ranks current ratings | User |
 | 2026-11-02 | Skip for now, revisit later: the "Beaten 3 of 5" strip on Profile, the "MORE SOON" locked avatars and the leaderboard footer. Not built in release 1 | User |
 | 2026-11-02 | Design v2.1 adopted: compact board layout for small phones, one bounded found-words row, five-digit score sizes, Appearance group in Settings | User (design chat) |
-| 2026-11-01 | Butter (light) is the default theme. Night is only used when the player turns it on with a toggle in Settings. The phone's own light/dark setting is ignored | User |
+| 2026-11-01 | ~~Butter (light) is the default theme. The phone's own light/dark setting is ignored~~ Superseded by the next row | User |
+| 2026-11-03 | The theme follows the phone's light or dark mode by default (Butter in light, Night in dark). Settings can pin Butter or Night, or go back to following the phone | User |
+| 2026-11-03 | Mild words such as ASS are valid. Slurs, strong profanity and explicit sexual terms stay blocked. No disclaimer or setting to switch mild words off for release 1 | User |
 | 2026-10-25 | Visual identity is "sticker-sheet pop" with Butter (light) and Night (dark) themes, specified in [design/DESIGN.md](design/DESIGN.md) | User (design chat) |
 | 2026-10-25 | Word scoring uses the reward ladder in DESIGN.md §7 (placeholder values, tuned in playtests) | User (design chat) |
 | 2026-10-25 | ~~Bots are always labelled as generic bots~~, then ~~ranked bots are not labelled~~. Both superseded by the next row | User |
@@ -53,7 +55,7 @@ Add new decisions at the bottom of the relevant table, with the date and who mad
 |---|---|
 | The rating numbers in [PRODUCT.md](PRODUCT.md#rating): K of 32 (48 for the first 10 matches, 24 at 2,000+), win margin multiplier capped at ×1.5, losses at 75% of base, match cap ±40 (±60 in placement), hidden house-player ratings | Benchmarked against Valorant, Apex, Clash Royale and chess. Tunable in beta. Softened losses cause mild rating inflation to watch |
 | A plausibility check on ranked wins: inhuman play gets no margin bonus and is flagged; stored rating changes allow reversing a cheater's gains and refunding their opponents | The margin cap limits the bonus, but not a cheater who simply wins every match |
-| ENABLE dictionary with offensive words filtered (LDNOOBW list plus common inflections) | Public domain. The tournament word lists are licensed. Built 2026-11-02: 170,096 words, 302 removed |
+| ENABLE dictionary with two curated lists of exact words (2026-11-03): `data/blocked-words.txt` (never valid) and `data/mild-words.txt` (valid, but house players never play them). 170,258 words, 140 blocked, 98 mild | The first filter added suffixes automatically and blocked ordinary words such as BUTTER, SPICY and SNATCH |
 | House players draw on SCOWL word-commonness levels, so they favour everyday words | Without it they find obscure ENABLE words ("ORT") and feel robotic |
 | No Q tiles in release 1, and at most one of each rare letter (J, K, V, X, Z) per board | A lone Q is nearly unplayable. Harder letters are a later mode (DESIGN.md §16) |
 | Boards need at least 70 findable words and a 6-letter word | Calibrated on 300 random boards: median 97 words. Rejects the weakest tenth |

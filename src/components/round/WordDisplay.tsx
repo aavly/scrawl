@@ -6,7 +6,7 @@ import Svg, { Circle, Polygon } from 'react-native-svg';
 import { Icon } from '@/components/icons';
 import { StickerBox } from '@/components/StickerBox';
 import { wordTier } from '@/game/engine/scoring';
-import { useTheme } from '@/theme';
+import { lineHeightFor, useTheme } from '@/theme';
 
 import { Pop } from './Pop';
 
@@ -83,6 +83,7 @@ export function WordDisplay({ look, word, points, resultKey, compact }: Props) {
             {
               fontFamily: fonts.display[800],
               fontSize: compact ? 30 : 42,
+              lineHeight: compact ? 35 : 48,
               letterSpacing: (compact ? 30 : 42) * 0.08,
               color: textColor,
               opacity: look === 'duplicate' ? 0.7 : 1,
@@ -93,7 +94,7 @@ export function WordDisplay({ look, word, points, resultKey, compact }: Props) {
         </Text>
         <View style={{ width: side, alignItems: 'flex-end' }}>
           {look === 'tracing' && word.length > 0 && (
-            <Text numberOfLines={1} style={{ fontFamily: fonts.mono[700], fontSize: 11, letterSpacing: 0.66, color: textColor }}>
+            <Text numberOfLines={1} style={{ fontFamily: fonts.mono[700], fontSize: 11, lineHeight: lineHeightFor(11), letterSpacing: 0.66, color: textColor }}>
               {word.length} {word.length === 1 ? 'LETTER' : 'LETTERS'}
             </Text>
           )}
@@ -154,7 +155,7 @@ function Sticker({ children, fill, color, rotate, big }: { children: string; fil
         { backgroundColor: fill, borderColor: colors.ink, transform: [{ rotate: `${rotate}deg` }], paddingHorizontal: big ? 12 : 10 },
       ]}
     >
-      <Text style={big ? { fontFamily: fonts.display[800], fontSize: 20, color } : { fontFamily: fonts.mono[700], fontSize: 11, color }}>
+      <Text style={big ? { fontFamily: fonts.display[800], fontSize: 20, lineHeight: lineHeightFor(20), color } : { fontFamily: fonts.mono[700], fontSize: 11, lineHeight: lineHeightFor(11), color }}>
         {children}
       </Text>
     </View>
@@ -179,7 +180,7 @@ function Starburst({ label }: { label: string }) {
         <Polygon points={points.join(' ')} fill={colors.butter} stroke={colors.ink} strokeWidth={3} strokeLinejoin="round" />
       </Svg>
       <View style={styles.burstText}>
-        <Text style={{ fontFamily: fonts.display[800], fontSize: 13, color: colors.ink }}>{label}</Text>
+        <Text style={{ fontFamily: fonts.display[800], fontSize: 13, lineHeight: lineHeightFor(13), color: colors.ink }}>{label}</Text>
       </View>
     </View>
   );

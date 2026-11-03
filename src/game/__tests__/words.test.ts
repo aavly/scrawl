@@ -29,14 +29,29 @@ describe('dictionary', () => {
     expect(dictionary.commonness('ort')).toBe(4);
   });
 
-  it('contains no word from the offensive-word list', () => {
-    const list = fs
-      .readFileSync(path.join(__dirname, '../../../data/offensive-words-en.txt'), 'utf8')
+  const list = (file: string) =>
+    fs
+      .readFileSync(path.join(__dirname, '../../../data', file), 'utf8')
       .split('\n')
-      .map((w) => w.trim().toLowerCase())
-      .filter((w) => /^[a-z]{3,}$/.test(w));
-    expect(list.length).toBeGreaterThan(100);
-    expect(list.filter((w) => dictionary.has(w))).toEqual([]);
+      .map((w) => w.trim())
+      .filter((w) => w && !w.startsWith('#'));
+
+  it('contains no blocked word', () => {
+    const blocked = list('blocked-words.txt');
+    expect(blocked.length).toBeGreaterThan(100);
+    expect(blocked.filter((w) => dictionary.has(w))).toEqual([]);
+  });
+
+  it('accepts mild words but flags them for house players to avoid', () => {
+    expect(dictionary.has('ass')).toBe(true);
+    expect(dictionary.isMild('ass')).toBe(true);
+    expect(dictionary.isMild('stride')).toBe(false);
+  });
+
+  it('keeps ordinary words that an older suffix-based filter wrongly blocked', () => {
+    for (const w of ['butter', 'spicy', 'spices', 'snatch', 'escort', 'cocker', 'titer', 'skeeter', 'sucker']) {
+      expect([w, dictionary.has(w), dictionary.isMild(w)]).toEqual([w, true, false]);
+    }
   });
 });
 

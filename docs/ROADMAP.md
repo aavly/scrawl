@@ -124,7 +124,7 @@ Features are specified in [PRODUCT.md](PRODUCT.md#iteration-1-ranked-play).
 
 ## Stage 4: launch on iOS and Android
 
-- [ ] Store listings, screenshots, privacy details and age ratings (13 and up) for both stores
+- [ ] Store listings, screenshots, privacy details and age ratings (13 and up) for both stores. The age-rating questions should declare infrequent/mild profanity, since mild words are valid
 - [ ] Acknowledgements screen or page crediting the word lists: LDNOOBW (CC BY 4.0 requires attribution) and SCOWL (its copyright notice must be included)
 - [ ] Ads between matches and a "Remove ads" purchase (see [PRODUCT.md](PRODUCT.md#monetization))
 - [ ] App Review and Play review passed

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { Avatar, type AvatarId } from '@/components/avatar/Avatar';
 import { StickerBox } from '@/components/StickerBox';
-import { scoreFontSize, useTheme } from '@/theme';
+import { lineHeightFor, scoreFontSize, useTheme } from '@/theme';
 
 import { Pop } from './Pop';
 
@@ -44,6 +44,7 @@ export function ScoreCard({ side, avatar, name, score, footer, bubble, compact }
           style={{
             fontFamily: fonts.display[800],
             fontSize: scoreFontSize(compact ? 'boardCompact' : 'boardFull', formatted),
+            lineHeight: Math.round(scoreFontSize(compact ? 'boardCompact' : 'boardFull', formatted) * 1.1),
             color: textColor,
           }}
         >
@@ -54,7 +55,7 @@ export function ScoreCard({ side, avatar, name, score, footer, bubble, compact }
       {bubble && (
         <Pop key={bubble.key} style={styles.bubble} holdMs={900}>
           <View style={[styles.bubbleInner, { borderColor: colors.line, backgroundColor: colors.paper }]}>
-            <Text style={{ fontFamily: fonts.mono[700], fontSize: 12, color: colors.ink }}>{bubble.text}</Text>
+            <Text style={{ fontFamily: fonts.mono[700], fontSize: 12, lineHeight: lineHeightFor(12), color: colors.ink }}>{bubble.text}</Text>
           </View>
         </Pop>
       )}
@@ -68,7 +69,7 @@ export function SubPill({ label, fill, color, icon }: { label: string; fill: str
   return (
     <View style={[styles.pill, { backgroundColor: fill, borderColor: colors.line }]}>
       {icon}
-      <Text numberOfLines={1} style={{ fontFamily: fonts.mono[700], fontSize: 10, color }}>
+      <Text numberOfLines={1} style={{ fontFamily: fonts.mono[700], fontSize: 10, lineHeight: lineHeightFor(10), color }}>
         {label}
       </Text>
     </View>
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
   full: { paddingHorizontal: 10, paddingTop: 8, paddingBottom: 9 },
   compact: { paddingHorizontal: 8, paddingVertical: 5 },
   nameRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  name: { fontSize: 11, letterSpacing: 0.44, flexShrink: 1 },
+  name: { fontSize: 11, lineHeight: 14, letterSpacing: 0.44, flexShrink: 1 },
   pill: {
     alignSelf: 'flex-start',
     flexDirection: 'row',

@@ -15,7 +15,9 @@ Repository: https://github.com/aavly/scrawl
 - **Mockups:** [docs/design/source/](docs/design/source/) holds the HTML mockups. Use them to look up exact values only, never import or port their markup. Serve the folder over HTTP to render them. `source/generator/avatars.js` has the SVG art for all 13 avatars.
 - **When DESIGN.md is silent:** don't invent a look. Add the question to [docs/design/OPEN_QUESTIONS.md](docs/design/OPEN_QUESTIONS.md), build the most conservative option, and flag it in your reply.
 - **Tokens:** every colour, font, radius and shadow comes from the one theme object (Butter light, Night dark) built from DESIGN.md §3. No hard-coded hex values in components.
-- **Hard-shadow look:** use the shared `StickerBox` component, never a one-off shadow.
+- **Hard-shadow look:** use the shared `StickerBox` component, never a one-off shadow. Anything tappable uses `StickerButton`.
+- **Every text style sets a line height:** use a `type` token or `lineHeightFor(size)`. Without one, iOS uses Bricolage Grotesque's tall font metrics and text boxes come out taller on phones than on the web.
+- **Avoid `flexWrap` for layouts that must fit:** on iOS a wrapped row can overflow its card. Use stacked rows or fixed columns.
 - **Feedback states:** valid, already found and invalid each need their non-colour signals exactly as DESIGN.md §7 specifies.
 - **Busy visuals** (dot background, stickers, confetti) appear only on gameplay and matchmaking screens. Navigation screens stay flat.
 - **Don't build anything in DESIGN.md §16** ("Planned, not designed yet"), but keep grid size, tile size and the avatar slot parameterised.
@@ -66,7 +68,7 @@ npx expo start              # dev server; scan the QR code with Expo Go on a pho
 npx expo start --web        # run in the browser
 npm run typecheck           # TypeScript check
 npm test                    # unit tests (Jest); the game engine is covered in src/game/__tests__
-node scripts/build-dictionary.js  # rebuild the word list after changing anything in data/
+node scripts/build-dictionary.js  # rebuild the word list after changing anything in data/ (e.g. blocked-words.txt or mild-words.txt)
 npx expo-doctor             # check dependency and config issues
 npx expo install <package>  # ALWAYS add packages this way, so versions match the Expo SDK
 node scripts/generate-avatars.js  # re-copy avatar art after the design files change
@@ -88,8 +90,8 @@ Run the typecheck and the tests before declaring any task done.
   - `tiers.ts` (rank ladder) and `housePlayers.ts` (the cast and how each plays).
   - `engine/`: board, traces, dictionary, scoring, solver, board generator, a player's round, house-player round plans, rating maths and plausibility checks. `words.generated.ts` is built from `data/` and never edited by hand.
   - `__tests__/` and `__fixtures__/` (the DESIGN.md §6 sample board and match).
-- `data/`: source word lists with their licences. ENABLE (public domain), the LDNOOBW offensive-word list (CC BY 4.0, needs attribution) and SCOWL commonness levels (keep `SCOWL-COPYRIGHT.txt`).
-- `src/components/`: shared UI. `StickerBox` (outline plus hard shadow), `DotBackground` (gameplay screens only), `TierChip`, `icons`, and `avatar/Avatar` with its generated art (`art.generated.ts`, never edit by hand).
+- `data/`: source word lists with their licences. ENABLE (public domain); `blocked-words.txt` and `mild-words.txt`, curated exact-word lists (the blocked list derives from LDNOOBW, CC BY 4.0, which needs attribution); SCOWL commonness levels (keep `SCOWL-COPYRIGHT.txt`).
+- `src/components/`: shared UI. `StickerBox` (outline plus hard shadow), `StickerButton` (use it for every tappable sticker: the whole sticker is the target and it presses in), `DotBackground` (gameplay screens only), `TierChip`, `icons`, and `avatar/Avatar` with its generated art (`art.generated.ts`, never edit by hand).
   - `board/`: `Board` (plate, tiles, chain, pan gesture), `Tile`, and `geometry.ts` (layout and hit-testing, unit tested).
   - `round/`: the board screen's header pieces: `ScoreCard`, `Timer`, `WordDisplay`, `FoundWords`, `Pop`.
 - `src/features/round/`: `useLocalRound` (a round against a house player, on the device) and `RoundView` (the board screen layout, no logic).

@@ -70,6 +70,7 @@ export function TierChip({ tier, size = 'm' }: Props) {
         style={{
           fontFamily: theme.fonts.mono[700],
           fontSize: s.fontSize,
+          lineHeight: s.fontSize + 5,
           letterSpacing: s.fontSize * 0.04,
           color: text,
         }}

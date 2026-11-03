@@ -8,6 +8,14 @@
 - Two players get the same board, and the higher total wins.
 - Feedback for valid, duplicate and invalid words must differ by more than colour (haptics, sound, shape or text).
 
+## Words
+
+- The dictionary is ENABLE with two curated lists of exact words in `data/`:
+  - **Blocked:** slurs, strong profanity, explicit sexual terms and sexual violence. Never valid.
+  - **Mild:** mild profanity (ASS, DAMN, CRAP), crude humour and clinical terms (SEX, PENIS). Valid for players, but house players never play them.
+- No disclaimer or setting is needed for release 1 (user, 2026-11-03). No law requires a word game to filter words. What matters is answering the store age-rating questions honestly: mild words count as "infrequent/mild profanity or crude humour", which fits the planned 13+ rating.
+- If schools or parents ask for it later, a "family-friendly words" setting could also block the mild list.
+
 ## Platforms
 
 - **App (iOS and Android, launching together in iteration 1):** the social home. Friends, messages, rivalries, push notifications and the iMessage icon. People install it for the social experience, not to unlock features.

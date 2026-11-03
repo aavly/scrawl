@@ -92,23 +92,28 @@ export const fontFamilies = {
   },
 } as const;
 
-// Type scale from §3.2. letterSpacing is in px (em × size).
+// Type scale from §3.2. letterSpacing is in px (em × size). Every style sets
+// an explicit lineHeight: iOS otherwise uses Bricolage Grotesque's tall font
+// metrics and text boxes come out taller on phones than on the web.
 export const type = {
-  display: { fontFamily: fontFamilies.display[800], fontSize: 54 },
-  screenTitle: { fontFamily: fontFamilies.display[800], fontSize: 32 },
-  scoreHeader: { fontFamily: fontFamilies.display[800], fontSize: 40 },
-  scoreHeaderCompact: { fontFamily: fontFamilies.display[800], fontSize: 26 },
-  scoreResults: { fontFamily: fontFamilies.display[800], fontSize: 44 },
-  ratingHero: { fontFamily: fontFamilies.display[800], fontSize: 96 },
-  tracedWord: { fontFamily: fontFamilies.display[800], fontSize: 42, letterSpacing: 42 * 0.08 },
-  tileLetter: { fontFamily: fontFamilies.display[800], fontSize: 40 },
-  cardTitle: { fontFamily: fontFamilies.display[800], fontSize: 19 },
-  body: { fontFamily: fontFamilies.display[500], fontSize: 17 },
-  bodyStrong: { fontFamily: fontFamilies.display[600], fontSize: 17 },
-  monoLabel: { fontFamily: fontFamilies.mono[700], fontSize: 12, letterSpacing: 12 * 0.1 },
-  timer: { fontFamily: fontFamilies.mono[700], fontSize: 25 },
-  timerUrgent: { fontFamily: fontFamilies.mono[700], fontSize: 30 },
+  display: { fontFamily: fontFamilies.display[800], fontSize: 54, lineHeight: 58 },
+  screenTitle: { fontFamily: fontFamilies.display[800], fontSize: 32, lineHeight: 36 },
+  scoreHeader: { fontFamily: fontFamilies.display[800], fontSize: 40, lineHeight: 44 },
+  scoreHeaderCompact: { fontFamily: fontFamilies.display[800], fontSize: 26, lineHeight: 29 },
+  scoreResults: { fontFamily: fontFamilies.display[800], fontSize: 44, lineHeight: 48 },
+  ratingHero: { fontFamily: fontFamilies.display[800], fontSize: 96, lineHeight: 100 },
+  tracedWord: { fontFamily: fontFamilies.display[800], fontSize: 42, lineHeight: 48, letterSpacing: 42 * 0.08 },
+  tileLetter: { fontFamily: fontFamilies.display[800], fontSize: 40, lineHeight: 46 },
+  cardTitle: { fontFamily: fontFamilies.display[800], fontSize: 19, lineHeight: 23 },
+  body: { fontFamily: fontFamilies.display[500], fontSize: 17, lineHeight: 22 },
+  bodyStrong: { fontFamily: fontFamilies.display[600], fontSize: 17, lineHeight: 22 },
+  monoLabel: { fontFamily: fontFamilies.mono[700], fontSize: 12, lineHeight: 16, letterSpacing: 12 * 0.1 },
+  timer: { fontFamily: fontFamilies.mono[700], fontSize: 25, lineHeight: 30 },
+  timerUrgent: { fontFamily: fontFamilies.mono[700], fontSize: 30, lineHeight: 36 },
 } as const;
+
+/** Line height for a font size set outside the type scale. */
+export const lineHeightFor = (fontSize: number) => Math.round(fontSize * 1.18);
 
 // Score numerals step down by character count so five- and six-figure scores
 // never wrap (§4.2). Index by the formatted string's length, comma included.

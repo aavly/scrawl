@@ -17,8 +17,9 @@ export function planHouseRound(style: PlayStyle, solved: Solved, seed: number, r
   const target = Math.max(1, randomInt(rng, style.words - style.wordsSpread, style.words + style.wordsSpread));
 
   // The words it "knows" on this board, each with a pick weight.
+  // House players never spell mild profanity or clinical terms at anyone.
   const pool = solved.words
-    .filter((s) => rng() < style.vocabulary[s.commonness - 1])
+    .filter((s) => !s.mild && rng() < style.vocabulary[s.commonness - 1])
     .map((s) => ({ s, weight: style.lengthBias ** (s.word.length - 3) }));
 
   // Weighted picks without replacement.
