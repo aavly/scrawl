@@ -64,12 +64,13 @@ The focus is the actual gameplay and how it feels, including the social feel of 
    - [x] Board header with avatars, scores, the house-player level pill and the timer
    - [ ] Check the swipe feel on a real iPhone and Android phone in Expo Go (verified on web with a scripted mouse drag only)
 4. **The head-to-head experience**
-   - [ ] Finding and Reveal, for human and house-player opponents
-   - [ ] Live opponent score during the round, with the "+points" pop
-   - [ ] Results: win, loss, house-player win, both word lists, best missed words, rating change (local)
-   - [ ] Rematch straight into a new round
-   - [ ] Tutorial round against Pip, and the tutorial results screen
-   - [ ] Practice and the house-player cast page
+   - [x] Finding and Reveal for house-player opponents (human opponents need Stage 2's server)
+   - [x] Live opponent score during the round, with the "+points" pop
+   - [x] Results: win, loss, house-player win, both word lists, best missed words, rating change (local)
+   - [x] Rematch straight into a new round
+   - [x] Tutorial round against Pip, and the tutorial results screen
+   - [x] Practice and the house-player cast page
+   - [x] Profile kept on the device (rating, record, best word, high score) until accounts arrive
 5. **Calm screens with sample data**
    - [ ] Welcome, Home and the rank ladder, Leaderboard (including empty), Profile and the avatar picker, Settings (theme and accessibility toggles), Report, Update
    - [ ] Toasts, the forfeit dialog and Android back behaviour

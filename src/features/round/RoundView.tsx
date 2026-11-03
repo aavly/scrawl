@@ -33,8 +33,12 @@ export type RoundViewProps = {
   disabled?: boolean;
   onTraceChange: (path: number[]) => void;
   onTraceEnd: (path: number[]) => void;
-  /** Drawn over the whole screen, e.g. the end-of-round card. */
+  /** Drawn over the whole screen, e.g. a dialog. */
   overlay?: ReactNode;
+  /** Tutorial: a coach card shown in place of the found-words row. */
+  coach?: ReactNode;
+  /** Tutorial: the tile to point at next. */
+  hintTile?: number | null;
 };
 
 export function RoundView(p: RoundViewProps) {
@@ -102,7 +106,7 @@ export function RoundView(p: RoundViewProps) {
           resultKey={p.word.key}
           compact={compact}
         />
-        <FoundWords words={p.finds} highlightNewest={p.highlightNewest} duplicate={p.duplicate} compact={compact} />
+        {p.coach ?? <FoundWords words={p.finds} highlightNewest={p.highlightNewest} duplicate={p.duplicate} compact={compact} />}
         {last10 && (
           <View style={[styles.last10Tag, { backgroundColor: colors.bubblegum, borderColor: colors.ink }]}>
             <Text style={{ fontFamily: fonts.mono[700], fontSize: 13, lineHeight: lineHeightFor(13), color: colors.ink }}>LAST 10!</Text>
@@ -117,6 +121,7 @@ export function RoundView(p: RoundViewProps) {
             gap={layout.gap}
             path={p.trace.path}
             look={p.trace.look}
+            hintTile={p.hintTile}
             disabled={p.disabled}
             onTraceChange={p.onTraceChange}
             onTraceEnd={p.onTraceEnd}

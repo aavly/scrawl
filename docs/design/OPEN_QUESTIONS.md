@@ -36,5 +36,14 @@ Built differently from the mockup (engineering, 2026-11-02):
 
 - **Mild-word reactions (user, 2026-11-03).** A valid mild word (ASS, DAMN …) shows a random cheeky exclamation ("CHEEKY!", "NAUGHTY!", "HEY, WATCH IT!") in place of the word-tier label. Engineering reused the starburst sticker in Bubblegum. It needs a design: the sticker look, and whether it gets its own sound and animation.
 
+- **Step 4 choices where the design is silent (engineering, 2026-11-03):**
+  - **Finding search time:** shortened to 3 s in Stage 1, then the house player steps up. With no server there are no humans to find. Stage 2 restores the ~10 s search.
+  - **Practice entry:** Practice goes through Reveal with the headline "PRACTICE MATCH" and a practice note, reusing the house-player Reveal layout.
+  - **Practice results:** the Results screen without the rating card, plus the caption "PRACTICE ROUNDS NEVER CHANGE YOUR RATING".
+  - **Results headlines:** a loss says "SO CLOSE" whoever the opponent is, and a tie says "DEAD HEAT!". The tutorial loss says "GOOD TRY!" on Butter.
+  - **Report flag:** hidden on Results against house players, since there's nobody to report.
+  - **Tutorial coaching** before ONE is started: "Drag across touching letters. Start on the O and slide down to the N." After ONE: "Nice one! Longer words score way more. Find as many as you can before the time runs out."
+  - **Best words you missed:** familiar words first, so suggestions teach rather than show obscure ENABLE words.
+
 Small fix for next time:
 - §4.1b's table says a 360×592 Android phone gets 64px tiles, but the formula gives 72 (min(336, 520 − 160) = 336). Engineering follows the formula.

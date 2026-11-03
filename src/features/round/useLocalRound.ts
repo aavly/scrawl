@@ -2,8 +2,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import type { WordLook } from '@/components/round/WordDisplay';
 import { feedback } from '@/feedback/feedback';
-import { gameDictionary, generateBoard, mildExclamation, planHouseRound, PlayerRound, ROUND_MS } from '@/game/engine';
-import { housePlayer, type HousePlayerId } from '@/game/housePlayers';
+import { gameDictionary, generateBoard, mildExclamation, parseBoard, planHouseRound, PlayerRound, ROUND_MS, solveBoard } from '@/game/engine';
+import { housePlayer, type HousePlayerId, type PlayStyle } from '@/game/housePlayers';
 
 /** How long a submitted word's colours stay on the tiles. */
 const RESULT_MS = 650;
@@ -18,11 +18,20 @@ export type TraceView = {
  * tutorial, and the ranked fallback until the server exists). The house
  * player's round is planned up front and played back against the clock.
  */
-export function useLocalRound(opponentId: HousePlayerId, seed: number) {
+export function useLocalRound(
+  opponentId: HousePlayerId,
+  seed: number,
+  options: { /** A fixed board ("CHAS/LORT/ENIE/PSDA"), e.g. for the tutorial. */ boardText?: string; style?: PlayStyle } = {},
+) {
   const dictionary = useMemo(() => gameDictionary(), []);
-  const { board, solved } = useMemo(() => generateBoard(seed, dictionary), [seed, dictionary]);
+  const { board, solved } = useMemo(() => {
+    if (!options.boardText) return generateBoard(seed, dictionary);
+    const fixed = parseBoard(options.boardText);
+    return { board: fixed, solved: solveBoard(fixed, dictionary) };
+  }, [seed, dictionary, options.boardText]);
   const opponent = housePlayer(opponentId);
-  const plan = useMemo(() => planHouseRound(opponent.style, solved, seed + 1), [opponent, solved, seed]);
+  const style = options.style ?? opponent.style;
+  const plan = useMemo(() => planHouseRound(style, solved, seed + 1), [style, solved, seed]);
 
   const round = useMemo(() => new PlayerRound(board, dictionary), [board, dictionary]);
   const [startedAt] = useState(() => Date.now());

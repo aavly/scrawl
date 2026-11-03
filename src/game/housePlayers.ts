@@ -13,6 +13,10 @@ export type HousePlayer = {
   /** Hidden rating used only for rating maths, never shown (docs/PRODUCT.md "Rating"). */
   hiddenRating: number;
   style: PlayStyle;
+  /** Practice row one-liner, Cast intro, and the tier family it plays like (DESIGN.md §6). */
+  line: string;
+  intro: string;
+  playsLike: string;
 };
 
 /** How a house player plays. First-pass numbers, to be tuned in the beta. */
@@ -33,30 +37,38 @@ export const HOUSE_PLAYERS: readonly HousePlayer[] = [
     id: 'pip', name: 'Pip', level: 1, label: 'EASY', band: { min: 0, max: 1399 }, hiddenRating: 1300,
     // "Just discovered words": slow, short, everyday words.
     style: { words: 6, wordsSpread: 1, vocabulary: [0.9, 0.15, 0, 0], lengthBias: 0.6, frontLoad: 0 },
+    line: 'Learns the ropes with you', intro: 'Pip is a chick who just discovered words. Friendly and slow.', playsLike: 'Bronze',
   },
   {
     id: 'dash', name: 'Dash', level: 2, label: 'CASUAL', band: { min: 1400, max: 1599 }, hiddenRating: 1500,
     // "Quick but sloppy": fast early, fades.
     style: { words: 9, wordsSpread: 2, vocabulary: [1, 0.4, 0.05, 0], lengthBias: 0.85, frontLoad: 0.8 },
+    line: 'Quick, but a bit sloppy', intro: 'Dash is a hare who types first, thinks later.', playsLike: 'Silver',
   },
   {
     id: 'bolt', name: 'Bolt', level: 3, label: 'SKILLED', band: { min: 1600, max: 1799 }, hiddenRating: 1700,
     // "Solid all-rounder".
     style: { words: 13, wordsSpread: 2, vocabulary: [1, 0.8, 0.25, 0.02], lengthBias: 1.1, frontLoad: 0.2 },
+    line: 'A solid all-rounder', intro: 'Bolt is a cool cat. Rarely rattled, always finds a few long ones.', playsLike: 'Gold',
   },
   {
     id: 'nova', name: 'Nova', level: 4, label: 'HARD', band: { min: 1800, max: 2099 }, hiddenRating: 1950,
     // "Finds the long ones".
     style: { words: 19, wordsSpread: 3, vocabulary: [1, 1, 0.6, 0.08], lengthBias: 1.5, frontLoad: 0.2 },
+    line: 'Always finds the long ones', intro: 'Nova is an owl who has read the dictionary. Twice.', playsLike: 'Platinum',
   },
   {
     id: 'titan', name: 'Titan', level: 5, label: 'BRUTAL', band: { min: 2100, max: Infinity }, hiddenRating: 2200,
     // "Hardly misses".
     style: { words: 27, wordsSpread: 3, vocabulary: [1, 1, 0.85, 0.15], lengthBias: 1.35, frontLoad: 0.1 },
+    line: 'Hardly ever misses', intro: 'Titan is a bear. A very focused bear.', playsLike: 'Diamond',
   },
 ];
 
 const byId = new Map(HOUSE_PLAYERS.map((h) => [h.id, h]));
+
+/** Pip in the tutorial: gentler than in Practice, so a new player can win their first round. */
+export const TUTORIAL_PIP_STYLE: PlayStyle = { words: 4, wordsSpread: 1, vocabulary: [0.8, 0.1, 0, 0], lengthBias: 0.5, frontLoad: 0 };
 
 export function housePlayer(id: HousePlayerId): HousePlayer {
   return byId.get(id)!;

@@ -1,6 +1,7 @@
-// TEMPORARY: a specimen page for checking the foundations against
-// docs/design/screens/specs (avatars, tier chips) on real devices, and a way
-// into a round. Replaced by the Welcome and Home screens later in Stage 1.
+// TEMPORARY: the start screen while Home is being built. Links to every
+// Stage 1 flow, dev controls, and the avatar and tier-chip specimens for
+// checking against docs/design/screens/specs. Replaced by Welcome and Home
+// in step 5.
 
 import { router } from 'expo-router';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -10,8 +11,9 @@ import { Avatar, PLAYER_AVATAR_IDS, type AvatarId } from '@/components/avatar/Av
 import { StickerBox } from '@/components/StickerBox';
 import { StickerButton } from '@/components/StickerButton';
 import { TierChip } from '@/components/TierChip';
-import { HOUSE_PLAYERS } from '@/game/housePlayers';
-import { TIERS } from '@/game/tiers';
+import { NEW_PROFILE, useProfile } from '@/features/profile/ProfileProvider';
+import { HOUSE_PLAYERS, housePlayerForRating } from '@/game/housePlayers';
+import { TIERS, tierForRating } from '@/game/tiers';
 import { useTheme, useThemeChoice, type ThemeChoiceValue } from '@/theme';
 
 const SIZES = [92, 52, 44, 34];
@@ -25,6 +27,7 @@ export default function Specimen() {
   const theme = useTheme();
   const { colors, type } = theme;
   const { choice, setChoice } = useThemeChoice();
+  const { profile, update } = useProfile();
   const insets = useSafeAreaInsets();
 
   return (
@@ -61,24 +64,38 @@ export default function Specimen() {
           </View>
         </Section>
 
-        <Section title="PLAY A ROUND">
-          {HOUSE_PLAYERS.map((h) => (
-            <StickerButton
-              key={h.id}
-              onPress={() => router.push({ pathname: '/round', params: { opponent: h.id } })}
-              accessibilityLabel={`Play ${h.name}, level ${h.level}`}
-              fill={colors.butter}
-              shadow="secondary"
-              radius={18}
-              contentStyle={styles.playButton}
-            >
-              <Avatar id={h.id} size={44} />
-              <Text style={[type.cardTitle, styles.flex, { color: colors.ink }]}>{h.name}</Text>
-              <Text style={[type.monoLabel, { color: colors.ink }]}>
-                LV {h.level} · {h.label}
-              </Text>
+        <Section title={`PLAY · RATING ${profile.rating.toLocaleString('en-US')} · ${tierForRating(profile.rating).name}`}>
+          {[
+            { label: 'Tutorial', sub: 'vs Pip, first run', go: () => router.push('/tutorial') },
+            { label: 'Ranked', sub: `vs ${housePlayerForRating(profile.rating).name} after a search`, go: () => router.push('/finding') },
+            { label: 'Practice', sub: 'pick a house player', go: () => router.push('/practice') },
+            { label: 'House players', sub: 'meet the cast', go: () => router.push('/cast') },
+          ].map((e) => (
+            <StickerButton key={e.label} onPress={e.go} fill={colors.butter} shadow="secondary" radius={18} contentStyle={styles.playButton}>
+              <Text style={[type.cardTitle, styles.flex, { color: colors.ink }]}>{e.label}</Text>
+              <Text style={[type.monoLabel, { color: colors.ink }]}>{e.sub.toUpperCase()}</Text>
             </StickerButton>
           ))}
+        </Section>
+
+        <Section title="DEV · SET RATING (TRY EACH HOUSE PLAYER)">
+          <View style={styles.row}>
+            {[1300, 1500, 1650, 1900, 2150].map((r) => (
+              <StickerButton
+                key={r}
+                onPress={() => update((p) => ({ ...p, rating: r, rankedPlayed: Math.max(p.rankedPlayed, 10) }))}
+                shadow="secondary"
+                radius={12}
+                style={styles.flex}
+                contentStyle={styles.themeButton}
+              >
+                <Text style={[type.monoLabel, { color: colors.cardText }]}>{r}</Text>
+              </StickerButton>
+            ))}
+          </View>
+          <StickerButton onPress={() => update(() => NEW_PROFILE)} shadow="secondary" radius={12} contentStyle={styles.themeButton}>
+            <Text style={[type.monoLabel, { color: colors.cardText }]}>RESET PROFILE</Text>
+          </StickerButton>
         </Section>
 
         <Section title="HOUSE PLAYERS · 92 / 52 / 44 / 34">

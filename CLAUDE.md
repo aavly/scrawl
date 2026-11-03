@@ -17,7 +17,7 @@ Repository: https://github.com/aavly/scrawl
 - **Tokens:** every colour, font, radius and shadow comes from the one theme object (Butter light, Night dark) built from DESIGN.md §3. No hard-coded hex values in components.
 - **Hard-shadow look:** use the shared `StickerBox` component, never a one-off shadow. Anything tappable uses `StickerButton`.
 - **Every text style sets a line height:** use a `type` token or `lineHeightFor(size)`. Without one, iOS uses Bricolage Grotesque's tall font metrics and text boxes come out taller on phones than on the web.
-- **Avoid `flexWrap` for layouts that must fit:** on iOS a wrapped row can overflow its card. Use stacked rows or fixed columns.
+- **Wrapping rows:** on iOS a wrapped row using `gap` overflowed its card. Prefer stacked rows or fixed columns. When content must wrap (word chips), space items with margins, not `gap`.
 - **Feedback states:** valid, already found and invalid each need their non-colour signals exactly as DESIGN.md §7 specifies.
 - **Busy visuals** (dot background, stickers, confetti) appear only on gameplay and matchmaking screens. Navigation screens stay flat.
 - **Don't build anything in DESIGN.md §16** ("Planned, not designed yet"), but keep grid size, tile size and the avatar slot parameterised.
@@ -95,8 +95,11 @@ Run the typecheck and the tests before declaring any task done.
   - `board/`: `Board` (plate, tiles, chain, pan gesture), `Tile`, and `geometry.ts` (layout and hit-testing, unit tested).
   - `round/`: the board screen's header pieces: `ScoreCard`, `Timer`, `WordDisplay`, `FoundWords`, `Pop`.
 - `src/features/round/`: `useLocalRound` (a round against a house player, on the device) and `RoundView` (the board screen layout, no logic).
+- `src/features/profile/`: the on-device profile (`ProfileProvider`, `useProfile`) and `recordMatch`. `src/features/match/matchStore.ts` hands a finished match to Results.
+- `src/game/results.ts`: turns a finished round into what Results shows (plain logic, tested).
+- Screens in `src/app/`: `finding`, `reveal`, `round`, `results`, `tutorial`, `tutorial-results`, `practice`, `cast`. `index.tsx` is a temporary hub with dev controls until Home exists. Shared screen pieces: `components/Screen.tsx`, `components/parts.tsx`.
 - `src/feedback/feedback.ts`: the only place round events become haptics, and later sound.
-- `src/app/round.tsx` plays a round (`?opponent=bolt&seed=123`). `src/app/dev/board.tsx` freezes the board screen in each mockup state (`?state=valid`) for comparing with the PNGs; dev only.
+- `src/app/round.tsx` plays a round (`?mode=ranked&opponent=bolt&seed=123`). `src/app/dev/board.tsx` freezes the board screen in each mockup state (`?state=valid`) for comparing with the PNGs; dev only.
 - `scripts/`: dev scripts, such as the avatar art generator.
 - `docs/`: planning docs, and `docs/design/` for the design spec and mockups.
 - Import from `src` with the `@/` alias, for example `@/theme`.
