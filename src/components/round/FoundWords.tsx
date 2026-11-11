@@ -13,6 +13,8 @@ type Props = {
   /** A duplicate: this word's chip moves to the front, turns Butter and wiggles. */
   duplicate?: { word: string; key: number } | null;
   compact?: boolean;
+  /** A heading such as "YOU · 10" instead of the count pill (used when the opponent's column sits beside it). */
+  label?: string;
 };
 
 const TILTS = [-1.5, 1, -1, 1.5];
@@ -23,7 +25,7 @@ const TILTS = [-1.5, 1, -1, 1.5];
  * the word bar and the board: it never pushes the board, which stays put at
  * the bottom. Words that don't fit scroll, with a fade and a count.
  */
-export function FoundWords({ words, highlightNewest, duplicate, compact }: Props) {
+export function FoundWords({ words, highlightNewest, duplicate, compact, label }: Props) {
   const { colors, fonts } = useTheme();
   const scroller = useRef<ComponentRef<typeof ScrollView>>(null);
 
@@ -36,7 +38,8 @@ export function FoundWords({ words, highlightNewest, duplicate, compact }: Props
 
   return (
     <View style={[styles.area, { minHeight: compact ? 30 : 38 }]} accessibilityLabel={`${words.length} words found`}>
-      <ScrollView ref={scroller} showsVerticalScrollIndicator={false} contentContainerStyle={styles.wrap}>
+      {label && <ColumnLabel text={label} />}
+      <ScrollView ref={scroller} showsVerticalScrollIndicator={false} contentContainerStyle={[styles.wrap, label ? styles.wrapLabelled : null]}>
         {ordered.map((w, i) => {
           const isDuplicate = duplicate?.word === w.word && i === 0;
           const isNew = highlightNewest && i === 0 && !duplicate;
@@ -63,12 +66,47 @@ export function FoundWords({ words, highlightNewest, duplicate, compact }: Props
         </Defs>
         <Rect width="100%" height={24} fill="url(#foundFade)" />
       </Svg>
-      {words.length > 0 && (
+      {!label && words.length > 0 && (
         <View style={[styles.count, { borderColor: colors.line, backgroundColor: colors.ink }]}>
           <Text style={{ fontFamily: fonts.mono[700], fontSize: 12, lineHeight: lineHeightFor(12), color: colors.butter }}>{words.length}</Text>
         </View>
       )}
     </View>
+  );
+}
+
+/**
+ * The opponent's found words as blank badges in their colour, right-aligned:
+ * you see how many they have, never which words, until the round ends
+ * (user decision, 2026-11-11).
+ */
+export function OpponentWords({ count, label, compact }: { count: number; label: string; compact?: boolean }) {
+  const { colors } = useTheme();
+  const height = compact ? 20 : 24;
+  return (
+    <View style={[styles.area, { minHeight: compact ? 30 : 38 }]} accessibilityLabel={`${label}: ${count} words found, hidden until the end`}>
+      <ColumnLabel text={label} align="right" />
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={[styles.wrap, styles.wrapLabelled, styles.wrapRight]}>
+        {Array.from({ length: count }, (_, i) => (
+          <View key={i} style={[styles.chipSpace, styles.blankSpace]}>
+            <View style={[styles.chipShadow, { backgroundColor: colors.shadow }]} />
+            <View style={[styles.blank, { height, borderColor: colors.line, backgroundColor: colors.bubblegum }]} />
+          </View>
+        ))}
+      </ScrollView>
+    </View>
+  );
+}
+
+function ColumnLabel({ text, align = 'left' }: { text: string; align?: 'left' | 'right' }) {
+  const { colors, fonts } = useTheme();
+  return (
+    <Text
+      numberOfLines={1}
+      style={{ fontFamily: fonts.mono[700], fontSize: 11, lineHeight: lineHeightFor(11), letterSpacing: 0.6, color: colors.text, textAlign: align, marginBottom: 4 }}
+    >
+      {text}
+    </Text>
   );
 }
 
@@ -115,6 +153,10 @@ const styles = StyleSheet.create({
   // Margins, not gap, on wrapping rows (see CLAUDE.md). Right padding keeps
   // chips clear of the count pill.
   wrap: { flexDirection: 'row', flexWrap: 'wrap', paddingTop: 2, paddingLeft: 2, paddingRight: 40, paddingBottom: 20 },
+  wrapLabelled: { paddingRight: 2 },
+  wrapRight: { justifyContent: 'flex-end' },
+  blankSpace: { marginRight: 0, marginLeft: 6 },
+  blank: { width: 30, borderWidth: 2, borderRadius: 8 },
   chipSpace: { marginRight: 8, marginBottom: 8 },
   chip: { borderWidth: 2, borderRadius: 10, paddingHorizontal: 9, paddingVertical: 1 },
   chipShadow: { ...StyleSheet.absoluteFill, borderRadius: 10, transform: [{ translateX: 2 }, { translateY: 2 }] },

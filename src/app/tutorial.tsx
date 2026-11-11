@@ -25,6 +25,9 @@ const STEPS: Step[] = [
   { say: 'Start on the O. Slide down to N, then left to E.', word: 'ONE', path: [5, 9, 8] },
   // T(7) diagonally to I(10), down to D(14), diagonally to E(11).
   { say: 'Diagonals count too. Trace TIDE.', word: 'TIDE', path: [7, 10, 14, 11] },
+  // S(3) T(7) R(6) I(10) D(14) E(11). The +1,000 sticker shows the jump from
+  // ONE's +100: this replaces the points table on the tutorial results.
+  { say: 'Longer words score way more. Trace STRIDE.', word: 'STRIDE', path: [3, 7, 6, 10, 14, 11] },
   { say: 'Your turn. Find any word.' },
 ];
 

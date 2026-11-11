@@ -31,6 +31,9 @@ Add new decisions at the bottom of the relevant table, with the date and who mad
 | 2026-11-02 | Design v2.1 adopted: compact board layout for small phones, one bounded found-words row, five-digit score sizes, Appearance group in Settings | User (design chat) |
 | 2026-11-01 | ~~Butter (light) is the default theme. The phone's own light/dark setting is ignored~~ Superseded by the next row | User |
 | 2026-11-03 | The theme follows the phone's light or dark mode by default (Butter in light, Night in dark). Settings can pin Butter or Night, or go back to following the phone | User |
+| 2026-11-11 | During a match, the opponent's found words show as blank badges in the opponent's colour, so you see how many they have but not which. Your words sit on the left, theirs on the right | User |
+| 2026-11-11 | Match summary order: rank result first, then one card with both players' points and both word lists side by side, one word per line. Word-list headers show the count only, no username | User |
+| 2026-11-11 | "Longer words score more" is taught in the solo tutorial (a STRIDE step), not as a points table on the tutorial results | User |
 | 2026-11-03 | All in-game text is short and concise: one instruction or idea per line, no repeated phrases | User |
 | 2026-11-03 | The tutorial is two parts: first learn alone (no opponent, no clock) by making three words with Pip coaching, then a first match against a gentle Pip | User |
 | 2026-11-03 | Pip's coaching uses a speech bubble that looks clearly different from the players' score cards | User |

@@ -52,5 +52,10 @@ Built differently from the mockup (engineering, 2026-11-02):
   - **No Cast page.** Remove `Cast` and the "MEET THE HOUSE PLAYERS ›" link on Practice.
   - **Copy:** all in-game text should be short. Several mockup lines were cut down, for example the Finding and Reveal house-player sentences.
 
+- **User feedback on the round and Results (2026-11-11), for DESIGN.md to catch up on:**
+  - **Opponent's words during the round:** blank badges in the opponent's colour (Bubblegum), right-aligned under a "BOLT · 8" label, beside your words under "YOU · 23". Replaces §4.6's single list. Engineering's badges are uniform 30px pills, so they don't hint at word length.
+  - **Results order:** rating card first, then one card with both scores and both word lists side by side, one word per line with points, unique words on a Butter row with ★. Headers are just "12 WORDS". Replaces the separate scoreboard and the "first 8 words + n" chip card in §5.7.
+  - **Tutorial results:** the "LONGER WORDS SCORE WAY MORE" table is removed. The solo tutorial teaches it with a STRIDE step instead (4 steps now: ONE, TIDE, STRIDE, any word).
+
 Small fix for next time:
 - §4.1b's table says a 360×592 Android phone gets 64px tiles, but the formula gives 72 (min(336, 520 − 160) = 336). Engineering follows the formula.

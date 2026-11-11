@@ -84,7 +84,8 @@ Worked examples for a 1,642 player:
 **Matches**
 - **Quick match:** pairs players by rating on the same board, with the opponent's score updating live.
 - **Bot fallback:** if nobody is found in about 10 seconds, the player gets the bot character whose level is nearest their rating.
-- **Results:** both word lists side by side, the best missed words, the rating change and a rematch button.
+- **During the round:** your found words on the left; the opponent's on the right as blank badges in their colour, hidden until the end.
+- **Results:** the rating change first, then one card with both scores and both word lists side by side (one word per line), then the best missed words and a rematch button.
 - **Practice:** play a chosen bot character, unranked. The first round is a tutorial against the easiest character.
 
 **Bots**

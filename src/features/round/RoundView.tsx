@@ -11,7 +11,7 @@ import { Board, type TraceLook } from '@/components/board/Board';
 import { boardLayout } from '@/components/board/geometry';
 import { DotBackground } from '@/components/DotBackground';
 import { Icon } from '@/components/icons';
-import { FoundWords } from '@/components/round/FoundWords';
+import { FoundWords, OpponentWords } from '@/components/round/FoundWords';
 import { ScoreCard, SubPill } from '@/components/round/ScoreCard';
 import { Timer } from '@/components/round/Timer';
 import { WordDisplay, type WordLook } from '@/components/round/WordDisplay';
@@ -24,7 +24,8 @@ export type RoundViewProps = {
   board: BoardData;
   msLeft: number;
   me: { avatar: AvatarId; username: string; score: number };
-  opponent: { player: HousePlayer; score: number; bubble?: { text: string; key: number } | null };
+  /** `found` is how many words the opponent has; leave it out for solo play (the tutorial's learning part). */
+  opponent: { player: HousePlayer; score: number; found?: number; bubble?: { text: string; key: number } | null };
   word: { look: WordLook; text: string; points?: number; exclamation?: string; key: number };
   finds: { word: string; points: number }[];
   highlightNewest: boolean;
@@ -110,7 +111,25 @@ export function RoundView(p: RoundViewProps) {
         />
         {/* The found words fill the spare height above the board. */}
         <View style={styles.fill}>
-          <FoundWords words={p.finds} highlightNewest={p.highlightNewest} duplicate={p.duplicate} compact={compact} />
+          {p.opponent.found === undefined ? (
+            <FoundWords words={p.finds} highlightNewest={p.highlightNewest} duplicate={p.duplicate} compact={compact} />
+          ) : (
+            // Your words on the left, the opponent's hidden words on the right.
+            <View style={styles.split}>
+              <View style={styles.yourSide}>
+                <FoundWords
+                  words={p.finds}
+                  highlightNewest={p.highlightNewest}
+                  duplicate={p.duplicate}
+                  compact={compact}
+                  label={`YOU · ${p.finds.length}`}
+                />
+              </View>
+              <View style={styles.theirSide}>
+                <OpponentWords count={p.opponent.found} label={`${p.opponent.player.name.toUpperCase()} · ${p.opponent.found}`} compact={compact} />
+              </View>
+            </View>
+          )}
           {last10 && (
             <View style={[styles.last10Tag, { backgroundColor: colors.bubblegum, borderColor: colors.ink }]}>
               <Text style={{ fontFamily: fonts.mono[700], fontSize: 13, lineHeight: lineHeightFor(13), color: colors.ink }}>LAST 10!</Text>
@@ -155,5 +174,8 @@ const styles = StyleSheet.create({
   fill: { flex: 1 },
   center: { alignItems: 'center', justifyContent: 'center' },
   header: { flexDirection: 'row', gap: 8, alignItems: 'stretch' },
+  split: { flex: 1, flexDirection: 'row', gap: 10 },
+  yourSide: { flex: 3 },
+  theirSide: { flex: 2 },
   last10Tag: { position: 'absolute', left: 6, bottom: 0, paddingHorizontal: 10, borderWidth: 3, borderRadius: 10, transform: [{ rotate: '-3deg' }] },
 });

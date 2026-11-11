@@ -1,25 +1,23 @@
-// Results (DESIGN.md §5.7): headline, scores, rating change (ranked only),
-// both word lists, the best words you missed, and Play again.
+// Results (DESIGN.md §5.7): headline, rating change (ranked only), the match
+// summary with both word lists, the best words you missed, and Play again.
 
 import { router } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
-import { Avatar } from '@/components/avatar/Avatar';
 import { Icon } from '@/components/icons';
-import { Confetti, Headline, ProgressBar, Tag } from '@/components/parts';
+import { Confetti, Headline, ProgressBar } from '@/components/parts';
 import { Screen } from '@/components/Screen';
 import { StickerBox } from '@/components/StickerBox';
 import { StickerButton } from '@/components/StickerButton';
 import { TierChip } from '@/components/TierChip';
+import { MatchSummary } from '@/features/match/MatchSummary';
 import { lastMatch, newSeed } from '@/features/match/matchStore';
 import { useProfile } from '@/features/profile/ProfileProvider';
 import { housePlayer } from '@/game/housePlayers';
-import type { MatchResult, ResultWord } from '@/game/results';
+import type { MatchResult } from '@/game/results';
 import { pointsToNextTier, tierForRating } from '@/game/tiers';
-import { lineHeightFor, scoreFontSize, useTheme } from '@/theme';
-
-const WORDS_SHOWN = 8;
+import { lineHeightFor, useTheme } from '@/theme';
 
 export default function Results() {
   const match = lastMatch();
@@ -73,50 +71,14 @@ export default function Results() {
         <Headline text={headline} fill={won ? colors.mint : colors.bubblegum} size={40} />
       </View>
 
-      <Scoreboard result={result} you={{ avatar: profile.avatar, username: profile.username }} houseId={match.opponentId} />
+      {/* Rank result first, then points and both word lists (user feedback, 2026-11-11). */}
       {result.rating && <RatingCard result={result} />}
-      <WordsCard result={result} theirName={house.name} />
+      <MatchSummary result={result} you={{ avatar: profile.avatar }} house={house} />
       {result.missed.length > 0 && <MissedCard missed={result.missed} />}
       {result.mode === 'practice' && (
         <Text style={[type.monoLabel, { color: colors.text, textAlign: 'center' }]}>PRACTICE NEVER CHANGES YOUR RATING</Text>
       )}
     </Screen>
-  );
-}
-
-function Scoreboard({ result, you, houseId }: { result: MatchResult; you: { avatar: Parameters<typeof Avatar>[0]['id']; username: string }; houseId: Parameters<typeof housePlayer>[0] }) {
-  const { colors, fonts, type } = useTheme();
-  const house = housePlayer(houseId);
-  const yours = result.you.score.toLocaleString('en-US');
-  const theirs = result.them.score.toLocaleString('en-US');
-  // Both numerals share the smaller size so they line up (DESIGN.md §4.2).
-  const size = Math.min(scoreFontSize('results', yours), scoreFontSize('results', theirs));
-  const mono = { fontFamily: fonts.mono[700], fontSize: 11, lineHeight: lineHeightFor(11), letterSpacing: 0.6, color: colors.cardText };
-  return (
-    <StickerBox radius={26} shadow="cardLarge" contentStyle={{ padding: 16, gap: 6 }}>
-      <View style={styles.between}>
-        <View style={styles.row}>
-          <Avatar id={you.avatar} size={34} />
-          <Text style={mono}>YOU · {you.username.toUpperCase()}</Text>
-        </View>
-        <View style={styles.row}>
-          <Text style={mono}>{house.name.toUpperCase()}</Text>
-          <Avatar id={house.id} size={34} />
-        </View>
-      </View>
-      <View style={styles.between}>
-        <Text style={{ fontFamily: fonts.display[800], fontSize: size, lineHeight: size * 1.1, color: colors.cardText }}>{yours}</Text>
-        <Text style={[type.cardTitle, { color: colors.cardText }]}>VS</Text>
-        <Text style={{ fontFamily: fonts.display[800], fontSize: size, lineHeight: size * 1.1, color: colors.cardText }}>{theirs}</Text>
-      </View>
-      <View style={styles.between}>
-        <View>{result.outcome === 'win' ? <Tag label="WINNER" fill={colors.mint} color={colors.ink} /> : null}</View>
-        <View style={styles.row}>
-          {result.outcome === 'loss' && <Tag label="WINNER" fill={colors.mint} color={colors.ink} />}
-          <Tag label={`HOUSE PLAYER · LV ${house.level}`} />
-        </View>
-      </View>
-    </StickerBox>
   );
 }
 
@@ -158,39 +120,6 @@ function RatingCard({ result }: { result: MatchResult }) {
   );
 }
 
-function WordsCard({ result, theirName }: { result: MatchResult; theirName: string }) {
-  const { colors } = useTheme();
-  return (
-    <StickerBox radius={26} shadow="cardLarge" contentStyle={styles.wordsCard}>
-      <WordColumn title={`YOU · ${result.you.words.length} WORDS`} words={result.you.words} />
-      <View style={[styles.divider, { backgroundColor: colors.soft }]} />
-      <WordColumn title={`${theirName.toUpperCase()} · ${result.them.words.length} WORDS`} words={result.them.words} />
-    </StickerBox>
-  );
-}
-
-function WordColumn({ title, words }: { title: string; words: ResultWord[] }) {
-  const { colors, fonts } = useTheme();
-  const shown = words.slice(0, WORDS_SHOWN);
-  const more = words.length - shown.length;
-  const chip = (label: string, unique: boolean, key: string) => (
-    <View key={key} style={[styles.wordChip, { borderColor: colors.line, backgroundColor: unique ? colors.butter : colors.card }]}>
-      <Text style={{ fontFamily: fonts.mono[unique ? 700 : 400], fontSize: 12, lineHeight: lineHeightFor(12), color: unique ? colors.ink : colors.cardText }}>
-        {unique ? `★ ${label}` : label}
-      </Text>
-    </View>
-  );
-  return (
-    <View style={{ flex: 1, gap: 8 }}>
-      <Text style={{ fontFamily: fonts.mono[700], fontSize: 11, lineHeight: lineHeightFor(11), letterSpacing: 0.8, color: colors.cardText }}>{title}</Text>
-      <View style={styles.chips}>
-        {shown.map((w) => chip(w.word, w.unique, w.word))}
-        {more > 0 && chip(`+${more}`, false, 'more')}
-      </View>
-    </View>
-  );
-}
-
 function MissedCard({ missed }: { missed: MatchResult['missed'] }) {
   const { colors, fonts } = useTheme();
   return (
@@ -218,12 +147,6 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   between: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
   delta: { flexDirection: 'row', alignItems: 'center', gap: 6, borderWidth: 3, borderRadius: 99, paddingHorizontal: 14, paddingVertical: 4 },
-  wordsCard: { flexDirection: 'row', gap: 12, padding: 16 },
-  divider: { width: 3, borderRadius: 2 },
-  // Margins rather than gap: on iOS a wrapping row with gap can be measured
-  // too short for its card.
-  chips: { flexDirection: 'row', flexWrap: 'wrap', marginRight: -6, marginBottom: -6 },
-  wordChip: { borderWidth: 2, borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3, marginRight: 6, marginBottom: 6 },
   missed: { flex: 1, borderWidth: 3, borderStyle: 'dashed', borderRadius: 16, alignItems: 'center', paddingVertical: 8, paddingHorizontal: 4 },
   primaryButton: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18, paddingVertical: 12, minHeight: 76 },
   secondaryButton: { alignItems: 'center', justifyContent: 'center', minHeight: 56 },

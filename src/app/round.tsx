@@ -55,7 +55,7 @@ export default function RoundScreen() {
       board={r.board}
       msLeft={r.msLeft}
       me={{ avatar: profile.avatar, username: profile.username, score: r.player.score }}
-      opponent={{ player: r.opponent, score: r.opponentScore, bubble: r.bubble }}
+      opponent={{ player: r.opponent, score: r.opponentScore, found: r.opponentFinds.length, bubble: r.bubble }}
       word={r.word}
       finds={r.player.finds}
       highlightNewest={r.highlightNewest}

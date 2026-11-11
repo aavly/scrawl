@@ -96,11 +96,12 @@ Run the typecheck and the tests before declaring any task done.
   - `board/`: `Board` (plate, tiles, chain, pan gesture), `Tile`, and `geometry.ts` (layout and hit-testing, unit tested).
   - `round/`: the board screen's header pieces: `ScoreCard`, `Timer`, `WordDisplay`, `FoundWords`, `Pop`.
 - `src/features/round/`: `useLocalRound` (a round against a house player, on the device) and `RoundView` (the board screen layout, no logic).
+- `src/features/match/MatchSummary.tsx`: the end-of-match card (both scores, both word lists), used by Results and the tutorial results.
 - `src/features/profile/`: the on-device profile (`ProfileProvider`, `useProfile`) and `recordMatch`. `src/features/match/matchStore.ts` hands a finished match to Results.
 - `src/game/results.ts`: turns a finished round into what Results shows (plain logic, tested).
 - Screens in `src/app/`: `finding`, `reveal`, `round` (ranked, practice or tutorial match), `results`, `tutorial` (learning part, untimed), `tutorial-results`, `practice`. `index.tsx` is a temporary hub with dev controls until Home exists. Shared screen pieces: `components/Screen.tsx`, `components/parts.tsx`.
 - `src/feedback/feedback.ts`: the only place round events become haptics, and later sound.
-- `src/app/round.tsx` plays a round (`?mode=ranked&opponent=bolt&seed=123`). `src/app/dev/board.tsx` freezes the board screen in each mockup state (`?state=valid`) for comparing with the PNGs; dev only.
+- `src/app/round.tsx` plays a round (`?mode=ranked&opponent=bolt&seed=123`). `src/app/dev/board.tsx` freezes the board screen in each mockup state (`?state=valid`), and `src/app/dev/results.tsx` shows Results with the sample match (`?mode=practice` too), for comparing with the PNGs; dev only.
 - `scripts/`: dev scripts, such as the avatar art generator.
 - `docs/`: planning docs, and `docs/design/` for the design spec and mockups.
 - Import from `src` with the `@/` alias, for example `@/theme`.

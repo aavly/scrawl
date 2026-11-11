@@ -78,7 +78,7 @@ export default function BoardStatesPreview() {
       board={board}
       msLeft={s.msLeft!}
       me={s.me!}
-      opponent={{ player: housePlayer('bolt'), score: s.opponentScore }}
+      opponent={{ player: housePlayer('bolt'), score: s.opponentScore, found: 8 }}
       word={s.word!}
       finds={s.finds!}
       highlightNewest={s.highlightNewest ?? false}
